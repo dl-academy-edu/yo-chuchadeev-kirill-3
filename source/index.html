@@ -6,7 +6,7 @@
         <meta name="google" content="notranslate">
         <meta name="format-detection" content="telephone=no">
 
-        <title>DL Academy</title>
+        <title>Personal site</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
 
@@ -14,18 +14,265 @@
             var docElement = document.documentElement;
             docElement.className = docElement.className.replace(/\bno-js\b/, '') + ' js';
         </script>
+
+        <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css">
+
         <link href="css/style.min.css" rel="stylesheet">
     </head>
-    <body>
-        <header>
-            
-        </header>
-        <main>
-
+    <body class="body" id="body">
+        @@include('blocks/header.html')
+        <main class="main__full">
+			<div class="main center">
+				<div class="main__content">
+					<section class="main__title">
+						<h1>Kirill Chuchadeev</h1>
+						<p class="main__title__info text__main">Future front-end developer 29 years old, Tolyatti</p>
+					</section>
+					<section class="main__slider">
+						<ul class="main__slider__list">
+							<li class="main__slider__list_items">
+								<picture>
+									<img src="/img/picture/main-slider-1.jpg" alt="" width="1000" height="465">
+								</picture>
+							</li>
+							<li class="main__slider__list_items"></li>
+							<li class="main__slider__list_items"></li>
+							<li class="main__slider__list_items"></li>
+						</ul>
+						<div class="main__slider__controls">
+							<button class="main__slider__left">
+								<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect x="40.75" y="40.75" width="39.5" height="39.5" rx="19.75" transform="rotate(-180 40.75 40.75)" stroke="#070707" stroke-width="2.5"/>
+									<rect x="24.5791" y="32.6992" width="16.5512" height="3" rx="1.5" transform="rotate(-135 24.5791 32.6992)" fill="#070707"/>
+									<rect x="26.7002" y="11.4199" width="16.5512" height="3" rx="1.5" transform="rotate(135 26.7002 11.4199)" fill="#070707"/>
+								</svg>
+							</button>
+							<div class="main__slider__pages">
+								<button class="slider__page slider__page__active"></button>
+								<button class="slider__page"></button>
+								<button class="slider__page"></button>
+								<button class="slider__page"></button>
+							</div>
+							<button class="main__slider__right">
+								<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect x="1.25" y="1.25006" width="39.5" height="39.5" rx="19.75" stroke="#070707" stroke-width="2.5"/>
+									<rect x="17.4209" y="9.30084" width="16.5512" height="3" rx="1.5" transform="rotate(45 17.4209 9.30084)" fill="#070707"/>
+									<rect x="15.2998" y="30.5801" width="16.5512" height="3" rx="1.5" transform="rotate(-45 15.2998 30.5801)" fill="#070707"/>
+								</svg>
+							</button>
+						</div>
+					</section>
+					<section class="main__aboutme">
+						<h2 class="main__aboutme__title">About me</h2>
+						<p class="main__aboutme__text">Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.</p>
+						<p class="main__aboutme__text">Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non justo. Etiam platea consectetur.</p>
+						<p class="main__aboutme__text">Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. Nullam nec felis eu id dolor pellentesque tristique. </p>
+					</section>
+					<section class="main__skills">
+						<h2 class="main__skills__title">Skills</h2>
+						<p class="main__skills__info text__main">I work in such programs as</p>
+						<div class="main__skills__programs">
+							<ul class="main__skills__programs__list">
+								<li class="main__skills__programs__list_items">
+									<img class="main__skills__programs__logo" src="/img/ico/icon-html5.png" alt="" width="79" height="90">
+									<p class="main__skills__programs__name name__programs">HTML 5</p>
+									<div class="main__skills__programs__progress">
+										<p class="skill__progress">85%</p>
+									</div>
+								</li>
+								<li class="main__skills__programs__list_items">
+									<img class="main__skills__programs__logo" src="/img/ico/icon-css.png" alt="" width="79" height="90">
+									<p class="main__skills__programs__name name__programs">CSS/SCSS</p>
+									<div class="main__skills__programs__progress">
+										<p class="skill__progress">85%</p>
+									</div>
+								</li>
+								<li class="main__skills__programs__list_items">
+									<img class="main__skills__programs__logo" src="/img/ico/icon-js.png" alt="" width="68" height="90">
+									<p class="main__skills__programs__name name__programs">JavaScript</p>
+									<div class="main__skills__programs__progress">
+										<p class="skill__progress">85%</p>
+									</div>
+								</li>
+								<li class="main__skills__programs__list_items">
+									<img class="main__skills__programs__logo" src="/img/ico/icon-github.png" alt="" width="90" height="90">
+									<p class="main__skills__programs__name name__programs">Git/GitHub</p>
+									<div class="main__skills__programs__progress">
+										<p class="skill__progress">85%</p>
+									</div>
+								</li>
+								<li class="main__skills__programs__list_items">
+									<img class="main__skills__programs__logo" src="/img/ico/icon-figma.png" alt="" width="60" height="90">
+									<p class="main__skills__programs__name name__programs">Figma</p>
+									<div class="main__skills__programs__progress">
+										<p class="skill__progress">85%</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</section>
+					<section class="main__portfolio">
+						<h2 class="main__portfolio__title">Portfolio</h2>
+						<div class="portfolio__slider__wrap">
+							<div class="portfolio__slider__content">
+								<img src="/img/picture/porfolio-site-1.jpg" alt="">
+							</div>
+							<div class="portfolio__slider__button">
+								<button class="portfolio__slider__button_left">
+									<svg width="25" height="42" viewBox="0 0 43 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<g filter="url(#filter0_d_19_0)">
+										<rect x="30.1641" y="52" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-135 30.1641 52)" fill="#070707"/>
+										<rect x="34" y="13.5198" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(135 34 13.5198)" fill="#070707"/>
+										</g>
+										<defs>
+										<filter id="filter0_d_19_0" x="0.123535" y="0.807373" width="42.7529" height="60.0691" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+										<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+										<feOffset/>
+										<feGaussianBlur stdDeviation="5"/>
+										<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+										<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_19_0"/>
+										<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_19_0" result="shape"/>
+										</filter>
+										</defs>
+									</svg>
+								</button>
+								<button class="portfolio__slider__button_right">
+									<svg width="25" height="42" viewBox="0 0 43 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<g filter="url(#filter0_d_17_7)">
+										<rect x="12.8359" y="9" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(45 12.8359 9)" fill="#070707"/>
+										<rect x="9" y="47.4802" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-45 9 47.4802)" fill="#070707"/>
+										</g>
+										<defs>
+										<filter id="filter0_d_17_7" x="0.123535" y="0.123535" width="42.7529" height="60.0691" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+										<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+										<feOffset/>
+										<feGaussianBlur stdDeviation="5"/>
+										<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+										<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_17_7"/>
+										<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_17_7" result="shape"/>
+										</filter>
+										</defs>
+									</svg>
+								</button>
+							</div>
+							<div class="portfolio__slider__popup">
+								<a href="#" class="portfolio__slider__link">Learning site for DL Academy courses</a>
+								<p class="portfolio__slider__info">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
         </main>
-        <footer>
-
-        </footer>
+        @@include('blocks/footer.html')
+		<div class="popup">
+			<div class="popup__login">
+				<form class="popup__login__form" action="">
+					<label class="popup__login__form__label__email label__email" for="label__email">Email <span class="star">*</span></label>
+					<input class="popup__login__form__input__email input__email" type="text" id="label__email">
+					<label class="popup__login__form__label__password label__password" for="input__password">Password <span class="star">*</span></label>
+					<input class="popup__login__form__input__password input__password" type="text" id="input__password">
+					<button class="popup__login__form__button btn_white" type="submit">Log in</button>
+				</form>
+				<button class="popup__close login__close_js">
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+						<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+					</svg>							
+				</button>
+			</div>
+			<div class="popup__register">
+				<form class="popup__register__form" action="">
+					<div class="popup__register__form__input__wrap">
+						<label class="popup__register__form__label__email" for="input__email">Email <span class="star">*</span></label>
+						<input class="popup__register__form__input__email" type="text" name="" id="input__email">
+					</div>
+					<div class="popup__register__form__input__flex">
+						<div class="popup__register__form__input__wrap">
+							<label class="popup__register__form__label__name" for="input__name">Name <span class="star">*</span></label>
+							<input class="popup__register__form__input__name" type="text" name="" id="input__name">
+						</div>
+						<div class="popup__register__form__input__wrap">
+							<label class="popup__register__form__label__surname" for="input__surname">Surname <span class="star">*</span></label>
+							<input class="popup__register__form__input__surname" type="text" name="" id="input__surname">
+						</div>
+					</div>
+					<div class="popup__register__form__input__flex">
+						<div class="popup__register__form__input__wrap">
+							<label class="popup__register__form__label__password" for="input__password">Password <span class="star">*</span></label>
+							<input class="popup__register__form__input__password" type="text" name="" id="input__password">
+						</div>
+						<div class="popup__register__form__input__wrap">
+							<label class="popup__register__form__label__repeat_password" for="input__repeat_password">Repeat password <span class="star">*</span></label>
+							<input class="popup__register__form__input__repeat_password" type="text" name="" id="input__repeat_password">
+						</div>
+					</div>
+					<div class="popup__register__form__input__flex">
+						<div class="popup__register__form__input__wrap">
+							<label class="popup__register__form__label__location" for="input__location">Location <span class="star">*</span></label>
+							<input class="popup__register__form__input__location" type="text" name="" id="input__location">
+						</div>
+						<div class="popup__register__form__input__wrap">
+							<label class="popup__register__form__label__age" for="input__age">Age <span class="star">*</span></label>
+							<input class="popup__register__form__input__age" type="text" name="" id="input__age">
+						</div>
+					</div>
+					<div class="popup__register__form__check">
+						<input class="popup__register__form__checkbox" type="checkbox" id="checkbox__register">
+						<label class="popup__register__form__check_text" for="checkbox__register">Clicking on the button, you consent to the processing of your personal data.</label>
+					</div>
+					<button class="btn_white btn_signup">Sign up</button>
+				</form>				
+				<button class="popup__close register__close_js">
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+						<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+					</svg>							
+				</button>
+			</div>
+			<div class="popup__message">
+				<form class="popup__message__form" action="">
+					<div class="popup__message__form__input__flex">
+						<div class="popup__message__form__input__wrap">
+							<label class="popup__message__form__label__your_name" for="input__your_name">What is your name? <span class="star">*</span></label>
+							<input class="popup__message__form__input__your_name" type="text" name="" id="input__your_name">
+						</div>
+						<div class="popup__message__form__input__wrap">
+							<label class="popup__message__form__label__repeat_subject" for="input__repeat_subject">Message subject <span class="star">*</span></label>
+							<input class="popup__message__form__input__repeat_subject" type="text" name="" id="input__repeat_subject">
+						</div>
+					</div>
+					<div class="popup__message__form__input__flex">
+						<div class="popup__message__form__input__wrap">
+							<label class="popup__message__form__label__youremail" for="input__youremail">Your Email <span class="star">*</span></label>
+							<input class="popup__message__form__input__youremail" type="text" name="" id="input__youremail">
+						</div>
+						<div class="popup__message__form__input__wrap">
+							<label class="popup__message__form__label__mobile_phone" for="input__mobile_phone">Your mobile phone <span class="star">*</span></label>
+							<input class="popup__message__form__input__mobile_phone" type="text" name="" id="input__mobile_phone">
+						</div>
+					</div>
+					<div class="popup__message__form__input__wrap" >
+						<label class="popup__message__label__letter" for="popup__message__letter">What do you want to discuss with me?</label>
+						<textarea name="" class="popup__message__text__letter" id="popup__message__letter" cols="30" rows="10" maxlength="300"></textarea>
+					</div>
+					<div class="popup__register__form__check">
+						<input class="popup__register__form__checkbox" type="checkbox" id="checkbox__register">
+						<label class="popup__register__form__check_text" for="checkbox__register">Clicking on the button, you consent to the processing of your personal data.</label>
+					</div>
+					<button class="btn_white btn_signup">Sign up</button>
+				</form>
+				<button class="popup__close message__close_js">
+					<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+						<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+					</svg>							
+				</button>
+			</div>
+		</div>
         <script src="js/app.js" defer></script>
+        <script src="js/index.js" defer></script>
     </body>
 </html>

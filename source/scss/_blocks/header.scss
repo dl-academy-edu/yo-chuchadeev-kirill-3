@@ -1,0 +1,38 @@
+
+.header__full {
+    width: 100%;
+}
+
+.header {
+    width: 100%;
+}
+
+.header__content {
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 60px;
+    padding: 33px 0 32px 0;
+    border-bottom: 1px solid #828282;
+}
+
+.header__content-right {
+    display: flex;
+    gap: 20px;
+}
+
+.header__content-signin, .header__content-register {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+}
+
+
+.header__content-home, .header__content-blog, 
+.header__content-signin, .header__content-register {
+    color: #828282;
+    &:hover {
+        color: #070707;
+    }
+}

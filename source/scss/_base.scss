@@ -1,0 +1,119 @@
+.main__full {
+	margin: 40px 0 60px 0;
+	width: 100%;
+}
+
+.scroll_block {
+	overflow-y: hidden;
+}
+
+.open {
+	display: flex;
+}
+
+.close {
+	display: none;
+}
+
+.star {
+	color: #EB3617;
+}
+
+h1 {
+	font-style: normal;
+	color: #070707;
+	font-size: 47px;
+	line-height: 57px;
+	font-weight: 700;
+	flex-wrap: wrap;
+}
+
+h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 41px;
+    color: #070707;
+}
+
+.btn_text {
+    padding: 0;
+    cursor: pointer;
+    color: #828282;
+    &:hover {
+        color: #070707;
+    }
+}
+
+.btn_black {
+	display: flex;
+	box-sizing: border-box;
+    padding: 7.5px 26.5px;
+    color: #FFFFFF;
+    background: #070707;
+    border-radius: 30px;
+    border: 2.5px solid #070707;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    &:hover {
+        background: #FFFFFF;
+		color: #070707;
+    }
+}
+
+.btn_white {
+    padding: 7.5px 16.5px;
+    color: #070707;
+    background: #FFFFFF;
+    border-radius: 30px;
+    border: 2.5px solid #070707;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    &:hover {
+        color: #FFFFFF;
+        background: #070707;
+    }
+}
+
+.text__main {
+	color: #070707;
+	font-size: 18px;
+	line-height: 21px;
+	font-weight: 500;
+}
+
+.text__info {
+	color: #828282;
+	font-size: 14px;
+	line-height: 16px;
+	font-weight: 400;
+}
+
+.text__link {
+	color: #828282;
+	border-bottom: 1px dashed #828282;
+	&:hover {
+		border-bottom: 1px solid #828282;
+
+	}
+}
+
+.name__programs {
+	color: #828282;
+	font-style: normal;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 17px;
+}
+
+label {
+	color: #070707;
+	font-style: normal;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+}
