@@ -10,11 +10,19 @@ body {
     max-width: 1120px;
 }
 
-input[type="checkbox"] {
-	display: none;
+input[type="checkbox"],
+.filter__views__input,
+.filter__show__input,
+.filter__sort__input {												/////// Скрытие инпутов
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
 }
 
-ul, h1, h2, p {
+ul, h1, h2, h3, h4, p {
     margin: 0;
     padding: 0;
 }
@@ -37,14 +45,7 @@ button {
 	font-family: 'Gilroy';
 }
 
-p {
-	color: #070707;
-	font-weight: 500;
-	font-size: 18px;
-	line-height: 21px;
-}
-
-input {
+input[type="text"] {
 	box-sizing: border-box;
 	height: 50px;
 	border: 2.5px solid #E5E5E5;
@@ -57,11 +58,28 @@ input {
 	font-style: normal;
 	display: flex;
 	// width: 100%;
+	transition: .3s;
 	&:hover {
 		border: 2.5px solid #828282;
+		transition: .3s;
 	}
-	&:active {
+	&:focus {
 		border: 2.5px solid #070707;
+		outline: 0;
+		transition: .3s;
+		// box-shadow: none;
 	}
-	
+}
+
+textarea {
+	border: 2.5px solid #E5E5E5;
+	&:hover {
+		border: 2.5px solid #828282;
+		transition: .3s;
+	}
+	&:focus {
+		border: 2.5px solid #070707;
+		outline: 0;
+		transition: .3s;
+	}
 }

@@ -32,7 +32,9 @@
 .header__content-home, .header__content-blog, 
 .header__content-signin, .header__content-register {
     color: #828282;
+	transition: .3s;
     &:hover {
         color: #070707;
+		transition: .3s;
     }
 }

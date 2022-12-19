@@ -29,12 +29,28 @@ h1 {
 }
 
 h2 {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 34px;
-    line-height: 41px;
-    color: #070707;
+	font-style: normal;
+	color: #070707;
+	font-size: 47px;
+	font-weight: 700;
+	line-height: 57px;
 }
+
+h3 {
+    font-style: normal;
+    color: #070707;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 41px;
+}
+
+.text__aboutme {
+	color: #070707;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+}
+
 
 .btn_text {
     padding: 0;
@@ -57,13 +73,16 @@ h2 {
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
+	transition: .3s;
     &:hover {
         background: #FFFFFF;
 		color: #070707;
+		transition: .3s;
     }
 }
 
 .btn_white {
+	box-sizing: border-box;
     padding: 7.5px 16.5px;
     color: #070707;
     background: #FFFFFF;
@@ -73,9 +92,12 @@ h2 {
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
+	max-height: 42px;
+	transition: .3s;
     &:hover {
         color: #FFFFFF;
         background: #070707;
+		transition: .3s;
     }
 }
 
@@ -110,10 +132,28 @@ h2 {
 	line-height: 17px;
 }
 
-label {
+label[type="text"] {
 	color: #070707;
 	font-style: normal;
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 16px;
+}
+
+.filter__title {
+	font-style: normal;
+	color: #070707;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+}
+
+.filter__views__label,
+.filter__show__label,
+.filter__sort__label {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #070707;
 }
