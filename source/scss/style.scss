@@ -8,6 +8,7 @@
 
 @import "_blocks/header";
 @import "_blocks/footer";
+@import "_blocks/popup";
 
 // @import "img/ico/check";
 
@@ -24,7 +25,7 @@
 
 // Style for index.html
 
-.main__content, .blog__content {
+.main__content, .blog__content, .profile__content {
 	margin: 0 60px;
 }
 
@@ -297,271 +298,6 @@
 	font-weight: 400;
 	line-height: 16px;
 	text-align: center;
-}
-
-.open {
-	display: flex;
-}
-
-.popup {
-	display: none;
-	width: 100%;
-	height: 100%;
-	background: rgba(246, 246, 246, 0.9);	
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 5;
-	overflow: hidden;
-	transition: .3s;
-}
-
-.popup__login__form, .popup__login {
-	z-index: 10;
-}
-
-.popup__login {
-	display: none;													// on/off popup login
-	box-sizing: border-box;
-	width: 370px;
-	height: 318px;
-	background: #FFFFFF;
-	border: 2.5px solid #070707;
-	position: fixed;
-	top: 0;
-	left: 0;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 5;
-	transition: .3s;
-}
-
-.popup__login__form {
-	padding: 40px;
-	box-sizing: border-box;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-}
-
-.popup__login__form__label__email,
-.popup__register__form__label__email,
-.popup__register__form__label__name,
-.popup__register__form__label__surname,
-.popup__register__form__label__password,
-.popup__register__form__label__repeat_password,
-.popup__register__form__label__location,
-.popup__register__form__label__age,
-.popup__message__form__label__your_name,
-.popup__message__form__label__repeat_subject,
-.popup__message__form__label__youremail,
-.popup__message__form__label__mobile_phone,
-.popup__message__label__letter {
-	margin-bottom: 6px;
-	font-style: normal;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 16px;
-}
-
-.popup__login__form__input__email, .popup__login__form__input__password {
-	width: 100%;
-}
-
-.popup__login__form__label__password {
-	margin-bottom: 6px;
-	margin-top: 20px;
-	font-style: normal;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 16px;
-}
-
-.popup__login__form__button {
-	margin-top: 30px;
-}
-
-.popup__close {
-	position: absolute;
-	top: -2.5px;
-	right: -40px;
-	height: 26px;
-	& svg {
-		fill:#828282;
-		&:hover, :focus {
-			fill: #070707;
-		}
-	}
-}
-
-.popup__register {
-	display: none;													// on/off popup register
-	box-sizing: border-box;
-	width: 680px;
-	height: 533px;
-	background: #FFFFFF;
-	border: 2.5px solid #070707;
-	position: fixed;
-	top: 0;
-	left: 0;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 5;
-}
-
-.popup__register__form {
-	padding: 37.5px;
-	box-sizing: border-box;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	gap: 20px;
-}
-
-.popup__register__form__input__wrap, .popup__message__form__input__wrap {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	// box-sizing: border-box;
-}
-
-.popup__register__form__input__flex, .popup__message__form__input__flex {
-	display: flex;
-	gap: 20px;
-}
-
-.popup__register__form__check {
-	display: flex;
-	gap: 15px;
-	align-items: center;
-	box-sizing: border-box;
-	overflow: hidden;
-}
-
-// .popup__register__form__checkbox {
-// 	margin: 0;
-// 	cursor: pointer;
-// 	width: 19px;
-// 	height: 19px;
-// 	border: 2px solid #070707;
-// 	border-radius: 3px;
-// 	background-color: #FFFFFF;
-// }
-
-.popup__register__form__check_text {
-	cursor: pointer;
-	position: relative;
-	display: flex;
-	align-items: center;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 16px;
-	box-sizing: border-box;
-	color: #E5E5E5;
-	transition: .3s;
-	&:hover {
-		color: #828282;
-		transition: .3s;
-	}
-	&::before {
-		content: " ";
-		display: inline-block;
-		text-align: center;
-		box-sizing: border-box;
-		vertical-align: middle;
-		width: 19px;
-		height: 19px;
-		border: 2px solid #E5E5E5;
-		border-radius: 3px;
-		background-color: #FFFFFF;
-		margin-right: 15px;
-		transition: .3s;
-	}
-	&::after {
-		content: " ";
-		display: block;
-		position: absolute;
-		top: 1px;
-		left: 3px;
-		width: 14px;
-		height: 14px;
-		background: url(/img/ico/checkBlack.svg) no-repeat;
-		opacity: 0;
-		box-sizing: border-box;
-		transition: .3s;
-	}
-}
-
-.popup__register__form__check_text:hover::before {
-	border: 2px solid #828282;
-	transition: .3s;
-}
-
-.popup__register__form__checkbox:checked + .popup__register__form__check_text {
-	color: #070707;
-	transition: .3s;
-}
-
-.popup__register__form__checkbox:checked + .popup__register__form__check_text::after {
-    opacity: 1;
-	transition: .3s;
-}
-
-.popup__register__form__checkbox:checked + .popup__register__form__check_text::before {
-	border: 2px solid #070707;
-	transition: .3s;
-}
-
-.btn_signup {
-	max-width: 101px;
-}
-
-.popup__message {
-	display: none;													// on/off popup message
-	box-sizing: border-box;
-	width: 680px;
-	height: 540px;
-	background: #FFFFFF;
-	border: 2.5px solid #070707;
-	position: fixed;
-	top: 0;
-	left: 0;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 5;
-}
-
-.popup__message__form {
-	padding: 37.5px;
-	box-sizing: border-box;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	gap: 20px;
-}
-
-.popup__message__text__letter {
-	box-sizing: border-box;
-	resize: none;
-	height: 150px;
-	border: 2.5px solid #E5E5E5;
-	color: #070707;
-	padding: 5px;
-	font-size: 18px;
-	font-weight: 500;
-	line-height: 21px;
-	font-family: 'Gilroy';
-	font-style: normal;
 }
 
 
@@ -895,3 +631,65 @@
 	margin: 0;
 }
 
+
+
+// Style for profile.html
+
+.profile__data {
+	margin-top: 40px;
+	display: flex;
+	gap: 105px;
+}
+
+.profile__avatar {
+	width: 320px;
+	height: 450px;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.proofile__avatar_img {
+	width: 144px;
+	height: 120px;
+}
+
+.profile__info {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.profile__edit {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.profile__info__name,
+.profile__info__surname,
+.profile__info__email,
+.profile__info__password,
+.profile__info__location,
+.profile__info__age {
+	display: flex;
+}
+
+.profile__info__subtitle {
+	margin-right: 10px;
+	color: #070707;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 22px;
+}
+
+.profile__info__userdata {
+	color: #070707;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 21px;
+}

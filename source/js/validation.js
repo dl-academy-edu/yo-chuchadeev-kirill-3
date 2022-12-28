@@ -1,10 +1,35 @@
+const BASE_SERVER_PATH = 'https://academy.directlinedev.com';
+
+
+//__________________________________________________________________________________________________________________________________//
+// CREATE ERRORS FOR VALIDATION
+
+const errorCreator = (message) => {
+	let messageErrorDiv = document.createElement('div');
+	messageErrorDiv.classList.add('popup__error__text');
+	messageErrorDiv.innerText = message;
+	return messageErrorDiv;
+}
+
+const setErrorText = (input, errorMessage) => {
+	const error = errorCreator(errorMessage);
+	input.classList.add('popup__error__input');
+	input.insertAdjacentElement('afterend', error);
+	input.addEventListener('input', () => {
+		error.remove();
+		input.classList.remove('popup__error__input');
+	})
+}
+
+//__________________________________________________________________________________________________________________________________//
+//LOGIN FORM VALIDATION
+
 const isEmailValid = (email) => {
 	return email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i)
 }
 
-//LOGIN FORM
 (function() {
-	const loginForm = document.forms.login;
+	const loginForm = document.forms.login__form;
 	const email = loginForm.elements.email;
 	const password = loginForm.elements.password;
 
@@ -18,23 +43,65 @@ const isEmailValid = (email) => {
 
 		let errors = {};
 
-		if(!isEmailValid(data.value)) {
+		if(!isEmailValid(data.email)) {
+			email.style.border = `2.5px solid #EB3617`;
 			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
-		}
+			// email.style.border = `2.5px solid #EB3617`;
+			console.log(errors.email);
+			} else {
+				email.style.border = `2.5px solid #03BC3C`;
+			}
+		
 		if(data.password.length <= 6) {
+			password.style.border = `2.5px solid #EB3617`;
 			errors.password = 'Please increase your password';
-		}
+			// password.style.border = `2.5px solid #EB3617`;
+			console.log(errors.password);
+			} else {
+				password.style.border = `2.5px solid #03BC3C`;
+			}
 
 		if(!Object.keys(errors).length) {
-			//validation +
+			console.log('all good');
+
 		} else {
-			//validation -
+			console.log('error');
+			Object.keys(errors).forEach((key) => {
+				const messageError = errors[key];
+				const input = loginForm.elements[key];
+				setErrorText(input, messageError);
+			})
+			return;
 		}
 	})
 })();
 
+//__________________________________________________________________________________________________________________________________//
+// AUTENTIFICATION
 
-// REGISTER FORM
+// (function initLogin() {
+// 	// const popupLogin = document.querySelector('.popup__login');
+// 	// const btnSignIn = document.querySelector('.btn__signin_js');
+// 	// const btnLoginClose = document.querySelector('.login__close_js');
+// 	const loginForm = document.forms.login__form;
+
+// 	const login = (e) => {
+// 		e.preventDefault();
+// 		let data = {};
+// 		data.email = loginForm.email.value;
+// 		data.password = loginForm.password.value;
+
+// 		//validation
+
+		
+// 	}
+
+// 	loginForm.addEventListener('submit', login);
+// })();
+
+
+//__________________________________________________________________________________________________________________________________//
+// REGISTER FORM VALIDATION
 // (function() {
 // 	const registerForm = document.forms.register;
 

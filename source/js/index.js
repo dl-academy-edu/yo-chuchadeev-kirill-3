@@ -1,21 +1,46 @@
-let body = document.querySelector('#body')
-let popup = document.querySelector('.popup')
+const body = document.querySelector('#body');
+const popup = document.querySelector('.popup');
 
-let btnSignIn = document.querySelector('.btn__signin_js')
-let	popupLogin = document.querySelector('.popup__login')
-let btnLoginClose = document.querySelector('.login__close_js')
+const btnSignIn = document.querySelector('.btn__signin_js');
+const popupLogin = document.querySelector('.popup__login');
+const btnLoginClose = document.querySelector('.login__close_js');
 
-let btnRegister = document.querySelector('.btn__register_js')
-let popupRegister = document.querySelector('.popup__register')
-let btnRegisterClose = document.querySelector('.register__close_js')
+const btnRegister = document.querySelector('.btn__register_js');
+const popupRegister = document.querySelector('.popup__register');
+const btnRegisterClose = document.querySelector('.register__close_js');
 
-let btnSendMessage = document.querySelector('.btn__message_js')
-let popupMessage = document.querySelector('.popup__message')
-let btnMessageClose = document.querySelector('.message__close_js')
+const btnSendMessage = document.querySelector('.btn__message_js');
+const popupMessage = document.querySelector('.popup__message');
+const btnMessageClose = document.querySelector('.message__close_js');
 
 
+const checkRegister = popup.querySelector('.popup__register__form__checkbox');
+const submitRegister = popup.querySelector('.btn_signup_js');
+submitRegister.setAttribute('disabled', true);
 
-///// login
+checkRegister.oninput = function() {
+    if (checkRegister.checked) {
+        submitRegister.removeAttribute('disabled');
+    }else{
+        submitRegister.setAttribute('disabled', true);
+    }
+}
+
+const checkMessage = popup.querySelector('.popup__message__form__checkbox');
+const submitMessage = popup.querySelector('.btn_message_js');
+submitMessage.setAttribute('disabled', true);
+
+checkMessage.oninput = function() {
+    if (checkMessage.checked) {
+        submitMessage.removeAttribute('disabled');
+    }else{
+        submitMessage.setAttribute('disabled', true);
+    }
+}
+
+
+//__________________________________________________________________________________________________________________________________//
+//POPUP LOGIN ON/OFF
 
 btnSignIn.addEventListener('click', function() {
     popup.style.display = 'flex';
@@ -29,7 +54,8 @@ btnLoginClose.addEventListener('click', function() {
 	body.classList.remove("scroll_block")
 })
 
-///// Register
+//__________________________________________________________________________________________________________________________________//
+// POPUP REGISTRATION ON/OFF
 
 btnRegister.addEventListener('click', function() {
     popup.style.display = 'flex';
@@ -43,7 +69,8 @@ btnRegisterClose.addEventListener('click', function() {
 	body.classList.remove("scroll_block")
 })
 
-///// Message
+//__________________________________________________________________________________________________________________________________//
+//POPUP MESSAGE ON/OFF
 
 btnSendMessage.addEventListener('click', function() {
     popup.style.display = 'flex';

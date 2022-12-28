@@ -99,6 +99,12 @@ h3 {
         background: #070707;
 		transition: .3s;
     }
+	&:disabled {
+        border: 2.5px solid #E5E5E5;
+		color: #E5E5E5;
+        cursor: default;
+		background: #FFFFFF;
+    }
 }
 
 .text__main {
@@ -119,8 +125,8 @@ h3 {
 	color: #828282;
 	border-bottom: 1px dashed #828282;
 	&:hover {
-		border-bottom: 1px solid #828282;
-
+		border-bottom: 1px solid #070707;
+		color: #070707;
 	}
 }
 
