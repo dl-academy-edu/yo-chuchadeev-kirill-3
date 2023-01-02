@@ -2,16 +2,16 @@
 	<div class="popup__login">
 		<form class="popup__login__form" name="login__form" action="">
 			<div class="popup__login__email">
-				<label class="popup__login__form__label__email label__email" for="login__email__input">
+				<label class="label label__email" for="login__email__input">
 					Email <span class="star">*</span>
 				</label>
-				<input class="popup__login__form__input__email input_text input__email" type="text" id="login__email__input" name="email">
+				<input class="popup__login__form__input__email input_text" type="text" id="login__email__input" name="email">
 			</div>
 			<div class="popup__login__password">
-				<label class="popup__login__form__label__password label__password" for="login__password__input">
+				<label class="label label__password" for="login__password__input">
 					Password <span class="star">*</span>
 				</label>
-				<input class="popup__login__form__input__password input_text input__password" type="password" id="login__password__input" name="password">
+				<input class="popup__login__form__input__password input_text" type="password" id="login__password__input" name="password">
 			</div>
 			<button class="popup__login__form__button btn_white" type="submit">Log in</button>
 		</form>
@@ -25,44 +25,44 @@
 	<div class="popup__register">
 		<form class="popup__register__form" name="register__form" action="">
 			<div class="popup__register__form__input__wrap">
-				<label class="popup__register__form__label__email" for="input__email">Email <span class="star">*</span></label>
-				<input class="popup__register__form__input__email input_text" type="text" name="email" id="register__email__input">
+				<label class="label" for="input__email">Email <span class="star">*</span></label>
+				<input class="input input_text" type="text" name="email" id="register__email__input">
 			</div>
 			<div class="popup__register__form__input__flex">
 				<div class="popup__register__form__input__wrap">
-					<label class="popup__register__form__label__name" for="input__name">Name <span class="star">*</span></label>
-					<input class="popup__register__form__input__name input_text" type="text" name="name" id="input__name">
+					<label class="label" for="input__name">Name <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="name" id="input__name">
 				</div>
 				<div class="popup__register__form__input__wrap">
-					<label class="popup__register__form__label__surname" for="input__surname">Surname <span class="star">*</span></label>
-					<input class="popup__register__form__input__surname input_text" type="text" name="surname" id="input__surname">
-				</div>
-			</div>
-			<div class="popup__register__form__input__flex">
-				<div class="popup__register__form__input__wrap">
-					<label class="popup__register__form__label__password" for="input__password">Password <span class="star">*</span></label>
-					<input class="popup__register__form__input__password input_text" type="text" name="password" id="password__email__input">
-				</div>
-				<div class="popup__register__form__input__wrap">
-					<label class="popup__register__form__label__repeat_password" for="input__repeat_password">Repeat password <span class="star">*</span></label>
-					<input class="popup__register__form__input__repeat_password input_text" type="text" name="repeat" id="input__repeat_password">
+					<label class="label" for="input__surname">Surname <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="surname" id="input__surname">
 				</div>
 			</div>
 			<div class="popup__register__form__input__flex">
 				<div class="popup__register__form__input__wrap">
-					<label class="popup__register__form__label__location" for="input__location">Location <span class="star">*</span></label>
-					<input class="popup__register__form__input__location input_text" type="text" name="location" id="input__location">
+					<label class="label" for="input__password">Password <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="password" id="password__email__input">
 				</div>
 				<div class="popup__register__form__input__wrap">
-					<label class="popup__register__form__label__age" for="input__age">Age <span class="star">*</span></label>
-					<input class="popup__register__form__input__age input_text" type="text" name="age" id="input__age">
+					<label class="label" for="input__repeat_password">Repeat password <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="repeat" id="input__repeat_password">
+				</div>
+			</div>
+			<div class="popup__register__form__input__flex">
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="input__location">Location <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="location" id="input__location">
+				</div>
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="input__age">Age <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="age" id="input__age">
 				</div>
 			</div>
 			<div class="popup__register__form__check">
 				<input class="popup__register__form__checkbox input_text" type="checkbox" id="checkbox__register" name="accept">
 				<label class="popup__register__form__check_text" for="checkbox__register">Clicking on the button, you consent to the processing of your personal data.</label>
 			</div>
-			<button class="btn_white btn_signup btn_signup_js">Sign up</button>
+			<button class="btn_white btn_signup btn_signup_js" disabled>Sign up</button>
 		</form>				
 		<button class="popup__close register__close_js" type="submit">
 			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,27 +75,27 @@
 		<form class="popup__message__form" name="message__form" action="">
 			<div class="popup__message__form__input__flex">
 				<div class="popup__message__form__input__wrap">
-					<label class="popup__message__form__label__your_name" for="input__your_name">What is your name? <span class="star">*</span></label>
-					<input class="popup__message__form__input__your_name input_text" type="text" name="" id="input__your_name">
+					<label class="label" for="input__your_name">What is your name? <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="" id="input__your_name">
 				</div>
 				<div class="popup__message__form__input__wrap">
-					<label class="popup__message__form__label__repeat_subject" for="input__repeat_subject">Message subject <span class="star">*</span></label>
-					<input class="popup__message__form__input__repeat_subject input_text" type="text" name="" id="input__repeat_subject">
+					<label class="label" for="input__repeat_subject">Message subject <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="" id="input__repeat_subject">
 				</div>
 			</div>
 			<div class="popup__message__form__input__flex">
 				<div class="popup__message__form__input__wrap">
-					<label class="popup__message__form__label__youremail" for="input__youremail">Your Email <span class="star">*</span></label>
-					<input class="popup__message__form__input__youremail input_text" type="text" name="" id="input__youremail">
+					<label class="label" for="input__youremail">Your Email <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="" id="input__youremail">
 				</div>
 				<div class="popup__message__form__input__wrap">
-					<label class="popup__message__form__label__mobile_phone" for="input__mobile_phone">Your mobile phone <span class="star">*</span></label>
-					<input class="popup__message__form__input__mobile_phone input_text" type="text" name="" id="input__mobile_phone">
+					<label class="label" for="input__mobile_phone">Your mobile phone <span class="star">*</span></label>
+					<input class="input input_text" type="text" name="" id="input__mobile_phone">
 				</div>
 			</div>
 			<div class="popup__message__form__input__wrap" >
-				<label class="popup__message__label__letter" for="popup__message__letter">What do you want to discuss with me?</label>
-				<textarea name="" class="popup__message__text__letter" id="popup__message__letter" cols="30" rows="10" maxlength="300"></textarea>
+				<label class="label" for="popup__message__letter">What do you want to discuss with me?</label>
+				<textarea name="" class="popup__message__text__letter input" id="popup__message__letter" cols="30" rows="10" maxlength="300"></textarea>
 			</div>
 			<div class="popup__message__form__check">
 				<input class="popup__message__form__checkbox input_text" type="checkbox" id="checkbox__message" name="accept">
@@ -103,7 +103,7 @@
 			</div>
 			<button class="btn_white btn_message btn_message_js">Sign up</button>
 		</form>
-		<button class="popup__close message__close_js" type="submit">
+		<button class="popup__close message__close_js" type="submit" disabled>
 			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
 				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>

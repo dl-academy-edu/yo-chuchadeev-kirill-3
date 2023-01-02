@@ -19,7 +19,7 @@
 
         <link href="css/style.min.css" rel="stylesheet">
     </head>
-<body>
+<body class="body" id="body">
 	@@include('blocks/header.html')
 	<main class="main__full">
 		<div class="main center">
@@ -55,9 +55,9 @@
 							<p class="profile__info__userdata"></p>
 						</div>
 						<div class="profile__edit">
-							<button class="btn_white btn_change_password btn_change_password_js">Change password</button>
-							<button class="btn_white btn_change_data btn_change_data_js">Change other data</button>
-							<button class="btn_white btn_delete_account btn_delete_account_js">Delete account</button>
+							<button class="btn_white open_change_password_js">Change password</button>
+							<button class="btn_white open_change_data_js">Change other data</button>
+							<button class="btn_white delete_account open_delete_account_js">Delete account</button>
 						</div>
 					</div>
 				</section>
@@ -66,7 +66,84 @@
 	</main>
 	@@include('blocks/footer.html')
 	@@include('blocks/popup.html')
-	<script src="js/app.js" defer></script>
+	<div class="popup__profile">
+		<div class="popup__change__password">
+			<form class="change__password__form" name="change__password__form" action="">
+				<div class="change__password__old">
+					<label class="label" for="change__password__old__input">
+						Old password <span class="star">*</span>
+					</label>
+					<input class="input_text input__email input" type="password" id="change__password__old__input" name="change__password__old__input">
+				</div>
+				<div class="change__password__new">
+					<label class="label" for="change__password__new__input">
+						New password <span class="star">*</span>
+					</label>
+					<input class="input_text input__email input" type="password" id="change__password__new__input" name="change__password__new__input">
+				</div>
+				<div class="change__password__repeat">
+					<label class="label" for="change__password__repeat__input">
+						Repeat new password <span class="star">*</span>
+					</label>
+					<input class="input_text input__password input" type="password" id="change__password__repeat__input" name="change__password__repeat__input">
+				</div>
+				<button class="btn_white btn_change_password btn_change_password_js" type="submit">Change password</button>
+			</form>
+			<button class="popup__profile__close close_change_password_js" type="">
+				<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+					<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+				</svg>							
+			</button>
+		</div>
+		<div class="popup__change__data">
+			<form class="change__data__form" name="" action="">
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="change__data__email">Email</label>
+					<input class="input input_text" type="text" name="change__data__email" id="change__data__email">
+				</div>
+				<div class="popup__register__form__input__flex">
+					<div class="popup__register__form__input__wrap">
+						<label class="label" for="change__data__name">Name</label>
+						<input class="input input_text" type="text" name="change__data__name" id="change__data__name">
+					</div>
+					<div class="popup__register__form__input__wrap">
+						<label class="label" for="change__data__surname">Surname</label>
+						<input class="input input_text" type="text" name="change__data__surname" id="change__data__surname">
+					</div>
+				</div>
+				<div class="popup__register__form__input__flex">
+					<div class="popup__register__form__input__wrap">
+						<label class="label" for="change__data__location">Location</label>
+						<input class="input input_text" type="text" name="change__data__location" id="change__data__location">
+					</div>
+					<div class="popup__register__form__input__wrap">
+						<label class="label" for="change__data__age">Age</label>
+						<input class="input input_text" type="text" name="change__data__age" id="change__data__age">
+					</div>
+				</div>
+				<div class="change__data__avatar">
+					<label class="label" for="">Profile picture</label>
+					<input class="input_text inpit_file" type="file" name="" id="">
+				</div>
+				
+				<button class="btn_white btn_change_data btn_change_data_js" type="submit">Submit changes</button>
+			</form>
+			<button class="popup__profile__close close_change_data_js" type="">
+				<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+					<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+				</svg>							
+			</button>
+		</div>
+		<div class="popup__delete__account">
+			<form class="" name="" action="">
+				
+			</form>
+		</div>
+	</div>
+	<!-- <script src="js/app.js" defer></script> -->        
 	<script src="js/index.js" defer></script>
+	<script src="js/validation.js"></script>
 </body>
 </html>

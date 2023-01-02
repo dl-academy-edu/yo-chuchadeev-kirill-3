@@ -5,6 +5,7 @@
 
 .scroll_block {
 	overflow-y: hidden;
+	margin-right: 17px;
 }
 
 .open {
@@ -162,4 +163,17 @@ label[type="text"] {
 	font-size: 18px;
 	line-height: 21px;
 	color: #070707;
+}
+
+.label {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	color: #070707;
+}
+
+.input {
+	margin-top: 6px;
+	width: 100%;
 }

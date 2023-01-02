@@ -693,3 +693,50 @@
 	font-weight: 500;
 	line-height: 21px;
 }
+
+.change__password__new,
+.change__password__repeat {
+	margin-top: 20px;
+}
+
+.btn_change_password {
+	margin-top: 26px;
+}
+
+.delete_account:hover {
+	background-color: #EB3617;
+	color: #FFFFFF;
+	border: 2.5px solid #EB3617;
+}
+
+.change__password__old,
+.change__password__new,
+.change__password__repeat {
+	width: 100%;
+}
+
+.change__data__avatar {
+	display: block;
+	max-width: 290px;
+}
+
+.inpit_file {
+	margin-top: 6px;
+	width: 100%;
+    border: 2.5px solid #e5e5e5;
+    box-sizing: border-box;
+    color: #070707;
+    display: flex;
+    font-family: Gilroy;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    height: 50px;
+    line-height: 21px;
+    padding: 14px;
+}
+
+.btn_change_data {
+	max-width: 173px;
+	margin-top: 10px;
+}

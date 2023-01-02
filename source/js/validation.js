@@ -33,6 +33,7 @@ const isEmailValid = (email) => {
 	const email = loginForm.elements.email;
 	const password = loginForm.elements.password;
 
+	
 	loginForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 		
