@@ -32,7 +32,6 @@ const isEmailValid = (email) => {
 	const loginForm = document.forms.login__form;
 	const email = loginForm.elements.email;
 	const password = loginForm.elements.password;
-
 	
 	loginForm.addEventListener('submit', (e) => {
 		e.preventDefault();
@@ -45,18 +44,14 @@ const isEmailValid = (email) => {
 		let errors = {};
 
 		if(!isEmailValid(data.email)) {
-			email.style.border = `2.5px solid #EB3617`;
 			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
-			// email.style.border = `2.5px solid #EB3617`;
 			console.log(errors.email);
 			} else {
 				email.style.border = `2.5px solid #03BC3C`;
 			}
 		
 		if(data.password.length <= 6) {
-			password.style.border = `2.5px solid #EB3617`;
 			errors.password = 'Please increase your password';
-			// password.style.border = `2.5px solid #EB3617`;
 			console.log(errors.password);
 			} else {
 				password.style.border = `2.5px solid #03BC3C`;
@@ -80,25 +75,15 @@ const isEmailValid = (email) => {
 //__________________________________________________________________________________________________________________________________//
 // AUTENTIFICATION
 
-// (function initLogin() {
-// 	// const popupLogin = document.querySelector('.popup__login');
-// 	// const btnSignIn = document.querySelector('.btn__signin_js');
-// 	// const btnLoginClose = document.querySelector('.login__close_js');
-// 	const loginForm = document.forms.login__form;
 
-// 	const login = (e) => {
-// 		e.preventDefault();
-// 		let data = {};
-// 		data.email = loginForm.email.value;
-// 		data.password = loginForm.password.value;
 
-// 		//validation
-
-		
-// 	}
-
-// 	loginForm.addEventListener('submit', login);
-// })();
+function sendRequest ({url, method = 'GET', headers, body = null}) {
+	return fetch(BASE_SERVER_PATH + url + '?v=0.0.1.', {
+		method,
+		headers,
+		body,
+	})
+}
 
 
 //__________________________________________________________________________________________________________________________________//
@@ -147,4 +132,21 @@ const isEmailValid = (email) => {
 
 // 		'all good'
 // 	})
+// })();
+
+
+
+// LOGIN AUTENTIFICATION
+
+// (function initLogin() {
+
+// 	const login = (e) => {
+// 		e.preventDefault();
+// 		let data = {};
+// 		data.email = loginForm.email.value;
+// 		data.password = loginForm.password.value;
+// 		//validation
+// 	}
+
+// 	loginForm.addEventListener('submit', login);
 // })();
