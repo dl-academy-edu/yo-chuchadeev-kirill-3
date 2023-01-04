@@ -62,10 +62,12 @@
 .slider__slide {
 	display: flex;
 	max-height: 100%;
-	background-color: #E5E5E5;
 }
 
-.slide_1__image {
+.slide_1__image,
+.slide_2__image,
+.slide_3__image,
+.slide_4__image {
 	width: 100%;
 	height: auto;
 }
@@ -122,6 +124,7 @@
 	// border: 2.5px solid #070707;
 	// border: 10px solid #070707;
 	// background-size: round;
+
 	border: 25px solid #070707;
     border-image-slice: 27;
     border-image-source: url(/img/ico/borderLeft.svg);
@@ -189,7 +192,8 @@
 
 .main__skills__programs__progress {
 	display: flex;
-	max-width: 142px;
+	max-width: 180px;
+	gap: 12px;
 }
 
 .skill__progress {
@@ -200,24 +204,54 @@
 	line-height: 17px;
 	color: #828282;
 	align-items: center;
+}
+
+.skill__progress__html {
+	display: flex;
+	width: 142px;
+	position: relative;
+	align-items: center;
 	&::after {
 		content: '';
 		display: flex;
 		position: absolute;
-		width: 142px;
+		width: 100%;
 		height: 9px;
-		margin-left: 38px;
 		background: #E5E5E5;
 	}
 	&::before {
 		content: '';
 		display: flex;
 		position: absolute;
-		width: 121px;
 		height: 9px;
-		margin-left: 38px;
 		background: #070707;
 		z-index: 2;
+	}
+}
+
+.precent80 {
+	&::before {
+		width: 80%;
+	}
+}
+.precent70 {
+	&::before {
+		width: 70%;
+	}
+}
+.precent40 {
+	&::before {
+		width: 40%;
+	}
+}
+.precent25 {
+	&::before {
+		width: 25%;
+	}
+}
+.precent10 {
+	&::before {
+		width: 10%;
 	}
 }
 

@@ -1,51 +1,58 @@
 const body = document.querySelector('#body');
 const popup = document.querySelector('.popup');
 
-const btnLogOut = document.querySelector('btn__logout_js')
+const loginForm = document.forms.login__form;
+const email = loginForm.elements.email;
+const password = loginForm.elements.password;
+// const error = document.querySelector('.popup__error__text');
+const btnLogOut = document.querySelector('.btn__logout_js');
+const btnSignIn = document.querySelector('.btn__signin_js');
+const popupLogin = document.querySelector('.popup__login');
+const btnLoginClose = document.querySelector('.login__close_js');
 
-const btnRegister = document.querySelector('.btn__register_js');
-const popupRegister = document.querySelector('.popup__register');
-const btnRegisterClose = document.querySelector('.register__close_js');
+// const btnRegister = document.querySelector('.btn__register_js');
+// const popupRegister = document.querySelector('.popup__register');
+// const btnRegisterClose = document.querySelector('.register__close_js');
 
-const btnSendMessage = document.querySelector('.btn__message_js');
-const popupMessage = document.querySelector('.popup__message');
-const btnMessageClose = document.querySelector('.message__close_js');
+// const btnSendMessage = document.querySelector('.btn__message_js');
+// const popupMessage = document.querySelector('.popup__message');
+// const btnMessageClose = document.querySelector('.message__close_js');
 
 //popup profile
-const popupProfile = document.querySelector('.popup__profile');
-const popupChangePassword = document.querySelector('.popup__change__password');
-const openChangePassword = document.querySelector('.open_change_password_js');
-const closeChangePassword = document.querySelector('.close_change_password_js');
-const popupChangeData = document.querySelector('.popup__change__data');
-const openChangeData = document.querySelector('.open_change_data_js');
-const closeChangeData = document.querySelector('.close_change_data_js');
+// const popupProfile = document.querySelector('.popup__profile');
+// const popupChangePassword = document.querySelector('.popup__change__password');
+// const openChangePassword = document.querySelector('.open_change_password_js');
+// const closeChangePassword = document.querySelector('.close_change_password_js');
+// const popupChangeData = document.querySelector('.popup__change__data');
+// const openChangeData = document.querySelector('.open_change_data_js');
+// const closeChangeData = document.querySelector('.close_change_data_js');
 
 //__________________________________________________________________________________________________________________________________//
 //POPUP CHECKBOX
 
-const checkRegister = popup.querySelector('.popup__register__form__checkbox');
-const submitRegister = popup.querySelector('.btn_signup_js');
-submitRegister.setAttribute('disabled', true);
+// const checkRegister = popup.querySelector('.popup__register__form__checkbox');
+// const submitRegister = popup.querySelector('.btn_signup_js');
+// submitRegister.setAttribute('disabled', true);
 
-checkRegister.oninput = function() {
-    if (checkRegister.checked) {
-        submitRegister.removeAttribute('disabled');
-    }else{
-        submitRegister.setAttribute('disabled', true);
-    }
-}
+// checkRegister.oninput = function() {
+//     if (checkRegister.checked) {
+//         submitRegister.removeAttribute('disabled');
+//     }else{
+//         submitRegister.setAttribute('disabled', true);
+//     }
+// };
 
-const checkMessage = popup.querySelector('.popup__message__form__checkbox');
-const submitMessage = popup.querySelector('.btn_message_js');
-submitMessage.setAttribute('disabled', true);
+// const checkMessage = popup.querySelector('.popup__message__form__checkbox');
+// const submitMessage = popup.querySelector('.btn_message_js');
+// submitMessage.setAttribute('disabled', true);
 
-checkMessage.oninput = function() {
-    if (checkMessage.checked) {
-        submitMessage.removeAttribute('disabled');
-    }else{
-        submitMessage.setAttribute('disabled', true);
-    }
-}
+// checkMessage.oninput = function() {
+//     if (checkMessage.checked) {
+//         submitMessage.removeAttribute('disabled');
+//     }else{
+//         submitMessage.setAttribute('disabled', true);
+//     }
+// };
 
 //__________________________________________________________________________________________________________________________________//
 //POPUP LOGIN ON/OFF
@@ -69,14 +76,6 @@ checkMessage.oninput = function() {
 // })
 
 (function initLogin() {
-	const loginForm = document.forms.login__form;
-	const email = loginForm.elements.email;
-	const password = loginForm.elements.password;
-	const error = document.querySelector('.popup__error__text');
-	const btnSignIn = document.querySelector('.btn__signin_js');
-	const popupLogin = document.querySelector('.popup__login');
-	const btnLoginClose = document.querySelector('.login__close_js');
-	
 	const isLogin = localStorage.getItem('token');
 
 	if(isLogin) rerenderLinks();
@@ -87,7 +86,7 @@ checkMessage.oninput = function() {
 		data.email = loginForm.email.value;
 		data.password = loginForm.password.value;
 
-		//validation
+		// validation
 
 		sendRequest({
 			method: 'POST',
@@ -108,7 +107,7 @@ checkMessage.oninput = function() {
 			if(err._message) {
 				alert(err._message);
 			}
-			clearErrors(loginForm);
+			// clearErrors(loginForm);
 			errorFormHandler(err.errors, loginForm);
 		})
 	}
@@ -116,23 +115,24 @@ checkMessage.oninput = function() {
 
 	btnSignIn.addEventListener('click', function() {
 		interactionModal(popupLogin);
-	})();
+	})
 
 	btnLoginClose.addEventListener('click', function() {
 		interactionModal(popupLogin);
+		loginForm.reset();
+		clearErrors(loginForm);
 	})
 
 	loginForm.addEventListener('submit', login);
 })();
 
-
-btnLogOut.addEventListener('click', function () {
-	localStorage.setItem('token', res.data.token).remove();
-	// rerenderLinks();
+btnLogOut.addEventListener('click', function() {
+	localStorage.removeItem('token');
+	rerenderLinks();
 	location.pathname = '/';
 });
 
-//__________________________________________________________________________________________________________________________________//
+// __________________________________________________________________________________________________________________________________//
 // POPUP REGISTRATION ON/OFF
 
 // btnRegister.addEventListener('click', function() {
@@ -193,5 +193,3 @@ btnLogOut.addEventListener('click', function () {
 // 	popupChangeData.style.display = 'none';
 // 	body.classList.remove("scroll_block");
 // })
-
-

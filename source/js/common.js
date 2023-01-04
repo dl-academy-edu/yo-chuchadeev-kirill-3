@@ -2,7 +2,7 @@ const BASE_SERVER_PATH = 'https://academy.directlinedev.com';
 
 
 //__________________________________________________________________________________________________________________________________//
-// CREATE ERRORS FOR VALIDATION
+// CREATE ERRORS AND RIGHTS FOR VALIDATION
 
 const errorCreator = (message) => {
 	let messageErrorDiv = document.createElement('div');
@@ -21,12 +21,13 @@ const setErrorText = (input, errorMessage) => {
 	})
 }
 
+
 //__________________________________________________________________________________________________________________________________//
 // CLEAR ERRORS
 
 function clearErrors(element) {
-	const messages = element.querySelectorAll('popup__error__text'); // .invalid-feedback-js
-	const invalids = element.querySelectorAll('popup__error__input'); // .is-invalid
+	const messages = element.querySelectorAll('.popup__error__text'); // .invalid-feedback-js
+	const invalids = element.querySelectorAll('.popup__error__input'); // .is-invalid
 	messages.forEach(message => message.remove());
 	invalids.forEach(invalid => invalid.classList.remove('popup__error__input')); // .is-invalid
 }
@@ -45,21 +46,21 @@ function interactionModal(modal) {
 // RERENDERS HEADER LINKS
 
 function rerenderLinks() {
-	const loginButton = document.querySelector('.btn__signin_js');
+	const isLogin = localStorage.getItem('token');
+	const btnSignIn = document.querySelector('.btn__signin_js');
 	const registerButton = document.querySelector('.btn__register_js');
 	const toMyBlogButton = document.querySelector('.btn__blog_js');
 	const toProfileButton = document.querySelector('.btn__profile_js');
 
-	const isLogin = localStorage.getItem('token');
-
 	if(isLogin) {
-		loginButton.classList.add('close');
+		btnSignIn.classList.add('close');
 		registerButton.classList.add('close');
 		toMyBlogButton.classList.remove('close');
 		toProfileButton.classList.remove('close');
 		btnLogOut.classList.remove('close');
-	} else {
-		loginButton.classList.remove('close');
+	} 
+	else {
+		btnSignIn.classList.remove('close');
 		registerButton.classList.remove('close');
 		toMyBlogButton.classList.add('close');
 		toProfileButton.classList.add('close');
@@ -77,9 +78,9 @@ const isEmailValid = (email) => {
 
 (function() {
 	const loginForm = document.forms.login__form;
-	const email = loginForm.elements.email;
-	const password = loginForm.elements.password;
-	
+	let email = loginForm.elements.email;
+	let password = loginForm.elements.password;
+
 	loginForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 		
@@ -87,26 +88,29 @@ const isEmailValid = (email) => {
 			email: email.value,
 			password: password.value,
 		}
-
+		
 		let errors = {};
 
 		if(!isEmailValid(data.email)) {
 			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
 			console.log(errors.email);
-			} else {
-				email.style.border = `2.5px solid #03BC3C`;
-			}
+		} else {
+			email.style.border = `2.5px solid #03BC3C`;
+		}
 		
-		if(data.password.length <= 6) {
+		if(data.password.length < 6) {
 			errors.password = 'Please increase your password';
 			console.log(errors.password);
-			} else {
-				password.style.border = `2.5px solid #03BC3C`;
-			}
+		} else {
+			password.style.border = `2.5px solid #03BC3C`;
+		}
+
+		if(document.querySelector('.popup__error__text')) {
+			error.remove();
+		}
 
 		if(!Object.keys(errors).length) {
 			console.log('all good');
-
 		} else {
 			console.log('error');
 			Object.keys(errors).forEach((key) => {
@@ -189,6 +193,3 @@ function sendRequest ({url, method = 'GET', headers, body = null}) {
 // 		'all good'
 // 	})
 // })();
-
-
-
