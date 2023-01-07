@@ -42,32 +42,6 @@ function interactionModal(modal) {
 	body.classList.toggle("scroll_block");
 }
 
-//__________________________________________________________________________________________________________________________________//
-// RERENDERS HEADER LINKS
-
-function rerenderLinks() {
-	const isLogin = localStorage.getItem('token');
-	const btnSignIn = document.querySelector('.btn__signin_js');
-	const registerButton = document.querySelector('.btn__register_js');
-	const toMyBlogButton = document.querySelector('.btn__blog_js');
-	const toProfileButton = document.querySelector('.btn__profile_js');
-
-	if(isLogin) {
-		btnSignIn.classList.add('close');
-		registerButton.classList.add('close');
-		toMyBlogButton.classList.remove('close');
-		toProfileButton.classList.remove('close');
-		btnLogOut.classList.remove('close');
-	} 
-	else {
-		btnSignIn.classList.remove('close');
-		registerButton.classList.remove('close');
-		toMyBlogButton.classList.add('close');
-		toProfileButton.classList.add('close');
-		btnLogOut.classList.add('close');
-	}
-}
-
 
 //__________________________________________________________________________________________________________________________________//
 // LOGIN FORM VALIDATION

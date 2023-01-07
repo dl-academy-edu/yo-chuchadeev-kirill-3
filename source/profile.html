@@ -27,32 +27,32 @@
 				<h2>My profile</h2>
 				<section class="profile__data">
 					<picture class="profile__avatar">
-						<img class="proofile__avatar_img" src="/img/ico/no-photo.svg" alt="avatar">
+						<img class="profile__avatar_img" src="/img/ico/no-photo.svg" alt="avatar">
 					</picture>
 					<div class="profile__info">
 						<div class="profile__info__name">
-							<p class="profile__info__subtitle">Name:</p>
-							<p class="profile__info__userdata"></p>
+							<p class="profile__subtitle">Name:</p>
+							<p class="profile__name profile__info__text"></p>
 						</div>
 						<div class="profile__info__surname">
-							<p class="profile__info__subtitle">Surname:</p>
-							<p class="profile__info__userdata"></p>
+							<p class="profile__subtitle">Surname:</p>
+							<p class="profile__surname profile__info__text"></p>
 						</div>
 						<div class="profile__info__email">
-							<p class="profile__info__subtitle">Email:</p>
-							<p class="profile__info__userdata"></p>
+							<p class="profile__subtitle">Email:</p>
+							<p class="profile__email profile__info__text"></p>
 						</div>
 						<div class="profile__info__password">
-							<p class="profile__info__subtitle">Password:</p>
-							<p class="profile__info__userdata"></p>
+							<p class="profile__subtitle">Password:</p>
+							<p class="profile__password profile__info__text"> ****************</p>
 						</div>
 						<div class="profile__info__location">
-							<p class="profile__info__subtitle">Location:</p>
-							<p class="profile__info__userdata"></p>
+							<p class="profile__subtitle">Location:</p>
+							<p class="profile__location profile__info__text"></p>
 						</div>
 						<div class="profile__info__age">
-							<p class="profile__info__subtitle">Age:</p>
-							<p class="profile__info__userdata"></p>
+							<p class="profile__subtitle">Age:</p>
+							<p class="profile__age profile__info__text"></p>
 						</div>
 						<div class="profile__edit">
 							<button class="btn_white open_change_password_js">Change password</button>
@@ -66,84 +66,11 @@
 	</main>
 	@@include('blocks/footer.html')
 	@@include('blocks/popup.html')
-	<div class="popup__profile close">
-		<div class="popup__change__password close">
-			<form class="change__password__form" name="change__password__form" action="">
-				<div class="change__password__old">
-					<label class="label" for="change__password__old__input">
-						Old password <span class="star">*</span>
-					</label>
-					<input class="input_text input__email input" type="password" id="change__password__old__input" name="change__password__old__input">
-				</div>
-				<div class="change__password__new">
-					<label class="label" for="change__password__new__input">
-						New password <span class="star">*</span>
-					</label>
-					<input class="input_text input__email input" type="password" id="change__password__new__input" name="change__password__new__input">
-				</div>
-				<div class="change__password__repeat">
-					<label class="label" for="change__password__repeat__input">
-						Repeat new password <span class="star">*</span>
-					</label>
-					<input class="input_text input__password input" type="password" id="change__password__repeat__input" name="change__password__repeat__input">
-				</div>
-				<button class="btn_white btn_change_password btn_change_password_js" type="submit">Change password</button>
-			</form>
-			<button class="popup__profile__close close_change_password_js" type="">
-				<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
-					<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
-				</svg>							
-			</button>
-		</div>
-		<div class="popup__change__data close">
-			<form class="change__data__form" name="" action="">
-				<div class="popup__register__form__input__wrap">
-					<label class="label" for="change__data__email">Email</label>
-					<input class="input input_text" type="text" name="change__data__email" id="change__data__email">
-				</div>
-				<div class="popup__register__form__input__flex">
-					<div class="popup__register__form__input__wrap">
-						<label class="label" for="change__data__name">Name</label>
-						<input class="input input_text" type="text" name="change__data__name" id="change__data__name">
-					</div>
-					<div class="popup__register__form__input__wrap">
-						<label class="label" for="change__data__surname">Surname</label>
-						<input class="input input_text" type="text" name="change__data__surname" id="change__data__surname">
-					</div>
-				</div>
-				<div class="popup__register__form__input__flex">
-					<div class="popup__register__form__input__wrap">
-						<label class="label" for="change__data__location">Location</label>
-						<input class="input input_text" type="text" name="change__data__location" id="change__data__location">
-					</div>
-					<div class="popup__register__form__input__wrap">
-						<label class="label" for="change__data__age">Age</label>
-						<input class="input input_text" type="text" name="change__data__age" id="change__data__age">
-					</div>
-				</div>
-				<div class="change__data__avatar">
-					<label class="label" for="">Profile picture</label>
-					<input class="input_text inpit_file" type="file" name="" id="">
-				</div>
-				
-				<button class="btn_white btn_change_data btn_change_data_js" type="submit">Submit changes</button>
-			</form>
-			<button class="popup__profile__close close_change_data_js" type="">
-				<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
-					<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
-				</svg>							
-			</button>
-		</div>
-		<div class="popup__delete__account close">
-			<form class="" name="" action="">
-				
-			</form>
-		</div>
-	</div>
+	<!-- <div class="popup__profile close">
+	</div> -->
 	<!-- <script src="js/app.js" defer></script> -->        
-	<script src="js/index.js" defer></script>
+	<script src="js/index.js"></script>
 	<script src="js/common.js"></script>
+	<script src="js/profile.js"></script>
 </body>
 </html>

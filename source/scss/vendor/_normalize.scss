@@ -70,6 +70,11 @@ button {
 		transition: .3s;
 		// box-shadow: none;
 	}
+	&:active{
+		border: 2.5px solid #070707;
+		outline: 0;
+		transition: .3s;
+	}
 }
 
 textarea {

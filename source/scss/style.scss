@@ -383,7 +383,7 @@
 .filter__show {
 	display: flex;
 	flex-direction: column;
-	margin-left: 137px;
+	margin-left: 82px;
 }
 
 .checkbox__custom {
@@ -684,7 +684,7 @@
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 }
 
-.proofile__avatar_img {
+.profile__avatar_img {
 	width: 144px;
 	height: 120px;
 }
@@ -711,8 +711,8 @@
 	display: flex;
 }
 
-.profile__info__subtitle {
-	margin-right: 10px;
+.profile__subtitle {
+	margin-right: 15px;
 	color: #070707;
 	font-size: 18px;
 	font-style: normal;
@@ -720,7 +720,7 @@
 	line-height: 22px;
 }
 
-.profile__info__userdata {
+.profile__info__text {
 	color: #070707;
 	font-size: 18px;
 	font-style: normal;
@@ -768,6 +768,22 @@
     height: 50px;
     line-height: 21px;
     padding: 14px;
+}
+
+.input__hidden {
+	width: 0.1px;
+	height: 0.1px;
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.label__file {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
 }
 
 .btn_change_data {

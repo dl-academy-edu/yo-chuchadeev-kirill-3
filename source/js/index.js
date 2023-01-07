@@ -1,5 +1,6 @@
 const body = document.querySelector('#body');
 const popup = document.querySelector('.popup');
+const isLogin = localStorage.getItem('token');
 
 const loginForm = document.forms.login__form;
 const email = loginForm.elements.email;
@@ -10,49 +11,41 @@ const btnSignIn = document.querySelector('.btn__signin_js');
 const popupLogin = document.querySelector('.popup__login');
 const btnLoginClose = document.querySelector('.login__close_js');
 
-// const btnRegister = document.querySelector('.btn__register_js');
-// const popupRegister = document.querySelector('.popup__register');
-// const btnRegisterClose = document.querySelector('.register__close_js');
+const btnRegister = document.querySelector('.btn__register_js');
+const popupRegister = document.querySelector('.popup__register');
+const btnRegisterClose = document.querySelector('.register__close_js');
 
-// const btnSendMessage = document.querySelector('.btn__message_js');
-// const popupMessage = document.querySelector('.popup__message');
-// const btnMessageClose = document.querySelector('.message__close_js');
+const btnSendMessage = document.querySelector('.btn__message_js');
+const popupMessage = document.querySelector('.popup__message');
+const btnMessageClose = document.querySelector('.message__close_js');
 
-//popup profile
-// const popupProfile = document.querySelector('.popup__profile');
-// const popupChangePassword = document.querySelector('.popup__change__password');
-// const openChangePassword = document.querySelector('.open_change_password_js');
-// const closeChangePassword = document.querySelector('.close_change_password_js');
-// const popupChangeData = document.querySelector('.popup__change__data');
-// const openChangeData = document.querySelector('.open_change_data_js');
-// const closeChangeData = document.querySelector('.close_change_data_js');
 
 //__________________________________________________________________________________________________________________________________//
 //POPUP CHECKBOX
 
-// const checkRegister = popup.querySelector('.popup__register__form__checkbox');
-// const submitRegister = popup.querySelector('.btn_signup_js');
-// submitRegister.setAttribute('disabled', true);
+const checkRegister = popup.querySelector('.popup__register__form__checkbox');
+const submitRegister = popup.querySelector('.btn_signup_js');
+submitRegister.setAttribute('disabled', true);
 
-// checkRegister.oninput = function() {
-//     if (checkRegister.checked) {
-//         submitRegister.removeAttribute('disabled');
-//     }else{
-//         submitRegister.setAttribute('disabled', true);
-//     }
-// };
+checkRegister.oninput = function() {
+    if (checkRegister.checked) {
+        submitRegister.removeAttribute('disabled');
+    }else{
+        submitRegister.setAttribute('disabled', true);
+    }
+};
 
-// const checkMessage = popup.querySelector('.popup__message__form__checkbox');
-// const submitMessage = popup.querySelector('.btn_message_js');
-// submitMessage.setAttribute('disabled', true);
+const checkMessage = popup.querySelector('.popup__message__form__checkbox');
+const submitMessage = popup.querySelector('.btn_message_js');
+submitMessage.setAttribute('disabled', true);
 
-// checkMessage.oninput = function() {
-//     if (checkMessage.checked) {
-//         submitMessage.removeAttribute('disabled');
-//     }else{
-//         submitMessage.setAttribute('disabled', true);
-//     }
-// };
+checkMessage.oninput = function() {
+    if (checkMessage.checked) {
+        submitMessage.removeAttribute('disabled');
+    }else{
+        submitMessage.setAttribute('disabled', true);
+    }
+};
 
 //__________________________________________________________________________________________________________________________________//
 //POPUP LOGIN ON/OFF
@@ -135,61 +128,77 @@ btnLogOut.addEventListener('click', function() {
 // __________________________________________________________________________________________________________________________________//
 // POPUP REGISTRATION ON/OFF
 
-// btnRegister.addEventListener('click', function() {
-//     popup.style.display = 'flex';
-//     popupRegister.style.display = 'flex';
-// 	body.classList.add("scroll_block");
-// })
+btnRegister.addEventListener('click', function() {
+    popup.classList.toggle("close");
+    popupRegister.classList.toggle("close");
+	body.classList.toggle("scroll_block");
+})
 
-// btnRegisterClose.addEventListener('click', function() {
-// 	popup.style.display = 'none';
-// 	popupRegister.style.display = 'none';
-// 	document.forms[1].reset();
-// 	body.classList.remove("scroll_block");
-// })
+btnRegisterClose.addEventListener('click', function() {
+	popup.classList.toggle("close");
+	popupRegister.classList.toggle("close");
+	document.forms[1].reset();
+	body.classList.toggle("scroll_block");
+})
 
 //__________________________________________________________________________________________________________________________________//
 //POPUP MESSAGE ON/OFF
 
-// btnSendMessage.addEventListener('click', function() {
-//     popup.style.display = 'flex';
-//     popupMessage.style.display = 'flex';
-// 	body.classList.add("scroll_block");
-// })
+btnSendMessage.addEventListener('click', function() {
+    popup.classList.toggle("close");
+    popupMessage.classList.toggle("close");
+	body.classList.toggle("scroll_block");
+})
 
-// btnMessageClose.addEventListener('click', function() {
-// 	popup.style.display = 'none';
-// 	popupMessage.style.display = 'none';
-// 	document.forms[2].reset();
-// 	body.classList.remove("scroll_block");
-// })
+btnMessageClose.addEventListener('click', function() {
+	popup.classList.toggle("close");
+	popupMessage.classList.toggle("close");
+	document.forms[2].reset();
+	body.classList.toggle("scroll_block");
+})
+
+
+// function inputFile() {
+// 	const inputs = document.querySelectorAll('.label__file');
+// 	Array.prototype.forEach.call(inputs, function(input) {
+// 		const label = input.nextElementSibling,
+// 		labelVal = label.innerHTML;
+// 		input.addEventListener('change', function(e) {
+// 			const fileName = '';
+// 			fileName = this.files[0].name;
+// 			if(fileName) {
+// 				label.querySelector('span').innerHTML = fileName;
+
+// 			} else {
+// 				label.innerHTML = labelVal;
+// 			}
+// 		})
+// 	})
+// }
+
 
 //__________________________________________________________________________________________________________________________________//
-//POPUP PROFILE CHANGE PASSWORD ON/OFF
+// RERENDERS HEADER LINKS
 
-// openChangePassword.addEventListener('click', function() {
-//     popupProfile.style.display = 'flex';
-//     popupChangePassword.style.display = 'flex';
-// 	body.classList.add("scroll_block");
-// })
+function rerenderLinks() {
+	const isLogin = localStorage.getItem('token');
+	const btnSignIn = document.querySelector('.btn__signin_js');
+	const registerButton = document.querySelector('.btn__register_js');
+	const toMyBlogButton = document.querySelector('.btn__blog_js');
+	const toProfileButton = document.querySelector('.btn__profile_js');
 
-// closeChangePassword.addEventListener('click', function() {
-// 	popupProfile.style.display = 'none';
-// 	popupChangePassword.style.display = 'none';
-// 	body.classList.remove("scroll_block");
-// })
-
-//__________________________________________________________________________________________________________________________________//
-//POPUP PROFILE CHANGE DATA ON/OFF
-
-// openChangeData.addEventListener('click', function() {
-//     popupProfile.style.display = 'flex';
-//     popupChangeData.style.display = 'flex';
-// 	body.classList.add("scroll_block");
-// })
-
-// closeChangeData.addEventListener('click', function() {
-// 	popupProfile.style.display = 'none';
-// 	popupChangeData.style.display = 'none';
-// 	body.classList.remove("scroll_block");
-// })
+	if(isLogin) {
+		btnSignIn.classList.add('close');
+		registerButton.classList.add('close');
+		toMyBlogButton.classList.remove('close');
+		toProfileButton.classList.remove('close');
+		btnLogOut.classList.remove('close');
+	} 
+	else {
+		btnSignIn.classList.remove('close');
+		registerButton.classList.remove('close');
+		toMyBlogButton.classList.add('close');
+		toProfileButton.classList.add('close');
+		btnLogOut.classList.add('close');
+	}
+}
