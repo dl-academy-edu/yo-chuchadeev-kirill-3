@@ -50,24 +50,6 @@ checkMessage.oninput = function() {
 //__________________________________________________________________________________________________________________________________//
 //POPUP LOGIN ON/OFF
 
-// btnSignIn.addEventListener('click', function() {
-// 	popup.style.display = 'flex';
-// 	popupLogin.style.display = 'flex';
-// 	body.classList.add("scroll_block")
-// })
-
-// btnLoginClose.addEventListener('click', function() {
-// 	popup.style.display = 'none';
-// 	popupLogin.style.display = 'none';
-// 	document.forms[0].reset();
-// 	body.classList.remove("scroll_block");
-// 	loginForm.elements.email.removeAttribute("style");
-// 	loginForm.elements.password.removeAttribute("style");
-// 	email.classList.remove('popup__error__input');
-// 	password.classList.remove('popup__error__input');
-// 	error.remove();
-// })
-
 (function initLogin() {
 	const isLogin = localStorage.getItem('token');
 
@@ -145,16 +127,12 @@ btnRegisterClose.addEventListener('click', function() {
 //POPUP MESSAGE ON/OFF
 
 btnSendMessage.addEventListener('click', function() {
-    popup.classList.toggle("close");
-    popupMessage.classList.toggle("close");
-	body.classList.toggle("scroll_block");
+	interactionModal(popupMessage);
 })
 
 btnMessageClose.addEventListener('click', function() {
-	popup.classList.toggle("close");
-	popupMessage.classList.toggle("close");
+	interactionModal(popupMessage);
 	document.forms[2].reset();
-	body.classList.toggle("scroll_block");
 })
 
 

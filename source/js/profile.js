@@ -43,7 +43,6 @@ closeChangePassword.addEventListener('click', function() {
 
 //__________________________________________________________________________________________________________________________________//
 //PROFILE INFO ON PAGE
-
 (function() {
 	const profileImg = document.querySelector('.profile__avatar')
 	const profileName = document.querySelector('.profile__name');
@@ -52,8 +51,8 @@ closeChangePassword.addEventListener('click', function() {
 	const profileLocation = document.querySelector('.profile__location');
 	const profileAge = document.querySelector('.profile__age');
 
-	
 	const changeDataForm = document.forms.change__data__form;
+
 
 	let profile = null;
 

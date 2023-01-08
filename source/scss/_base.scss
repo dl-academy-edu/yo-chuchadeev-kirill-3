@@ -20,6 +20,11 @@
 	color: #EB3617;
 }
 
+.icon {
+	height: 120px;
+	width: auto;
+}
+
 h1 {
 	font-style: normal;
 	color: #070707;
@@ -177,4 +182,31 @@ label[type="text"] {
 .input {
 	margin-top: 6px;
 	width: 100%;
+}
+
+// loader
+
+.loader {
+	z-index: 20;
+	position: absolute;
+	margin: auto;
+	top: 0; 
+	left: 0; 
+	bottom: 0; 
+	right: 0;
+    width : 48px;
+    height: 48px;
+    border-radius: 50%;
+    border-top: 3px solid #828282;
+    border-right: 3px solid transparent;
+	transition: .3s linear;
+	animation: loader 1s linear infinite;
+}
+@keyframes loader {
+    0% { 
+		transform: rotate(0deg);
+	}
+    100% { 
+		transform: rotate(360deg);
+	}
 }

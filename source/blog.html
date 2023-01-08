@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width">
         <meta name="google" content="notranslate">
         <meta name="format-detection" content="telephone=no">
-
+		<link rel="icon" href="./img/ico/no-photo.svg" type="image/svg+xml" class="icon">
         <title>My blog</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -25,7 +25,7 @@
 		<div class="main center">
 			<div class="blog__content">
 				<h2>My blog</h2>
-				<form class="blog__filter">
+				<form class="blog__filter" name="blog__filter__form">
 					<ul class="blog__filter__list">
 						<li class="blog__filter__list_items filter__tags">
 							<p class="filter__title">Tags</p>
@@ -124,8 +124,8 @@
 	@@include('blocks/footer.html')
 	@@include('blocks/popup.html')
 	<!-- <script src="js/app.js" defer></script> -->
-	<script src="js/blog.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/common.js"></script>
+	<script src="js/blog.js"></script>
 </body>
 </html>
