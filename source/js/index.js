@@ -1,6 +1,7 @@
 const body = document.querySelector('#body');
 const popup = document.querySelector('.popup');
 const isLogin = localStorage.getItem('token');
+const loader = document.querySelector('.loader');
 
 const loginForm = document.forms.login__form;
 const email = loginForm.elements.email;
@@ -110,6 +111,9 @@ btnLogOut.addEventListener('click', function() {
 // __________________________________________________________________________________________________________________________________//
 // POPUP REGISTRATION ON/OFF
 
+
+
+
 btnRegister.addEventListener('click', function() {
     popup.classList.toggle("close");
     popupRegister.classList.toggle("close");
@@ -179,4 +183,17 @@ function rerenderLinks() {
 		toProfileButton.classList.add('close');
 		btnLogOut.classList.add('close');
 	}
+}
+
+//__________________________________________________________________________________________________________________________________//
+// LOADER ON/OFF
+
+const showLoader = () => {
+	loader.classList.remove('close');
+	popup.classList.remove('close');
+}
+
+const hideLoader = () => {
+	loader.classList.add('close');
+	popup.classList.add('close');
 }
