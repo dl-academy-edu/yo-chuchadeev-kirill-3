@@ -1,4 +1,4 @@
-//popup profile
+// PROFILE
 // const popupProfile = document.querySelector('.popup__profile');
 
 const popupChangePassword = document.querySelector('.popup__change__password');
@@ -27,24 +27,13 @@ closeChangePassword.addEventListener('click', function() {
 	// body.classList.remove("scroll_block");
 });
 
-//__________________________________________________________________________________________________________________________________//
-//POPUP PROFILE CHANGE DATA ON/OFF
-// openChangeData.addEventListener('click', function() {
-// 	popupProfile.classList.toggle("close");
-// 	popupChangeData.classList.toggle("close");
-// 	body.classList.add("scroll_block");
-// });
-
-// closeChangeData.addEventListener('click', function() {
-// 	popupProfile.classList.toggle("close");
-// 	popupChangeData.classList.toggle("close");
-// 	body.classList.remove("scroll_block");
-// });
 
 //__________________________________________________________________________________________________________________________________//
 //PROFILE INFO ON PAGE
+
 (function() {
-	const profileImg = document.querySelector('.profile__avatar')
+	const profileImg = document.querySelector('.profile__avatar');
+	const profileDefaultImg = document.querySelector('.profile__avatar_img');	
 	const profileName = document.querySelector('.profile__name');
 	const profileSurname = document.querySelector('.profile__surname');
 	const profileEmail = document.querySelector('.profile__email');
@@ -61,12 +50,15 @@ closeChangePassword.addEventListener('click', function() {
 	getProfile();
 
 	function renderProfile() {
-		profileImg.style.backgroundImg = `url(${BASE_SERVER_PATH + profile.photoUrl})`;
+		profileImg.style.backgroundImage = `url(${BASE_SERVER_PATH + profile.photoUrl})`;
 		profileName.innerText = profile.name;
 		profileSurname.innerText = profile.surname;
 		profileEmail.innerText = profile.email;
 		profileLocation.innerText = profile.location;
 		profileAge.innerText = profile.age;
+		if(profileImg) {
+			profileDefaultImg.classList.toggle('close');
+		}
 	}
 
 	function getProfile() {
@@ -145,5 +137,4 @@ closeChangePassword.addEventListener('click', function() {
 	})
 
 	popupChangeData.addEventListener('submit', changeData);
-
 })();
