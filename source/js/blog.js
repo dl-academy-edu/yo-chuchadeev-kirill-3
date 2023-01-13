@@ -21,6 +21,7 @@ if(location.search) {
 	const updateInput = (gInputs, typeParam) => {
 		for(let input of gInputs) {
 			const param = params[typeParam];
+			if (!param) return;
 			for(partParam of param) {
 				if(partParam === input.value) input.checked = true;
 			}
@@ -30,7 +31,7 @@ if(location.search) {
 	updateInput(filterForm.tags, 'tags');
 	updateInput(filterForm.views, 'views');
 	updateInput(filterForm.comments, 'comments');
-	updateInput(filterForm.show, 'show');
+	updateInput(filterForm.limit, 'limit');
 	updateInput(filterForm.sort, 'sort');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +43,7 @@ if(location.search) {
 		url.searchParams.delete('tags');
 		url.searchParams.delete('views');
 		url.searchParams.delete('comments');
-		url.searchParams.delete('show');
+		url.searchParams.delete('limit');
 		url.searchParams.delete('sort');
 
 		const addChekedinput = (nameGroupInput, typeParam) => {
@@ -56,7 +57,7 @@ if(location.search) {
 		addChekedinput(e.target.tags, 'tags');
 		addChekedinput(e.target.views, 'views');
 		addChekedinput(e.target.comments, 'comments');
-		addChekedinput(e.target.show, 'show');
+		addChekedinput(e.target.limit, 'limit');
 		addChekedinput(e.target.sort, 'sort');
 
 		history.replaceState(null, '', url);
@@ -70,7 +71,6 @@ if(location.search) {
 // доп материал 9 лекции
 
 const LIMIT = 5;
-
 
 (function() {
 	const filterForm = document.forms.blog__filter__form;
@@ -90,21 +90,17 @@ const LIMIT = 5;
 			.map(checkbox => checkbox.value))
 		data.views = ([...filterForm.elements.views]
 			.find(radio => radio.checked) || {value: null}).value;
-		data.show = ([filterForm.elements.show]
-			.find(radio => radio.checked) || {value: null}).value;
+		// data.limit = ([filterForm.elements.limit]
+		// 	.find(radio => radio.checked) || {value: null}).value;
+		data.limit = +filterForm.elements.limit.value || 5;
 		// data.sort = filterForm.elements.color.sort;
 		data.sort = ([...filterForm.elements.sort]
 			.find(radio => radio.checked) || {value: null}).value;
-			
-		data.search = filterForm.elements.search.value;
+		data.search = filterForm.elements.search.value === "" ? null : filterForm.elements.search.value;
 		getData(data);
 		setSearchParams(data);
-
-		// data.tags = [...form.elements.tags]
-		// .filter(checkbox => checkbox.checked)
-		// .map(checkbox => checkbox.value);
 	})
-
+	
 
 	// ПОЛУЧАЕМ ТЕГИ
 	// let xhr = new XMLHttpRequest();
@@ -125,6 +121,7 @@ const LIMIT = 5;
 	// }
 })();
 
+
 // ПОЛУЧАЕМ ДАННЫЕ ИЗ LOCATION.SEARCH (ПОИСКА)
 function getParamsFromLocation() {
 	let searchParams = new URLSearchParams(location.search);
@@ -132,7 +129,7 @@ function getParamsFromLocation() {
 		tags: searchParams.getAll('tags'),
 		views: searchParams.get('views'),
 		comments: searchParams.getAll('comments'),
-		show: searchParams.get('show'),
+		limit: searchParams.get('limit'),
 		sort: searchParams.get('sort'),
 		search: searchParams.get('search') || null,
 		page: +searchParams.get('page') || 0,
@@ -142,57 +139,90 @@ function getParamsFromLocation() {
 
 function setSearchParams(data) {
 	let searchParams = new URLSearchParams();
+
 	data.tags.forEach(tag => {
 		searchParams.append('tags', tag);
 	});
+
 	if(data.page) {
 		searchParams.set('page', data.page);
-		} else {
-			searchParams.set('page', 0);
-		}
+	} else {
+		searchParams.set('page', 0);
+	}
+
 	if(data.views) {
 		searchParams.set('views', data.views);
 	}
+
 	data.comments.forEach(comment => {
 		searchParams.append('comments', comment);
 	});
-	if(data.show) {
-		searchParams.set('show', data.show);
+
+	if(data.limit) {
+		searchParams.set('limit', data.limit);
 	}
+
 	if(data.sort) {
 		searchParams.set('sort', data.sort);
 	}
-	searchParams.set('search', data.search);
+
+	if(data.search) {
+		searchParams.set('search', data.search);
+	}
+
 	history.replaceState(null, document.title, '?' + searchParams.toString());
 }
+
 
 // ПОЛУЧЕНИЕ ПОСТОВ
 function getData(params) {
 	const result = document.querySelector('.blog__posts');
 	let xhr = new XMLHttpRequest();
 	let searchParams = new URLSearchParams();
-	searchParams.set('v', '1.0.0');
+
+	let filter = {};
+	let limit = params.limit ? params.limit : LIMIT;
 
 	if(params.tags && Array.isArray(params.tags) && params.tags.length) {
 		searchParams.set('tags', JSON.stringify(params.tags));
 	}
 
-	let filter = {};
-
-	if(params.search) {
-		filter.title = params.search;
+	if(params.views) {
+		filter.views = {};
+		filter.views.$between = [params.views.split('-')[0], params.views.split('-')[1]];
+	}
+	
+	if(params.comments.length != 0) {
+		if(params.comments[0] === "0") {
+			filter.commentsCount = {};
+			filter.commentsCount.$between = [0, 0];
+		} else {
+			filter.commentsCount = {};
+			filter.commentsCount.$between = [params.comments[0].split('-')[0], params.comments[0].split('-')[1]] || [params.comments];
+		}
 	}
 
-	searchParams.set('filter', JSON.stringify(filter));
-	searchParams.set('limit', LIMIT);
-
-	if(+params.page) {
-		searchParams.set('offset', (+params.page) * LIMIT);
-	}
+	// if(limit) {
+	// 	searchParams.set('limit', limit);
+	// }
 
 	if(params.sort) {
 		searchParams.set('sort', JSON.stringify([params.sort, 'DESC']));
 	}
+
+	if(params.search) {
+		// filter.title = params.search;
+		// filter.search.length != 0 ? filter.title = params.search : "";
+		filterForm.elements.search = params.search;
+	}
+
+	if(+params.page) {
+		searchParams.set('offset', (+params.page) * limit);
+	}
+
+	searchParams.set('v', '1.0.0');
+	searchParams.set('filter', JSON.stringify(filter));
+	searchParams.set('limit', limit);
 
 	xhr.open('GET', BASE_SERVER_PATH + '/api/posts?' + searchParams.toString());
 	xhr.send();
@@ -204,7 +234,7 @@ function getData(params) {
 		const response = JSON.parse(xhr.response);
 		let dataPosts = '';
 		response.data.forEach(post => {
-			// const card = cardCreate({
+			dateCorrecting(post.date);
 			dataPosts += cardCreate({
 				title: post.title,
 				text: post.text,
@@ -214,14 +244,13 @@ function getData(params) {
 				comments: post.commentsCount,
 				views: post.views,
 			});
-			// result.insertAdjacentHTML('beforeend', card);
 		})
 		result.innerHTML = dataPosts;
-		const pageCount = Math.ceil(response.count / LIMIT);
+		const pageCount = Math.ceil(response.count / limit);
 		for(let i = 0; i < pageCount; i++) {
 			const link = linkElementCreate(i);
 			links.insertAdjacentElement('beforeend', link);
-			links.insertAdjacentHTML('beforeend', '<br>');
+			links.insertAdjacentHTML('beforeend', '');
 		}
 		hideLoader();
 	}
@@ -230,24 +259,25 @@ function getData(params) {
 
 // ПАГИНАЦИЯ
 function linkElementCreate(page) {
-	const link = document.querySelector('a');
+	const link = document.createElement('a');
 	link.href = '?page=' + page;
 	link.innerText = (page + 1);
-	link.classList.add('link_js');
+	link.classList.add('blog__pages__link');
+	link.classList.add('pages__link_js');
 
 	let params = getParamsFromLocation();
 	if(page === +params.page) {
-		link.classList.add('page__active');
+		link.classList.add('blog__pages__active');
 	}
 
 	link.addEventListener('click', (e) => {
 		e.preventDefault();
-		const links = document.querySelectorAll('.link_js');
+		const links = document.querySelectorAll('.pages__link_js');
 		let searchParams = new URLSearchParams(location.search);
 		let params = getParamsFromLocation();
-		links[params.page].classList.remove('page__active');
+		links[params.page].classList.remove('.blog__pages__active');
 		searchParams.set('page', page);
-		links[page].classList.add('page__active');
+		links[page].classList.add('blog__pages__active');
 		history.replaceState(null, document.title, '?' + searchParams.toString());
 		getData(getParamsFromLocation());
 	});
@@ -260,7 +290,7 @@ function cardCreate({title, text, src, tags, date, comments, views}) {
 	return `
 	<hr class="blog__line">
 	<div class="blog__posts__card">
-		<picture>
+		<picture class="card__picture">
 			<img src="${BASE_SERVER_PATH}${src}" alt="${title}">
 		</picture>
 		<section class="card__info">
@@ -294,8 +324,8 @@ function setDataToFilter (data) {
 	filterForm.elements.comments.forEach(checkbox => {
 		checkbox.checked = data.comments.includes(checkbox.value);
 	});
-	filterForm.elements.show.forEach(radio => {
-		radio.checked = data.show === radio.value;
+	filterForm.elements.limit.forEach(radio => {
+		radio.checked = data.limit === radio.value;
 	});
 	filterForm.elements.sort.forEach(radio => {
 		radio.checked = data.sort === radio.value;
@@ -303,8 +333,26 @@ function setDataToFilter (data) {
 	filterForm.elements.search = data.search;
 }
 
+// РЕДАКТИРОВАНИЕ ДАТЫ
 
+function dateCorrecting (serverDate) {
+	let date = new Date(serverDate);
 
+	let dayDate = date.getDate();
+	let monthDate = date.getMonth() + 1;
+	let yearDate = date.getFullYear();
+
+	if(dayDate < 10) {
+		dayDate = '0' + dayDate;
+	}
+
+	if (monthDate < 10 ) {
+		monthDate = '0' + monthDate;
+	}
+
+	const finalDate = `${dayDate}.${monthDate}.${yearDate}`;
+	return finalDate;
+}
 
 
 
