@@ -234,13 +234,12 @@ function getData(params) {
 		const response = JSON.parse(xhr.response);
 		let dataPosts = '';
 		response.data.forEach(post => {
-			dateCorrecting(post.date);
 			dataPosts += cardCreate({
 				title: post.title,
 				text: post.text,
 				src: post.photo.desktopPhotoUrl,
 				tags: post.tags,
-				date: post.date,
+				date: dateCorrecting(post.date),
 				comments: post.commentsCount,
 				views: post.views,
 			});
@@ -253,6 +252,7 @@ function getData(params) {
 			links.insertAdjacentHTML('beforeend', '');
 		}
 		hideLoader();
+		buttonPagination(pageCount);
 	}
 }
 
@@ -333,8 +333,8 @@ function setDataToFilter (data) {
 	filterForm.elements.search = data.search;
 }
 
-// РЕДАКТИРОВАНИЕ ДАТЫ
 
+// РЕДАКТИРОВАНИЕ ДАТЫ
 function dateCorrecting (serverDate) {
 	let date = new Date(serverDate);
 
@@ -359,13 +359,6 @@ function dateCorrecting (serverDate) {
 
 
 
-// ДЛЯ СОЗДАНИЯ ТЕГОВ
-// function createTag({id, name, color}) {
-// 	return `
-// 	<div class="1">
-		
-// 	</div>`
-// }
 
 
 

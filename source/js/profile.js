@@ -9,27 +9,15 @@ const openChangeData = document.querySelector('.open_change_data_js');
 const closeChangeData = document.querySelector('.close_change_data_js');
 
 
-//__________________________________________________________________________________________________________________________________//
-//POPUP PROFILE CHANGE PASSWORD ON/OFF
-
-openChangePassword.addEventListener('click', function() {
-	interactionModal(popupChangePassword);
-	// popup.classList.toggle("close");
-	// popupChangePassword.classList.toggle("close");
-	// body.classList.add("scroll_block");
-});
+// const passwordOldForm = document.forms.password__old;
+// const passwordNewForm = document.forms.password__new;
+// const passwordRepeatForm = document.forms.password__repeat;
+// btn_change_data_js
 
 
-closeChangePassword.addEventListener('click', function() {
-	interactionModal(popupChangePassword);
-	// popup.classList.toggle("close");
-	// popupChangePassword.classList.toggle("close");
-	// body.classList.remove("scroll_block");
-});
 
 
-//__________________________________________________________________________________________________________________________________//
-//PROFILE INFO ON PAGE
+// ПОЛУЧЕНИЕ ДАННЫХ ПРОФИЛЯ И ОТОБРАЖЕНИЕ
 
 (function() {
 	const profileImg = document.querySelector('.profile__avatar');
@@ -83,6 +71,8 @@ closeChangePassword.addEventListener('click', function() {
 		})
 	}
 
+
+	// ИЗМЕНЕНИЕ ДАННЫХ ПРОФИЛЯ
 	const changeData = (e) => {
 		e.preventDefault();
 		const data = new FormData(changeDataForm);
@@ -138,3 +128,88 @@ closeChangePassword.addEventListener('click', function() {
 
 	popupChangeData.addEventListener('submit', changeData);
 })();
+
+
+// СМЕНА ПАРОЛЯ
+(function changePassword() {
+	const passwordForm = document.forms.change__password__form;
+
+	const password = (e) => {
+		e.preventDefault();
+		// let data = {};
+		// data.oldPassword = passwordForm.password__old.value;
+		// data.newPassword = passwordForm.password__new.value;
+		const data = new FormData(passwordForm);
+		const popupSuccess = document.querySelector('.popup__status__success');
+		const popupError = document.querySelector('.popup__status__error');
+
+		// validation
+
+		sendRequest({
+			method: 'PUT',
+			url: '/api/users',
+			body: data,
+			headers: {
+				'x-access-token': localStorage.getItem('token'),
+				'userId': localStorage.getItem('userId'),
+			}
+		})
+		.then(res => {
+			if(res.status === 401 || res.status === 403) {
+				// localStorage.removeItem('token');
+				// localStorage.removeItem('userId');
+				// location.pathname = '/';
+				popupStatusOpen(popupError);
+				return;
+			}
+			return res.json();
+		})
+		.then(res => {
+			if(res.success) {
+				popupStatusOpen(popupSuccess);
+				renderProfile();
+			} else {
+				throw res;
+			}
+		})
+		.catch(err => {
+			if(err._message) {
+				alert(err._message);
+			}
+			clearErrors(passwordForm);
+			errorFormHandler(err.errors, passwordForm);
+		})
+		.finally(() => {
+			interactionModal(popupChangePassword);
+			passwordForm.reset();
+		})
+	}
+
+	openChangePassword.addEventListener('click', function() {
+		interactionModal(popupChangePassword);
+	});
+	
+	closeChangePassword.addEventListener('click', function() {
+		interactionModal(popupChangePassword);
+	});
+
+	popupChangePassword.addEventListener('submit', password);
+})();
+
+function popupStatusOpen(popupStatus) {
+	popupStatus.classList.remove("close");
+	popupStatus.classList.add("open");
+	body.classList.toggle("scroll_block");
+
+	buttonClose = popupStatus.querySelector('button');
+
+	buttonClose.addEventListener('click', () => {
+		popupStatusClose(popupStatus);
+	})
+};
+
+function popupStatusClose(popupStatus) {
+	popupStatus.classList.remove("open");
+	popupStatus.classList.add("close");
+	body.classList.toggle("scroll_block");
+}

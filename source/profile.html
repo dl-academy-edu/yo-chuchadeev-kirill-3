@@ -66,6 +66,24 @@
 	</main>
 	@@include('blocks/footer.html')
 	@@include('blocks/popup.html')
+	<div class="popup__status__success close">
+		<p class="form__success">Form has been sent successfully</p>
+		<button class="popup__status__success__close  popup__status__success__close_js" type="button">
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+			</svg>							
+		</button>
+	</div>
+	<div class="popup__status__error close">
+		<p class="form__error">The form was sent but the server transmits an error: “The form was sent but the server transmits an error”</p>
+		<button class="popup__status__error__close  popup__status__error__close_js" type="button">
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+			</svg>							
+		</button>
+	</div>
 	<!-- <script src="js/app.js" defer></script> -->        
 	<script src="js/index.js"></script>
 	<script src="js/common.js"></script>
