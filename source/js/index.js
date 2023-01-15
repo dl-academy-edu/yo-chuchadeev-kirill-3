@@ -108,11 +108,9 @@ btnLogOut.addEventListener('click', function() {
 	location.pathname = '/';
 });
 
+
 // __________________________________________________________________________________________________________________________________//
 // POPUP REGISTRATION ON/OFF
-
-
-
 
 btnRegister.addEventListener('click', function() {
     popup.classList.toggle("close");
@@ -127,6 +125,7 @@ btnRegisterClose.addEventListener('click', function() {
 	body.classList.toggle("scroll_block");
 })
 
+
 //__________________________________________________________________________________________________________________________________//
 //POPUP MESSAGE ON/OFF
 
@@ -138,25 +137,6 @@ btnMessageClose.addEventListener('click', function() {
 	interactionModal(popupMessage);
 	document.forms[2].reset();
 })
-
-
-// function inputFile() {
-// 	const inputs = document.querySelectorAll('.label__file');
-// 	Array.prototype.forEach.call(inputs, function(input) {
-// 		const label = input.nextElementSibling,
-// 		labelVal = label.innerHTML;
-// 		input.addEventListener('change', function(e) {
-// 			const fileName = '';
-// 			fileName = this.files[0].name;
-// 			if(fileName) {
-// 				label.querySelector('span').innerHTML = fileName;
-
-// 			} else {
-// 				label.innerHTML = labelVal;
-// 			}
-// 		})
-// 	})
-// }
 
 
 //__________________________________________________________________________________________________________________________________//

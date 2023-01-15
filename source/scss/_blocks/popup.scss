@@ -314,16 +314,19 @@
 
 
 
-.popup__status__success {
-	position: absolute;
-	top: 0;
-	left: 0;
+.popup__status__success, 
+.popup__status__error {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+	background: rgba(246, 246, 246, 0.99);
 	gap: 20px;
-	height: 100%;
-	width: 100%;
 	justify-content: center;
 	align-items: center;
-	background: rgba(246, 246, 246, 0.99);
+    z-index: 6;
 }
 
 .form__success {
@@ -340,18 +343,6 @@
 	height: 26px;
 	position: relative;
 	top: -16px;
-}
-
-.popup__status__error {
-	position: absolute;
-	top: 0;
-	left: 0;
-	gap: 20px;
-	height: 100%;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	background: rgba(246, 246, 246, 0.99);
 }
 
 .form__error {

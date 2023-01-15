@@ -103,7 +103,7 @@ function errorFormHandler(errors, form) {
 	if(Object.keys(errors).length) {
 		Object.keys(errors).forEach((key) => {
 		const messageError = errors[key];
-		const input = loginForm.elements[key];
+		const input = form.elements[key];
 		setErrorText(input, messageError);
 		})
 		return;
@@ -111,7 +111,7 @@ function errorFormHandler(errors, form) {
 }
 
 function sendRequest ({url, method = 'GET', headers, body = null}) {
-	return fetch(BASE_SERVER_PATH + url + '?v=0.0.1.', {
+	return fetch(BASE_SERVER_PATH + url + '?v=0.0.1', {
 		method,
 		headers,
 		body,

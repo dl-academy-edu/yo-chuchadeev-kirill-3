@@ -116,20 +116,20 @@
 				<label class="label" for="change__password__old__input">
 					Old password <span class="star">*</span>
 				</label>
-				<input class="input_text input__email input" type="password" id="change__password__old__input" name="password__old">
+				<input class="input_text input__email input" type="password" id="change__password__old__input" name="oldPassword">
 			</div>
 			<div class="change__password__new">
 				<label class="label" for="change__password__new__input">
 					New password <span class="star">*</span>
 				</label>
-				<input class="input_text input__email input" type="password" id="change__password__new__input" name="password__new">
+				<input class="input_text input__email input" type="password" id="change__password__new__input" name="newPassword">
 			</div>
-			<!-- <div class="change__password__repeat">
+			<div class="change__password__repeat">
 				<label class="label" for="change__password__repeat__input">
 					Repeat new password <span class="star">*</span>
 				</label>
 				<input class="input_text input__password input" type="password" id="change__password__repeat__input" name="password__repeat">
-			</div> -->
+			</div>
 			<button class="btn_white btn_change_password btn_change_password_js" type="submit">Change password</button>
 		</form>
 		<button class="popup__profile__close close_change_password_js" type="submit">
@@ -169,9 +169,9 @@
 				<label class="label" for="input__file">Profile picture</label>
 				<label class="label__file inpit_file input_text" for="input__file">
 					<img src="/img/ico/file-upload.svg" alt="" width="16" height="15">
-					<span>Choose file</span>
+					<span class="input__file__name">Choose file</span>
 				</label>
-				<input class="input__hidden" type="file" name="file" id="input__file">
+				<input class="input__hidden" type="file" name="avatar" id="input__file">
 			</div>
 			<button class="btn_white btn_change_data btn_change_data_js" type="submit">Submit changes</button>
 		</form>

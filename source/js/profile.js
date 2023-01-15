@@ -50,6 +50,7 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 	}
 
 	function getProfile() {
+		showLoader();
 		sendRequest({
 			method: 'GET',
 			url: `/api/users/${localStorage.getItem('userId')}`,
@@ -69,6 +70,7 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 			// 	alert(err[message]);
 			// }
 		})
+		hideLoader();
 	}
 
 
@@ -76,6 +78,7 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 	const changeData = (e) => {
 		e.preventDefault();
 		const data = new FormData(changeDataForm);
+		showLoader();
 		sendRequest({
 			method: 'PUT',
 			url: '/api/users',
@@ -111,6 +114,7 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 		.finally(() => {
 			interactionModal(popupChangeData);
 		})
+		hideLoader();
 	}
 
 	openChangeData.addEventListener('click', () => {
@@ -120,13 +124,13 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 		changeDataForm.location.value = profile.location;
 		changeDataForm.age.value = profile.age;
 		interactionModal(popupChangeData);
-	})
 
 	closeChangeData.addEventListener('click', function() {
 		interactionModal(popupChangeData);
 	})
 
 	popupChangeData.addEventListener('submit', changeData);
+	})
 })();
 
 
@@ -144,15 +148,15 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 		const popupError = document.querySelector('.popup__status__error');
 
 		// validation
-
+		showLoader();
 		sendRequest({
-			method: 'PUT',
 			url: '/api/users',
-			body: data,
+			method: 'PUT',
 			headers: {
 				'x-access-token': localStorage.getItem('token'),
 				'userId': localStorage.getItem('userId'),
-			}
+			},
+			body: data,
 		})
 		.then(res => {
 			if(res.status === 401 || res.status === 403) {
@@ -177,12 +181,13 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 				alert(err._message);
 			}
 			clearErrors(passwordForm);
-			errorFormHandler(err.errors, passwordForm);
+			// errorFormHandler(err.errors, passwordForm);
 		})
 		.finally(() => {
 			interactionModal(popupChangePassword);
 			passwordForm.reset();
 		})
+		hideLoader();
 	}
 
 	openChangePassword.addEventListener('click', function() {
@@ -196,6 +201,8 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 	popupChangePassword.addEventListener('submit', password);
 })();
 
+
+// ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ О СТАТУСАХ ИЗМЕНЕНИЙ ДАННЫХ ПРОФИЛЯ
 function popupStatusOpen(popupStatus) {
 	popupStatus.classList.remove("close");
 	popupStatus.classList.add("open");
@@ -212,4 +219,33 @@ function popupStatusClose(popupStatus) {
 	popupStatus.classList.remove("open");
 	popupStatus.classList.add("close");
 	body.classList.toggle("scroll_block");
+};
+
+
+// ЗАМЕНА ИМЕНИ ИНПУТА НА ИМЯ ФАЙЛА
+(function changeInputName() {
+	const changeDataForm = document.forms.change__data__form;
+
+	if(!changeDataForm) return;
+	const inputFile = changeDataForm.elements.avatar;
+	const inputFileName = document.querySelector(".input__file__name");	
+  
+	inputFile.addEventListener("change", function (e) {
+	  	let fileName = this.files[0].name;
+		const fileNameCorrect = trimFileName(fileName);
+	  	if(fileNameCorrect) {
+			inputFileName.innerHTML = '';
+			inputFileName.innerHTML = fileNameCorrect;
+	  	}
+	});
+})();
+
+function trimFileName(fileName) {
+	let delimiter = fileName.lastIndexOf('.');
+	let extension = fileName.substr(delimiter);
+	let file = fileName.substr(0, delimiter);
+
+	let filenameLen = 10; 
+	return (file.length > filenameLen ? file.substr(0, filenameLen) + "..." : file) + extension;
 }
+// var textWidth = document.getElementById("text").clientWidth;

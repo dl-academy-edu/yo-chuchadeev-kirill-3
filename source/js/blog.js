@@ -66,8 +66,7 @@ if(location.search) {
 
 
 
-
-// Получение блогов
+// ПОЛУЧЕНИЕ ПОСТОВ
 // доп материал 9 лекции
 
 const LIMIT = 5;
@@ -353,41 +352,3 @@ function dateCorrecting (serverDate) {
 	const finalDate = `${dayDate}.${monthDate}.${yearDate}`;
 	return finalDate;
 }
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////
-// filterForm.addEventListner('submit', (e) => {
-// 	e.preventDefault();
-
-// 	let arrayCheckedInput = [];
-
-// 	const addChekedinput = (nameGroupInput, typeParam) => {
-// 		for(checkbox of nameGroupInput) {
-// 			if(checkbox.cheked) {
-// 				arrayCheckedInput.push(`${typeParam}=${checkbox.value}`)
-// 			}
-// 		}
-// 	}
-
-// 	let stringCheckedInput = '';
-
-// 	for([index, activeInput] of arrayCheckedInput.entries()) {
-// 		stringCheckedInput += activeInput;
-
-// 		if(index != arrayCheckedInput.length - 1) {
-// 			stringCheckedInput += '&';
-// 		}
-// 	}
-
-// 	const baseUrl = `${location.origin}${location.pathname}`;
-// 	const newUrl = baseUrl + `?${stringCheckedInput}`;
-	
-// 	location = newUrl;
-// })
