@@ -4,14 +4,15 @@ const isLogin = localStorage.getItem('token');
 const loader = document.querySelector('.loader');
 
 const loginForm = document.forms.login__form;
-const email = loginForm.elements.email;
-const password = loginForm.elements.password;
-// const error = document.querySelector('.popup__error__text');
+// const email = loginForm.elements.email;
+// const password = loginForm.elements.password;
 const btnLogOut = document.querySelector('.btn__logout_js');
 const btnSignIn = document.querySelector('.btn__signin_js');
 const popupLogin = document.querySelector('.popup__login');
 const btnLoginClose = document.querySelector('.login__close_js');
 
+
+const registerForm = document.forms.register__form;
 const btnRegister = document.querySelector('.btn__register_js');
 const popupRegister = document.querySelector('.popup__register');
 const btnRegisterClose = document.querySelector('.register__close_js');
@@ -47,7 +48,7 @@ checkMessage.oninput = function() {
 };
 
 
-//POPUP LOGIN ON/OFF
+// ФОРМА ЛОГИНА И ВАЛИДАЦИЯ
 (function initLogin() {
 	const isLogin = localStorage.getItem('token');
 
@@ -55,11 +56,16 @@ checkMessage.oninput = function() {
 
 	const login = (e) => {
 		e.preventDefault();
+
 		let data = {};
+		let errors = {};
+		let truths = {};
+
 		data.email = loginForm.email.value;
 		data.password = loginForm.password.value;
 
-		// validation
+		clearErrors(loginForm);
+		clearTruths(loginForm);
 
 		sendRequest({
 			method: 'POST',
@@ -71,20 +77,51 @@ checkMessage.oninput = function() {
 		})
 		.then(res => res.json())
 		.then(res => {
+			// if(res._message) {
+			// 	let userError = res._message;
+			// }
 			localStorage.setItem('token', res.data.token);
 			localStorage.setItem('userId', res.data.userId);
 			rerenderLinks();
 			interactionModal(popupLogin);
+			// return res.json();
 		})
 		.catch(err => {
 			if(err._message) {
-				// alert(err._message);
+				alert(err._message);
 			}
-			// clearErrors(loginForm);
-			errorFormHandler(err.errors, loginForm);
+			clearErrors(loginForm);
+			// errorFormHandler(err.errors, loginForm);
 		})
-	}
 
+		if(!isEmailValid(data.email)) {
+			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
+		} else {
+			truths.email = 'Email is correct';
+		}
+		
+		if(data.password.length < 6) {
+			errors.password = 'Please increase your password';
+		} else {
+			truths.password = 'Password is correct';
+		}
+
+		if(Object.keys(truths).length) {
+			Object.keys(truths).forEach((key) => {
+				const messageTrurh = truths[key];
+				const input = loginForm.elements[key];
+				setTruthText(input, messageTrurh);
+			})
+		}	
+		if(Object.keys(errors).length) {
+			Object.keys(errors).forEach((key) => {
+				const messageError = errors[key];
+				const input = loginForm.elements[key];
+				setErrorText(input, messageError);
+			})
+			return;
+		}
+	}
 
 	btnSignIn.addEventListener('click', function() {
 		interactionModal(popupLogin);
@@ -100,6 +137,8 @@ checkMessage.oninput = function() {
 	loginForm.addEventListener('submit', login);
 })();
 
+
+// КНОПКА ВЫХОДА ИЗ ПРОФИЛЯ
 btnLogOut.addEventListener('click', function() {
 	localStorage.removeItem('token');
 	rerenderLinks();
@@ -107,19 +146,156 @@ btnLogOut.addEventListener('click', function() {
 });
 
 
-// POPUP REGISTRATION ON/OFF
-btnRegister.addEventListener('click', function() {
-    popup.classList.toggle("close");
-    popupRegister.classList.toggle("close");
-	body.classList.toggle("scroll_block");
-})
+// ПОПАП РЕГИСТРАЦИИ И ВАЛИДАЦИЯ
+(function registration() {
+	const isLogin = localStorage.getItem('token');
 
-btnRegisterClose.addEventListener('click', function() {
-	popup.classList.toggle("close");
-	popupRegister.classList.toggle("close");
-	document.forms[1].reset();
-	body.classList.toggle("scroll_block");
-})
+	if(isLogin) rerenderLinks();
+
+	const register = (e) => {
+		e.preventDefault();
+
+		let data = {};
+		let errors = {};
+		let truths = {};
+
+		data.email = registerForm.email.value;
+		data.name = registerForm.name.value;
+		data.surname = registerForm.surname.value;
+		data.password = registerForm.password.value;
+		data.repeatPassword = registerForm.repeatPassword.value;
+		data.location = registerForm.location.value;
+		data.age = +registerForm.age.value;
+
+		clearErrors(registerForm);
+		clearTruths(registerForm);
+
+		sendRequest({
+			method: 'POST',
+			url: '/api/users',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			},
+		})
+		.then(res => res.json())
+		.then(res => {
+			// if(res._message) {
+			// 	let userError = res._message;
+			// }
+			localStorage.setItem('token', res.data.token);
+			localStorage.setItem('userId', res.data.userId);
+			rerenderLinks();
+			interactionModal(registerForm);
+			// return res.json();
+		})
+		.catch(err => {
+			if(err._message) {
+				alert(err._message);
+			}
+			// clearErrors(registerForm);
+			// errorFormHandler(err.errors, loginForm);
+		})
+
+		if(!isEmailValid(data.email)) {
+			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
+		} else {
+			truths.email = 'Email is correct';
+		}
+		
+		if(data.password.length < 6) {
+			errors.password = 'Please increase your password';
+		} else {
+			truths.password = 'Password is correct';
+		}
+
+		if(!data.repeatPassword) {
+			errors.repeatPassword = 'Enter your password again';
+		} else {
+			if(data.repeatPassword === data.password) {
+				truths.repeatPassword = 'Passwords match';
+			} else { 
+				errors.repeatPassword = 'Passwords do not match';
+			}
+		}
+		
+		if(data.name.length === 0) {
+			errors.name = 'Укажите имя';
+		} else if(data.name.length < 3) {
+			errors.name = 'Придумай новое имя :)';
+		} else {
+			truths.name = 'Good name';
+		}
+
+		if(!data.surname.length) {
+			errors.surname = 'Укажите фамилию';
+		} else if(data.surname.length < 3) {
+			errors.surname = 'Придумайте новую фамилию :)';
+		} else {
+			truths.surname = 'Good surname';
+		}
+		
+		if(!data.location.length) {
+			errors.location = 'Enter location';
+		} else if(data.location.length <= 3) {
+			errors.location = 'Uncorrect location';
+		} else {
+			truths.location = 'All good';
+		}
+		
+		if(!data.age) {
+			errors.age = 'Enter age';
+		} else if(data.age < 18) {
+			errors.age = 'Wait until you grow up';
+		} else {
+			truths.age = 'All good';
+		}
+		
+		if(Object.keys(truths).length) {
+			Object.keys(truths).forEach((key) => {
+				const messageTrurh = truths[key];
+				const input = registerForm.elements[key];
+				setTruthText(input, messageTrurh);
+			})
+		}	
+		if(Object.keys(errors).length) {
+			Object.keys(errors).forEach((key) => {
+				const messageError = errors[key];
+				const input = registerForm.elements[key];
+				setErrorText(input, messageError);
+			})
+			return;
+		}
+	}
+
+	btnRegister.addEventListener('click', function() {
+		interactionModal(popupRegister);
+	})
+
+	btnRegisterClose.addEventListener('click', function() {
+		interactionModal(popupRegister);
+		registerForm.reset();
+		clearErrors(registerForm);
+		clearTruths(registerForm);
+	})
+
+	registerForm.addEventListener('submit', register);
+})();
+
+// // POPUP REGISTRATION ON/OFF
+// btnRegister.addEventListener('click', function() {
+//     popup.classList.toggle("close");
+//     popupRegister.classList.toggle("close");
+// 	body.classList.toggle("scroll_block");
+// })
+
+// btnRegisterClose.addEventListener('click', function() {
+// 	popup.classList.toggle("close");
+// 	popupRegister.classList.toggle("close");
+// 	document.forms[1].reset();
+// 	body.classList.toggle("scroll_block");
+// })
+
 
 
 //POPUP MESSAGE ON/OFF

@@ -9,16 +9,7 @@ const openChangeData = document.querySelector('.open_change_data_js');
 const closeChangeData = document.querySelector('.close_change_data_js');
 
 
-// const passwordOldForm = document.forms.password__old;
-// const passwordNewForm = document.forms.password__new;
-// const passwordRepeatForm = document.forms.password__repeat;
-// btn_change_data_js
-
-
-
-
 // ПОЛУЧЕНИЕ ДАННЫХ ПРОФИЛЯ И ОТОБРАЖЕНИЕ
-
 (function() {
 	const profileImg = document.querySelector('.profile__avatar');
 	const profileDefaultImg = document.querySelector('.profile__avatar_img');	
@@ -29,7 +20,6 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 	const profileAge = document.querySelector('.profile__age');
 
 	const changeDataForm = document.forms.change__data__form;
-
 
 	let profile = null;
 
@@ -137,33 +127,77 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 // СМЕНА ПАРОЛЯ
 (function changePassword() {
 	const passwordForm = document.forms.change__password__form;
+	const popupSuccess = document.querySelector('.popup__status__success');
+	const popupError = document.querySelector('.popup__status__error');
 
 	const password = (e) => {
 		e.preventDefault();
 		// let data = {};
-		// data.oldPassword = passwordForm.password__old.value;
-		// data.newPassword = passwordForm.password__new.value;
-		const data = new FormData(passwordForm);
-		const popupSuccess = document.querySelector('.popup__status__success');
-		const popupError = document.querySelector('.popup__status__error');
 
-		// validation
+// ВАЛИДАЦИЯ ПАРОЛЕЙ
+		let errors = {};
+		let truths = {};
+
+		clearErrors(passwordForm);
+		clearTruths(passwordForm);
+
+		const data = new FormData(passwordForm);
+
+		const oldPassword = passwordForm.oldPassword.value;
+		const newPassword = passwordForm.newPassword.value;
+		const repeatPassword = passwordForm.repeatPassword.value;
+
+		if(newPassword.length < 6) {
+			errors.newPassword = 'Please increase your password';
+		} else {
+			truths.newPassword = 'All good';
+		}
+
+		if(oldPassword.length < 6) {
+			errors.oldPassword = 'Please increase your password';
+		} else {
+			truths.oldPassword = 'Password is correct';
+		}
+
+		if(newPassword === repeatPassword) {
+			truths.repeatPassword = 'Passwords match';
+		} else { 
+			errors.repeatPassword = 'Passwords do not match';
+		}
+
+		if(Object.keys(truths).length) {
+			Object.keys(truths).forEach((key) => {
+				const messageTrurh = truths[key];
+				const input = passwordForm.elements[key];
+				setTruthText(input, messageTrurh);
+			})
+		}	
+		if(Object.keys(errors).length) {
+			Object.keys(errors).forEach((key) => {
+				const messageError = errors[key];
+				const input = passwordForm.elements[key];
+				setErrorText(input, messageError);
+			})
+			return;
+		}
+
+
+// ОТПРАВКА ПАРОЛЕЙ
 		showLoader();
 		sendRequest({
 			url: '/api/users',
 			method: 'PUT',
+			body: data,
 			headers: {
 				'x-access-token': localStorage.getItem('token'),
 				'userId': localStorage.getItem('userId'),
 			},
-			body: data,
 		})
 		.then(res => {
 			if(res.status === 401 || res.status === 403) {
 				// localStorage.removeItem('token');
 				// localStorage.removeItem('userId');
 				// location.pathname = '/';
-				popupStatusOpen(popupError);
 				return;
 			}
 			return res.json();
@@ -171,12 +205,13 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 		.then(res => {
 			if(res.success) {
 				popupStatusOpen(popupSuccess);
-				renderProfile();
+				// renderProfile();
 			} else {
 				throw res;
 			}
 		})
 		.catch(err => {
+			popupStatusOpen(popupError);
 			if(err._message) {
 				alert(err._message);
 			}
@@ -184,7 +219,7 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 			// errorFormHandler(err.errors, passwordForm);
 		})
 		.finally(() => {
-			interactionModal(popupChangePassword);
+			// interactionModal(popupChangePassword);
 			passwordForm.reset();
 		})
 		hideLoader();
@@ -195,7 +230,10 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 	});
 	
 	closeChangePassword.addEventListener('click', function() {
+		passwordForm.reset();
 		interactionModal(popupChangePassword);
+		clearErrors(passwordForm);
+		clearTruths(passwordForm);
 	});
 
 	popupChangePassword.addEventListener('submit', password);
@@ -204,9 +242,9 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ О СТАТУСАХ ИЗМЕНЕНИЙ ДАННЫХ ПРОФИЛЯ
 function popupStatusOpen(popupStatus) {
-	popupStatus.classList.remove("close");
-	popupStatus.classList.add("open");
-	body.classList.toggle("scroll_block");
+	popupStatus.classList.remove('close');
+	popupStatus.classList.add('open');
+	body.classList.toggle('scroll_block');
 
 	buttonClose = popupStatus.querySelector('button');
 
@@ -216,9 +254,10 @@ function popupStatusOpen(popupStatus) {
 };
 
 function popupStatusClose(popupStatus) {
-	popupStatus.classList.remove("open");
-	popupStatus.classList.add("close");
-	body.classList.toggle("scroll_block");
+	popupStatus.classList.remove('open');
+	popupStatus.classList.add('close');
+	body.classList.toggle('scroll_block');
+	// popup.classList.add('close');
 };
 
 
@@ -249,3 +288,45 @@ function trimFileName(fileName) {
 	return (file.length > filenameLen ? file.substr(0, filenameLen) + "..." : file) + extension;
 }
 // var textWidth = document.getElementById("text").clientWidth;
+
+
+
+
+
+
+
+
+console.log(`userId: `+localStorage.getItem('userId'));
+const btn_delete = document.querySelector('.delete_account_js');
+
+// УДАЛЕНИЕ АККАУНТА
+btn_delete.addEventListener('click', function() {
+	const isLogin = localStorage.getItem('token');
+
+	if(isLogin) rerenderLinks();
+
+	sendRequest({
+		method: 'DELETE',
+		url: '/api/users/:id',
+		body: null,
+		headers: {
+			'x-access-token': localStorage.getItem('token'),
+			'userId': localStorage.getItem('userId'),
+		},
+	})
+	.then(res => res.json())
+	.then(res => {
+		// if(res._message) {
+		// 	let userError = res._message;
+		// }
+		localStorage.removeItem('token', res.data.token);
+		localStorage.removeItem('userId', res.data.userId);
+		rerenderLinks();
+	})
+	.catch(err => {
+	})
+	// .finally(() => {
+	// 	location.pathname = '/';
+	// 	rerenderLinks();
+	// })
+});
