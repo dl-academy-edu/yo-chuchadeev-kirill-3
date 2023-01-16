@@ -21,9 +21,7 @@ const popupMessage = document.querySelector('.popup__message');
 const btnMessageClose = document.querySelector('.message__close_js');
 
 
-//__________________________________________________________________________________________________________________________________//
 //POPUP CHECKBOX
-
 const checkRegister = popup.querySelector('.popup__register__form__checkbox');
 const submitRegister = popup.querySelector('.btn_signup_js');
 submitRegister.setAttribute('disabled', true);
@@ -48,9 +46,8 @@ checkMessage.oninput = function() {
     }
 };
 
-//__________________________________________________________________________________________________________________________________//
-//POPUP LOGIN ON/OFF
 
+//POPUP LOGIN ON/OFF
 (function initLogin() {
 	const isLogin = localStorage.getItem('token');
 
@@ -81,7 +78,7 @@ checkMessage.oninput = function() {
 		})
 		.catch(err => {
 			if(err._message) {
-				alert(err._message);
+				// alert(err._message);
 			}
 			// clearErrors(loginForm);
 			errorFormHandler(err.errors, loginForm);
@@ -97,6 +94,7 @@ checkMessage.oninput = function() {
 		interactionModal(popupLogin);
 		loginForm.reset();
 		clearErrors(loginForm);
+		clearTruths(loginForm);
 	})
 
 	loginForm.addEventListener('submit', login);
@@ -109,9 +107,7 @@ btnLogOut.addEventListener('click', function() {
 });
 
 
-// __________________________________________________________________________________________________________________________________//
 // POPUP REGISTRATION ON/OFF
-
 btnRegister.addEventListener('click', function() {
     popup.classList.toggle("close");
     popupRegister.classList.toggle("close");
@@ -126,9 +122,7 @@ btnRegisterClose.addEventListener('click', function() {
 })
 
 
-//__________________________________________________________________________________________________________________________________//
 //POPUP MESSAGE ON/OFF
-
 btnSendMessage.addEventListener('click', function() {
 	interactionModal(popupMessage);
 })
@@ -139,9 +133,7 @@ btnMessageClose.addEventListener('click', function() {
 })
 
 
-//__________________________________________________________________________________________________________________________________//
 // RERENDERS HEADER LINKS
-
 function rerenderLinks() {
 	const isLogin = localStorage.getItem('token');
 	const btnSignIn = document.querySelector('.btn__signin_js');
@@ -165,9 +157,8 @@ function rerenderLinks() {
 	}
 }
 
-//__________________________________________________________________________________________________________________________________//
-// LOADER ON/OFF
 
+// LOADER ON/OFF
 const showLoader = () => {
 	loader.classList.remove('close');
 	popup.classList.remove('close');

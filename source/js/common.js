@@ -1,9 +1,7 @@
 const BASE_SERVER_PATH = 'https://academy.directlinedev.com';
 
 
-//__________________________________________________________________________________________________________________________________//
-// CREATE ERRORS AND RIGHTS FOR VALIDATION
-
+// CREATE ERRORS
 const errorCreator = (message) => {
 	let messageErrorDiv = document.createElement('div');
 	messageErrorDiv.classList.add('popup__error__text'); // .invalid-feedback
@@ -22,20 +20,42 @@ const setErrorText = (input, errorMessage) => {
 }
 
 
-//__________________________________________________________________________________________________________________________________//
-// CLEAR ERRORS
+// CREATE TRUTHS
+const truthCreator = (message) => {
+	let messageTruthDiv = document.createElement('div');
+	messageTruthDiv.classList.add('popup__truth__text'); 
+	messageTruthDiv.innerText = message;
+	return messageTruthDiv;
+}
 
-function clearErrors(element) {
-	const messages = element.querySelectorAll('.popup__error__text'); // .invalid-feedback-js
-	const invalids = element.querySelectorAll('.popup__error__input'); // .is-invalid
-	messages.forEach(message => message.remove());
-	invalids.forEach(invalid => invalid.classList.remove('popup__error__input')); // .is-invalid
+const setTruthText = (input, truthMessage) => {
+	const truth = truthCreator(truthMessage);
+	input.classList.add('popup__truth__input'); 
+	input.insertAdjacentElement('afterend', truth);
+	input.addEventListener('input', () => {
+		truth.remove();
+		input.classList.remove('popup__truth__input'); 
+	})
 }
 
 
-//__________________________________________________________________________________________________________________________________//
-// OPEN/CLOSE POPUP
+// CLEAR ERRORS AND TRUTHS
+function clearErrors(element) {
+	const messageError = element.querySelectorAll('.popup__error__text'); // .invalid-feedback-js
+	const inputError = element.querySelectorAll('.popup__error__input'); // .is-invalid
+	messageError.forEach(message => message.remove());
+	inputError.forEach(invalid => invalid.classList.remove('popup__error__input')); // .is-invalid
+}
 
+function clearTruths(element) {
+	const messageTruth = element.querySelectorAll('.popup__truth__text'); // .invalid-feedback-js
+	const inputTruth = element.querySelectorAll('.popup__truth__input'); // .is-invalid
+	messageTruth.forEach(message => message.remove());
+	inputTruth.forEach(invalid => invalid.classList.remove('popup__truth__input')); // .is-invalid
+}
+
+
+// OPEN / CLOSE POPUP
 function interactionModal(modal) {
 	popup.classList.toggle("close");
 	modal.classList.toggle("close");
@@ -43,9 +63,7 @@ function interactionModal(modal) {
 }
 
 
-//__________________________________________________________________________________________________________________________________//
 // LOGIN FORM VALIDATION
-
 const isEmailValid = (email) => {
 	return email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i)
 }
@@ -62,38 +80,41 @@ const isEmailValid = (email) => {
 			email: email.value,
 			password: password.value,
 		}
-		
+
 		let errors = {};
+		let truths = {};
+
+		clearErrors(loginForm);
+		clearTruths(loginForm);
 
 		if(!isEmailValid(data.email)) {
 			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
-			console.log(errors.email);
 		} else {
-			email.style.border = `2.5px solid #03BC3C`;
+			truths.email = 'Email is correct';
 		}
 		
 		if(data.password.length < 6) {
 			errors.password = 'Please increase your password';
-			console.log(errors.password);
 		} else {
-			password.style.border = `2.5px solid #03BC3C`;
+			truths.password = 'Password is correct';
 		}
 
-		if(document.querySelector('.popup__error__text')) {
-			error.remove();
-		}
 
-		if(!Object.keys(errors).length) {
-			console.log('all good');
-		} else {
-			console.log('error');
+		if(Object.keys(truths).length) {
+			Object.keys(truths).forEach((key) => {
+				const messageTrurh = truths[key];
+				const input = loginForm.elements[key];
+				setTruthText(input, messageTrurh);
+			})
+		}	
+		if(Object.keys(errors).length) {
 			Object.keys(errors).forEach((key) => {
 				const messageError = errors[key];
 				const input = loginForm.elements[key];
 				setErrorText(input, messageError);
 			})
 			return;
-		}
+		}	
 	})
 })();
 
@@ -117,6 +138,7 @@ function sendRequest ({url, method = 'GET', headers, body = null}) {
 		body,
 	})
 }
+
 
 
 //__________________________________________________________________________________________________________________________________//
