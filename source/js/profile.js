@@ -1,15 +1,21 @@
 // PROFILE
 // const popupProfile = document.querySelector('.popup__profile');
-
 const popupChangePassword = document.querySelector('.popup__change__password');
 const openChangePassword = document.querySelector('.open_change_password_js');
 const closeChangePassword = document.querySelector('.close_change_password_js');
 const popupChangeData = document.querySelector('.popup__change__data');
 const openChangeData = document.querySelector('.open_change_data_js');
 const closeChangeData = document.querySelector('.close_change_data_js');
+console.log(`userId: `+localStorage.getItem('userId'));
+
+const passwordForm = document.forms.change__password__form;
+const popupSuccess = document.querySelector('.popup__status__success');
+const popupError = document.querySelector('.popup__status__error');
+
+const btn_delete = document.querySelector('.delete_account_js');
 
 
-// ПОЛУЧЕНИЕ ДАННЫХ ПРОФИЛЯ И ОТОБРАЖЕНИЕ
+// ФОРМА СМЕНА ДАННЫХ ПРОФИЛЯ И ОТОБРАЖЕНИЕ
 (function() {
 	const profileImg = document.querySelector('.profile__avatar');
 	const profileDefaultImg = document.querySelector('.profile__avatar_img');	
@@ -114,21 +120,19 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 		changeDataForm.location.value = profile.location;
 		changeDataForm.age.value = profile.age;
 		interactionModal(popupChangeData);
+		closeESC(popupChangeData);
+	});
 
 	closeChangeData.addEventListener('click', function() {
 		interactionModal(popupChangeData);
-	})
+	});
 
 	popupChangeData.addEventListener('submit', changeData);
-	})
 })();
 
 
-// СМЕНА ПАРОЛЯ
+// ФОРМА СМЕНА ПАРОЛЯ
 (function changePassword() {
-	const passwordForm = document.forms.change__password__form;
-	const popupSuccess = document.querySelector('.popup__status__success');
-	const popupError = document.querySelector('.popup__status__error');
 
 	const password = (e) => {
 		e.preventDefault();
@@ -227,6 +231,7 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 
 	openChangePassword.addEventListener('click', function() {
 		interactionModal(popupChangePassword);
+		closeESC(popupChangePassword);
 	});
 	
 	closeChangePassword.addEventListener('click', function() {
@@ -238,27 +243,6 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 
 	popupChangePassword.addEventListener('submit', password);
 })();
-
-
-// ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ О СТАТУСАХ ИЗМЕНЕНИЙ ДАННЫХ ПРОФИЛЯ
-function popupStatusOpen(popupStatus) {
-	popupStatus.classList.remove('close');
-	popupStatus.classList.add('open');
-	body.classList.toggle('scroll_block');
-
-	buttonClose = popupStatus.querySelector('button');
-
-	buttonClose.addEventListener('click', () => {
-		popupStatusClose(popupStatus);
-	})
-};
-
-function popupStatusClose(popupStatus) {
-	popupStatus.classList.remove('open');
-	popupStatus.classList.add('close');
-	body.classList.toggle('scroll_block');
-	// popup.classList.add('close');
-};
 
 
 // ЗАМЕНА ИМЕНИ ИНПУТА НА ИМЯ ФАЙЛА
@@ -279,6 +263,8 @@ function popupStatusClose(popupStatus) {
 	});
 })();
 
+
+// ОБРЕЗКА ИМЕНИ ФАЙЛА
 function trimFileName(fileName) {
 	let delimiter = fileName.lastIndexOf('.');
 	let extension = fileName.substr(delimiter);
@@ -286,18 +272,9 @@ function trimFileName(fileName) {
 
 	let filenameLen = 10; 
 	return (file.length > filenameLen ? file.substr(0, filenameLen) + "..." : file) + extension;
-}
-// var textWidth = document.getElementById("text").clientWidth;
+};
+// var textWidth = document.getElementById("text").clientWidth; // ??????????????????????????????????????
 
-
-
-
-
-
-
-
-console.log(`userId: `+localStorage.getItem('userId'));
-const btn_delete = document.querySelector('.delete_account_js');
 
 // УДАЛЕНИЕ АККАУНТА
 btn_delete.addEventListener('click', function() {

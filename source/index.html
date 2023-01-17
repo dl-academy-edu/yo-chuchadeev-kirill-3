@@ -5,19 +5,19 @@
         <meta name="viewport" content="width=device-width">
         <meta name="google" content="notranslate">
         <meta name="format-detection" content="telephone=no">
-		<link rel="icon" href="./img/ico/no-photo.svg" type="image/svg+xml" class="icon">
+
         <title>Personal site</title>
+
         <meta name="description" content="">
         <meta name="keywords" content="">
+		
+		<link rel="shortcut icon" href="">
+		<link rel="icon" href="./img/ico/no-photo.svg" type="image/svg+xml" class="icon">
 
-        <!-- <script>
-            var docElement = document.documentElement;
-            docElement.className = docElement.className.replace(/\bno-js\b/, '') + ' js';
-        </script> -->
+		<link href="css/style.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 
-        <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css">
-		<link rel="shortcut icon" href="#">
-        <link href="css/style.min.css" rel="stylesheet">
     </head>
     <body class="body" id="body">
         @@include('blocks/header.html')
@@ -116,7 +116,7 @@
 							</ul>
 						</div>
 					</section>
-					<section class="main__portfolio">
+					<!-- <section class="main__portfolio">
 						<h3 class="main__portfolio__title">Portfolio</h3>
 						<div class="portfolio__slider__wrap">
 							<div class="portfolio__slider__content">
@@ -167,7 +167,41 @@
 								<p class="portfolio__slider__info">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
 							</div>
 						</div>
+					</section> -->
+					<section class="main__swiper">
+						<!-- Slider main container -->
+						<div class="swiper portfolio__slider__wrap">
+							<!-- Additional required wrapper -->
+							<div class="swiper-wrapper portfolio__slider__content">
+								<!-- Slides -->
+								<div class="swiper-slide ">
+									<img class="swiper__img" src="/img/picture/porfolio-site-1.jpg" alt="">
+									<div class="portfolio__slider__popup">
+										<a href="/" class="portfolio__slider__link">Learning site for DL Academy courses</a>
+										<p class="portfolio__slider__info">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+									</div>
+								</div>
+								<div class="swiper-slide ">
+									<img class="swiper__img" src="/img/picture/porfolio-site-1.jpg" alt="">
+								</div>
+								<div class="swiper-slide ">
+									<img class="swiper__img" src="/img/picture/porfolio-site-1.jpg" alt="">
+								</div>
+							</div>
+							<!-- If we need pagination -->
+							<div class="swiper-pagination"></div>
+						
+							<!-- If we need navigation buttons -->
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+						
+							<!-- If we need scrollbar -->
+							<div class="swiper-scrollbar"></div>
+						</div>
 					</section>
+					<button class="btn__up close btn__up_js">
+						<img src="img/ico/1492790982-2arrow-up_84181.png" alt="">
+					</button>
 				</div>
 			</div>
         </main>
@@ -177,5 +211,7 @@
         <script src="js/slider.js"></script>
         <script src="js/index.js"></script>
         <script src="js/common.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+		<script src="js/swiper.js"></script>
     </body>
 </html>

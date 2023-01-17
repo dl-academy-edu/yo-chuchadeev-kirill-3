@@ -3,49 +3,25 @@ const popup = document.querySelector('.popup');
 const isLogin = localStorage.getItem('token');
 const loader = document.querySelector('.loader');
 
-const loginForm = document.forms.login__form;
 // const email = loginForm.elements.email;
 // const password = loginForm.elements.password;
-const btnLogOut = document.querySelector('.btn__logout_js');
+const loginForm = document.forms.login__form;
 const btnSignIn = document.querySelector('.btn__signin_js');
 const popupLogin = document.querySelector('.popup__login');
 const btnLoginClose = document.querySelector('.login__close_js');
 
+const btnLogOut = document.querySelector('.btn__logout_js');
 
 const registerForm = document.forms.register__form;
 const btnRegister = document.querySelector('.btn__register_js');
 const popupRegister = document.querySelector('.popup__register');
 const btnRegisterClose = document.querySelector('.register__close_js');
 
-const btnSendMessage = document.querySelector('.btn__message_js');
+const messageForm = document.forms.message__form;
+const openMessage = document.querySelector('.open__message_js');
 const popupMessage = document.querySelector('.popup__message');
-const btnMessageClose = document.querySelector('.message__close_js');
+const closeMessage = document.querySelector('.close__message_js');
 
-
-//POPUP CHECKBOX
-const checkRegister = popup.querySelector('.popup__register__form__checkbox');
-const submitRegister = popup.querySelector('.btn_signup_js');
-submitRegister.setAttribute('disabled', true);
-
-checkRegister.oninput = function() {
-    if (checkRegister.checked) {
-        submitRegister.removeAttribute('disabled');
-    }else{
-        submitRegister.setAttribute('disabled', true);
-    }
-};
-
-const checkMessage = popup.querySelector('.popup__message__form__checkbox');
-const submitMessage = popup.querySelector('.btn_message_js');
-submitMessage.setAttribute('disabled', true);
-
-checkMessage.oninput = function() {
-    if (checkMessage.checked) {
-        submitMessage.removeAttribute('disabled');
-    }else{
-        submitMessage.setAttribute('disabled', true);
-    }
-};
 
 
 // ФОРМА ЛОГИНА И ВАЛИДАЦИЯ
@@ -125,6 +101,7 @@ checkMessage.oninput = function() {
 
 	btnSignIn.addEventListener('click', function() {
 		interactionModal(popupLogin);
+		closeESC(popupLogin);
 	})
 
 	btnLoginClose.addEventListener('click', function() {
@@ -146,7 +123,7 @@ btnLogOut.addEventListener('click', function() {
 });
 
 
-// ПОПАП РЕГИСТРАЦИИ И ВАЛИДАЦИЯ
+// ФОРМА РЕГИСТРАЦИИ И ВАЛИДАЦИЯ
 (function registration() {
 	const isLogin = localStorage.getItem('token');
 
@@ -270,6 +247,19 @@ btnLogOut.addEventListener('click', function() {
 
 	btnRegister.addEventListener('click', function() {
 		interactionModal(popupRegister);
+		closeESC(popupRegister);
+
+		const checkRegister = popup.querySelector('.popup__register__form__checkbox');
+		const submitRegister = popup.querySelector('.btn_signup_js');
+		submitRegister.setAttribute('disabled', true);
+
+		checkRegister.oninput = function() {
+			if (checkRegister.checked) {
+				submitRegister.removeAttribute('disabled');
+			}else{
+				submitRegister.setAttribute('disabled', true);
+			}
+		};
 	})
 
 	btnRegisterClose.addEventListener('click', function() {
@@ -281,32 +271,6 @@ btnLogOut.addEventListener('click', function() {
 
 	registerForm.addEventListener('submit', register);
 })();
-
-// // POPUP REGISTRATION ON/OFF
-// btnRegister.addEventListener('click', function() {
-//     popup.classList.toggle("close");
-//     popupRegister.classList.toggle("close");
-// 	body.classList.toggle("scroll_block");
-// })
-
-// btnRegisterClose.addEventListener('click', function() {
-// 	popup.classList.toggle("close");
-// 	popupRegister.classList.toggle("close");
-// 	document.forms[1].reset();
-// 	body.classList.toggle("scroll_block");
-// })
-
-
-
-//POPUP MESSAGE ON/OFF
-btnSendMessage.addEventListener('click', function() {
-	interactionModal(popupMessage);
-})
-
-btnMessageClose.addEventListener('click', function() {
-	interactionModal(popupMessage);
-	document.forms[2].reset();
-})
 
 
 // RERENDERS HEADER LINKS
@@ -331,16 +295,179 @@ function rerenderLinks() {
 		toProfileButton.classList.add('close');
 		btnLogOut.classList.add('close');
 	}
-}
+};
 
 
-// LOADER ON/OFF
-const showLoader = () => {
+// ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ О СТАТУСАХ ИЗМЕНЕНИЙ ДАННЫХ ПРОФИЛЯ
+function popupStatusOpen(popupStatus) {
+	popupStatus.classList.remove('close');
+	popupStatus.classList.add('open');
+	body.classList.toggle('scroll_block');
+
+	buttonClose = popupStatus.querySelector('button');
+
+	buttonClose.addEventListener('click', () => {
+		popupStatusClose(popupStatus);
+	})
+};
+
+function popupStatusClose(popupStatus) {
+	popup.classList.toggle('close')
+	popupStatus.classList.remove('open');
+	popupStatus.classList.add('close');
+	body.classList.toggle('scroll_block');
+	// popup.classList.add('close');
+};
+
+
+// ФОРМА ОТПРАВКИ СООБЩЕНИЯ
+(function sendMessage() {
+	const popupSuccess = document.querySelector('.popup__status__success');
+	const popupError = document.querySelector('.popup__status__error');
+
+	const message = (e) => {
+		e.preventDefault();
+
+		let data = {};
+		let errors = {};
+		let truths = {};
+
+		data.name = messageForm.name.value;
+		data.email = messageForm.email.value;
+		data.theme = messageForm.theme.value;
+		data.phone = messageForm.phone.value;
+		data.message = messageForm.message.value;
+
+		let newData = {
+			to: messageForm.email.value,
+			body: JSON.stringify(data),
+		};
+
+		clearErrors(messageForm);
+		clearTruths(messageForm);
+
+		if(data.name.length === 0) {
+			errors.name = 'Укажите имя';
+		} else if(data.name.length < 3) {
+			errors.name = 'Придумай новое имя :)';
+		} else {
+			truths.name = 'Good name';
+		}
+		
+		if(data.theme.length < 4) {
+			errors.theme = 'Please enter a subject';
+		} else {
+			truths.theme = 'All good';
+		}
+		
+		if(!isEmailValid(data.email)) {
+			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
+		} else {
+			truths.email = 'Email is correct';
+		}
+
+		if(!data.phone) {
+			errors.phone = 'Enter phone number';
+		} else if(!isNumberValid(data.phone)) {
+			errors.phone = 'Phone number entered incorrectly';
+		} else {
+			truths.phone = 'All good';
+		}
+
+		if(!data.message.length) {
+			errors.message = 'We are waiting for your message';
+		} else if(data.message.length < 15) {
+			errors.message = 'Add something else';
+		} else {
+			truths.message = 'Thank you!';
+		}
+
+		
+		if(Object.keys(truths).length) {
+			Object.keys(truths).forEach((key) => {
+				const messageTrurh = truths[key];
+				const input = messageForm.elements[key];
+				setTruthText(input, messageTrurh);
+			})
+		}	
+		if(Object.keys(errors).length) {
+			Object.keys(errors).forEach((key) => {
+				const messageError = errors[key];
+				const input = messageForm.elements[key];
+				setErrorText(input, messageError);
+			})
+			return;
+		}
+
+		showLoader();
+
+		sendRequest({
+			method: 'POST',
+			url: '/api/emails',
+			body: JSON.stringify(newData),
+			headers: {
+				"Content-Type": "application/json",
+			}
+		})
+		.then(res => res.json())
+		.then(res => {
+			if(res.success) {
+				popupStatusOpen(popupSuccess);
+			} else {
+				throw res;
+			}
+		})
+		.catch(err => {
+			popupStatusOpen(popupError);
+			if(err._message) {
+				alert(err._message);
+			}
+		})
+		.finally(() => {
+			interactionModal(popupMessage);
+			messageForm.reset();
+			clearErrors(messageForm);
+			clearTruths(messageForm);
+		})
+		hideLoader();
+	}
+
+	openMessage.addEventListener('click', function() {
+		interactionModal(popupMessage);
+		closeESC(popupMessage);
+
+		const checkMessage = popup.querySelector('.popup__message__form__checkbox');
+		const submitMessage = popup.querySelector('.btn_message_js'); // кнопка отправки
+
+		submitMessage.setAttribute('disabled', true);
+
+		checkMessage.oninput = function() {
+			if (checkMessage.checked) {
+				submitMessage.removeAttribute('disabled');
+			}else{
+				submitMessage.setAttribute('disabled', true);
+			}
+		};
+	})
+
+	closeMessage.addEventListener('click', function() {
+		interactionModal(popupMessage);
+		messageForm.reset();
+		clearErrors(messageForm);
+		clearTruths(messageForm);
+	})
+
+	messageForm.addEventListener('submit', message);
+})();
+
+
+// ЛОАДЕР
+function showLoader() {
 	loader.classList.remove('close');
 	popup.classList.remove('close');
 }
 
-const hideLoader = () => {
+function hideLoader() {
 	loader.classList.add('close');
 	popup.classList.add('close');
 }

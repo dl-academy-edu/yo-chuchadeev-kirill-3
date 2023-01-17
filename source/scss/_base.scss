@@ -10,10 +10,12 @@
 
 .open {
 	display: flex;
+	transition: .3s;
 }
 
 .close {
 	display: none;
+	transition: .3s;
 }
 
 .star {
@@ -208,5 +210,20 @@ label[type="text"] {
 	}
     100% { 
 		transform: rotate(360deg);
+	}
+}
+
+.btn__up {
+	position: fixed;
+	height: 48px;
+    width: 48px;
+	bottom: 20px;
+	left: 20px;
+	border-radius: 50%;
+	z-index: 4;
+	overflow: hidden;
+	&:hover {
+		box-shadow: 0 0px 20px rgb(0 0 0 / 100%);
+		background-color: rgba(229 229 229 / 50%);
 	}
 }

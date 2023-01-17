@@ -20,7 +20,7 @@ window.addEventListener('resize', () => {
 
 createDots();
 
-//__________________________________________________________________________________________________________________________________//
+
 // Переключения слайдов
 function setActiveSlide (index, withAnimation = true) {
 	if (index < 0 || index >= slidesCount) return;
@@ -52,7 +52,7 @@ function setActiveSlide (index, withAnimation = true) {
 initWidth();
 setActiveSlide(0);
 
-//__________________________________________________________________________________________________________________________________//
+
 // Инициилизируем ширину/адаптация слайдера
 function initWidth () {
 	sliderWidth = wrapper.offsetWidth;
@@ -63,7 +63,7 @@ function initWidth () {
 	});
 }
 
-//__________________________________________________________________________________________________________________________________//
+
 // Кнопки переключения
 buttonNext.addEventListener ('click', () => {
 	setActiveSlide(activeSlideIndex + 1);
@@ -73,7 +73,7 @@ buttonBack.addEventListener ('click', () => {
 	setActiveSlide(activeSlideIndex - 1);
 })
 
-//__________________________________________________________________________________________________________________________________//
+
 // Создаем точки
 function createDots() {
 	for (let i = 0; i < slidesCount; i++) {

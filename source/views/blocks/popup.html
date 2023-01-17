@@ -76,26 +76,26 @@
 			<div class="popup__message__form__input__flex">
 				<div class="popup__message__form__input__wrap">
 					<label class="label" for="input__your_name">What is your name? <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="" id="input__your_name">
+					<input class="input input_text" type="text" name="name" id="input__your_name">
 				</div>
 				<div class="popup__message__form__input__wrap">
 					<label class="label" for="input__repeat_subject">Message subject <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="" id="input__repeat_subject">
+					<input class="input input_text" type="text" name="theme" id="input__repeat_subject">
 				</div>
 			</div>
 			<div class="popup__message__form__input__flex">
 				<div class="popup__message__form__input__wrap">
 					<label class="label" for="input__youremail">Your Email <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="" id="input__youremail">
+					<input class="input input_text" type="text" name="email" id="input__youremail">
 				</div>
 				<div class="popup__message__form__input__wrap">
 					<label class="label" for="input__mobile_phone">Your mobile phone <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="" id="input__mobile_phone">
+					<input class="input input_text" type="text" name="phone" id="input__mobile_phone">
 				</div>
 			</div>
 			<div class="popup__message__form__input__wrap" >
 				<label class="label" for="popup__message__letter">What do you want to discuss with me?</label>
-				<textarea name="" class="popup__message__text__letter input" id="popup__message__letter" cols="30" rows="10" maxlength="300"></textarea>
+				<textarea name="message" class="popup__message__text__letter input" id="popup__message__letter" cols="30" rows="10" maxlength="300"></textarea>
 			</div>
 			<div class="popup__message__form__check">
 				<input class="popup__message__form__checkbox input_text" type="checkbox" id="checkbox__message" name="accept">
@@ -103,7 +103,7 @@
 			</div>
 			<button class="btn_white btn_message btn_message_js" type="submit">Sign up</button>
 		</form>
-		<button class="popup__close message__close_js" type="submit">
+		<button class="popup__close close__message_js" type="submit">
 			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
 				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
@@ -183,4 +183,22 @@
 		</button>
 	</div>
 	<div class="loader close"></div>
+</div>
+<div class="popup__status__success close">
+	<p class="form__success">Form has been sent successfully</p>
+	<button class="popup__status__success__close  popup__status__success__close_js" type="button">
+		<svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+			<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+			<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+		</svg>							
+	</button>
+</div>
+<div class="popup__status__error close">
+	<p class="form__error">The form was sent but the server transmits an error: “The form was sent but the server transmits an error”</p>
+	<button class="popup__status__error__close  popup__status__error__close_js" type="button">
+		<svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+			<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+			<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+		</svg>							
+	</button>
 </div>

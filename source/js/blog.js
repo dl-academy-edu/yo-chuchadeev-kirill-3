@@ -34,7 +34,7 @@ if(location.search) {
 	updateInput(filterForm.limit, 'limit');
 	updateInput(filterForm.sort, 'sort');
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	const url = new URL(location.pathname, location.origin);
 	filterForm.addEventListener('submit', (e) => {
@@ -65,12 +65,9 @@ if(location.search) {
 }
 
 
-
 // ПОЛУЧЕНИЕ ПОСТОВ
 // доп материал 9 лекции
-
 const LIMIT = 5;
-
 (function() {
 	const filterForm = document.forms.blog__filter__form;
 
@@ -100,7 +97,6 @@ const LIMIT = 5;
 		setSearchParams(data);
 	})
 	
-
 	// ПОЛУЧАЕМ ТЕГИ
 	// let xhr = new XMLHttpRequest();
 	// xhr.open('GET', BASE_SERVER_PATH + '/api/tags');
@@ -136,6 +132,7 @@ function getParamsFromLocation() {
 }
 
 
+// ??????????????????????????????
 function setSearchParams(data) {
 	let searchParams = new URLSearchParams();
 
@@ -251,7 +248,6 @@ function getData(params) {
 			links.insertAdjacentHTML('beforeend', '');
 		}
 		hideLoader();
-		buttonPagination(pageCount);
 	}
 }
 
