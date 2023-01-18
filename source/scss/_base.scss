@@ -1,6 +1,9 @@
 .main__full {
 	margin: 40px 0 60px 0;
 	width: 100%;
+	@media screen and (max-width: 602px) {
+		margin: 30px 0 60px 0;
+	}
 }
 
 .scroll_block {
@@ -67,6 +70,9 @@ h3 {
     &:hover {
         color: #070707;
     }
+	@media screen and (max-width: 602px) {
+
+	}
 }
 
 .btn_black {
@@ -225,5 +231,8 @@ label[type="text"] {
 	&:hover {
 		box-shadow: 0 0px 20px rgb(0 0 0 / 100%);
 		background-color: rgba(229 229 229 / 50%);
+	}
+	@media screen and (max-width: 950px) {
+		display: none;		
 	}
 }

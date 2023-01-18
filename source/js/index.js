@@ -312,7 +312,7 @@ function popupStatusOpen(popupStatus) {
 };
 
 function popupStatusClose(popupStatus) {
-	popup.classList.toggle('close')
+	popup.classList.add('close')
 	popupStatus.classList.remove('open');
 	popupStatus.classList.add('close');
 	body.classList.toggle('scroll_block');
@@ -470,4 +470,28 @@ function showLoader() {
 function hideLoader() {
 	loader.classList.add('close');
 	popup.classList.add('close');
+}
+
+
+// МЕНЮ БУРГЕР
+const openMenuBtn = document.querySelector('.open__menu_js');
+const closeMenuBtn = document.querySelector('.close__menu_js');
+const burgerMenu = document.querySelector('.header__content');
+
+openMenuBtn.addEventListener('click', () => {
+	burgerMenu.style.display='flex';
+	closeMenuBtn.classList.remove('close');
+	body.classList.toggle('scroll_block');
+
+	
+	closeMenuBtn.addEventListener('click', () => {
+		setTimeout(closeMenu, 500);
+	})
+});
+
+
+function closeMenu() {
+	burgerMenu.style.display='none';
+	closeMenuBtn.classList.add('close');
+	body.classList.toggle('scroll_block');
 }

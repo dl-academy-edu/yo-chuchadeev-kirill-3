@@ -284,11 +284,11 @@ btn_delete.addEventListener('click', function() {
 
 	sendRequest({
 		method: 'DELETE',
-		url: '/api/users/:id',
-		body: null,
+		url: `/api/users/${localStorage.getItem('id')}`,
 		headers: {
 			'x-access-token': localStorage.getItem('token'),
-			'userId': localStorage.getItem('userId'),
+			'Content-Type': 'application/json',
+			// 'userId': localStorage.getItem('userId'),
 		},
 	})
 	.then(res => res.json())
@@ -298,12 +298,14 @@ btn_delete.addEventListener('click', function() {
 		// }
 		localStorage.removeItem('token', res.data.token);
 		localStorage.removeItem('userId', res.data.userId);
+		location.pathname = '/';
 		rerenderLinks();
 	})
 	.catch(err => {
+		popupStatusOpen(popupError);
 	})
-	// .finally(() => {
-	// 	location.pathname = '/';
-	// 	rerenderLinks();
-	// })
+	.finally(() => {
+		// location.pathname = '/';
+		rerenderLinks();
+	})
 });
