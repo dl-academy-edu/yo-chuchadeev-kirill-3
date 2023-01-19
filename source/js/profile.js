@@ -223,8 +223,10 @@ const btn_delete = document.querySelector('.delete_account_js');
 			// errorFormHandler(err.errors, passwordForm);
 		})
 		.finally(() => {
-			// interactionModal(popupChangePassword);
+			interactionModal(popupChangePassword);
 			passwordForm.reset();
+			clearErrors(passwordForm);
+			clearTruths(passwordForm);
 		})
 		hideLoader();
 	}

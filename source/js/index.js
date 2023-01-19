@@ -300,22 +300,24 @@ function rerenderLinks() {
 
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ О СТАТУСАХ ИЗМЕНЕНИЙ ДАННЫХ ПРОФИЛЯ
 function popupStatusOpen(popupStatus) {
+	// popupStatus.classList.add('open');
+	body.classList.add('scroll_block');
+	popup.classList.remove('close');
 	popupStatus.classList.remove('close');
-	popupStatus.classList.add('open');
-	body.classList.toggle('scroll_block');
+
 
 	buttonClose = popupStatus.querySelector('button');
-
 	buttonClose.addEventListener('click', () => {
 		popupStatusClose(popupStatus);
 	})
+	// setTimeout(popupStatusClose(popupStatus), 2000); // не работает
 };
 
 function popupStatusClose(popupStatus) {
-	popup.classList.add('close')
-	popupStatus.classList.remove('open');
 	popupStatus.classList.add('close');
-	body.classList.toggle('scroll_block');
+	popup.classList.add('close');
+	body.classList.remove('scroll_block');
+	// popupStatus.classList.remove('open');
 	// popup.classList.add('close');
 };
 
@@ -465,12 +467,12 @@ function popupStatusClose(popupStatus) {
 function showLoader() {
 	loader.classList.remove('close');
 	popup.classList.remove('close');
-}
+};
 
 function hideLoader() {
 	loader.classList.add('close');
 	popup.classList.add('close');
-}
+};
 
 
 // МЕНЮ БУРГЕР
@@ -479,19 +481,20 @@ const closeMenuBtn = document.querySelector('.close__menu_js');
 const burgerMenu = document.querySelector('.header__content');
 
 openMenuBtn.addEventListener('click', () => {
-	burgerMenu.style.display='flex';
+	// burgerMenu.style.display='flex';
+	burgerMenu.classList.add('open');
 	closeMenuBtn.classList.remove('close');
-	body.classList.toggle('scroll_block');
+	body.classList.add('scroll_block');
 
 	
 	closeMenuBtn.addEventListener('click', () => {
 		setTimeout(closeMenu, 500);
-	})
+	});
 });
 
-
 function closeMenu() {
-	burgerMenu.style.display='none';
+	// burgerMenu.style.display='none';
+	burgerMenu.classList.remove('open');
 	closeMenuBtn.classList.add('close');
-	body.classList.toggle('scroll_block');
-}
+	body.classList.remove('scroll_block');
+};

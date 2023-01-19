@@ -23,6 +23,15 @@
   block-name__element-name--modificator
 */
 
+.open {
+	display: flex;
+	transition: .3s;
+}
+
+.close {
+	display: none;
+	transition: .3s;
+}
 // Style for index.html
 
 .main__content, .blog__content, .profile__content {
@@ -723,10 +732,24 @@
 	margin: 0;
 }
 
+.profile__title {
+	@media screen and (max-width: 370px) {
+		max-width: 205px;
+	}
+}
+
 .profile__data {
 	margin-top: 40px;
 	display: flex;
 	gap: 105px;
+	transition: .3s;
+	@media screen and (max-width: 800px) {
+		gap: 76px;
+	}
+	@media screen and (max-width: 728px) {
+		flex-direction: column;
+		gap: 40px;
+	}
 }
 
 .profile__avatar {
@@ -739,6 +762,10 @@
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 	background-size: contain;
 	background-position: center;
+	transition: .3s;
+	@media screen and (max-width: 800px) {
+		width: 314px;
+	}
 }
 
 .profile__avatar_img {
@@ -806,43 +833,9 @@
 	width: 100%;
 }
 
-.change__data__avatar {
-	display: block;
-	max-width: 290px;
-}
 
-.inpit_file {
-	margin-top: 6px;
-	width: 100%;
-    border: 2.5px solid #e5e5e5;
-    box-sizing: border-box;
-    color: #070707;
-    display: flex;
-    font-family: Gilroy;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    height: 50px;
-    line-height: 21px;
-    padding: 14px;
-	overflow: hidden;
-}
 
-.input__hidden {
-	width: 0.1px;
-	height: 0.1px;
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-	overflow: hidden;
-}
 
-.label__file {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	cursor: pointer;
-}
 
 .btn_change_data {
 	max-width: 173px;

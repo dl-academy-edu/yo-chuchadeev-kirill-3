@@ -1,17 +1,17 @@
 <div class="popup close">
 	<div class="popup__login close">
-		<form class="popup__login__form" name="login__form" action="">
+		<form novalidate class="popup__login__form" name="login__form" action="">
 			<div class="popup__login__email">
 				<label class="label label__email" for="login__email__input">
 					Email <span class="star">*</span>
 				</label>
-				<input class="popup__login__form__input__email input_text" type="text" id="login__email__input" name="email">
+				<input required class="popup__login__form__input__email input_text" type="text" id="login__email__input" name="email">
 			</div>
 			<div class="popup__login__password">
 				<label class="label label__password" for="login__password__input">
 					Password <span class="star">*</span>
 				</label>
-				<input class="popup__login__form__input__password input_text" type="password" id="login__password__input" name="password">
+				<input required class="popup__login__form__input__password input_text" type="password" id="login__password__input" name="password">
 			</div>
 			<button class="popup__login__form__button btn_white" type="submit">Log in</button>
 		</form>
@@ -23,39 +23,39 @@
 		</button>
 	</div>
 	<div class="popup__register close">
-		<form class="popup__register__form" name="register__form" action="">
+		<form novalidate class="popup__register__form" name="register__form" action="">
 			<div class="popup__register__form__input__wrap">
 				<label class="label" for="input__email">Email <span class="star">*</span></label>
-				<input class="input input_text" type="text" name="email" id="register__email__input">
+				<input required class="input input_text" type="text" name="email" id="register__email__input">
 			</div>
 			<div class="popup__register__form__input__flex">
 				<div class="popup__register__form__input__wrap">
 					<label class="label" for="input__name">Name <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="name" id="input__name">
+					<input required class="input input_text" type="text" name="name" id="input__name">
 				</div>
 				<div class="popup__register__form__input__wrap">
 					<label class="label" for="input__surname">Surname <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="surname" id="input__surname">
+					<input required class="input input_text" type="text" name="surname" id="input__surname">
 				</div>
 			</div>
 			<div class="popup__register__form__input__flex">
 				<div class="popup__register__form__input__wrap">
 					<label class="label" for="input__password">Password <span class="star">*</span></label>
-					<input class="input input_text" type="password" name="password" id="password__email__input">
+					<input required class="input input_text" type="password" name="password" id="password__email__input">
 				</div>
 				<div class="popup__register__form__input__wrap">
 					<label class="label" for="input__repeat_password">Repeat password <span class="star">*</span></label>
-					<input class="input input_text" type="password" name="repeatPassword" id="input__repeat_password">
+					<input required class="input input_text" type="password" name="repeatPassword" id="input__repeat_password">
 				</div>
 			</div>
 			<div class="popup__register__form__input__flex">
 				<div class="popup__register__form__input__wrap">
 					<label class="label" for="input__location">Location <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="location" id="input__location">
+					<input required class="input input_text" type="text" name="location" id="input__location">
 				</div>
 				<div class="popup__register__form__input__wrap">
 					<label class="label" for="input__age">Age <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="age" id="input__age">
+					<input required class="input input_text" type="text" name="age" id="input__age">
 				</div>
 			</div>
 			<div class="popup__register__form__check">
@@ -72,25 +72,25 @@
 		</button>
 	</div>
 	<div class="popup__message close">
-		<form class="popup__message__form" name="message__form" action="">
+		<form novalidate class="popup__message__form" name="message__form" action="">
 			<div class="popup__message__form__input__flex">
 				<div class="popup__message__form__input__wrap">
 					<label class="label" for="input__your_name">What is your name? <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="name" id="input__your_name">
+					<input required class="input input_text" type="text" name="name" id="input__your_name">
 				</div>
 				<div class="popup__message__form__input__wrap">
 					<label class="label" for="input__repeat_subject">Message subject <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="theme" id="input__repeat_subject">
+					<input required class="input input_text" type="text" name="theme" id="input__repeat_subject">
 				</div>
 			</div>
 			<div class="popup__message__form__input__flex">
 				<div class="popup__message__form__input__wrap">
 					<label class="label" for="input__youremail">Your Email <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="email" id="input__youremail">
+					<input required class="input input_text" type="text" name="email" id="input__youremail">
 				</div>
 				<div class="popup__message__form__input__wrap">
 					<label class="label" for="input__mobile_phone">Your mobile phone <span class="star">*</span></label>
-					<input class="input input_text" type="text" name="phone" id="input__mobile_phone">
+					<input required class="input input_text" type="text" name="phone" id="input__mobile_phone">
 				</div>
 			</div>
 			<div class="popup__message__form__input__wrap" >
@@ -111,24 +111,24 @@
 		</button>
 	</div>
 	<div class="popup__change__password close">
-		<form class="change__password__form" name="change__password__form" action="">
+		<form novalidate class="change__password__form" name="change__password__form" action="">
 			<div class="change__password__old">
 				<label class="label" for="change__password__old__input">
 					Old password <span class="star">*</span>
 				</label>
-				<input class="input_text input__email input" type="password" id="change__password__old__input" name="oldPassword">
+				<input required class="input_text input__email input" type="password" id="change__password__old__input" name="oldPassword">
 			</div>
 			<div class="change__password__new">
 				<label class="label" for="change__password__new__input">
 					New password <span class="star">*</span>
 				</label>
-				<input class="input_text input__email input" type="password" id="change__password__new__input" name="newPassword">
+				<input required class="input_text input__email input" type="password" id="change__password__new__input" name="newPassword">
 			</div>
 			<div class="change__password__repeat">
 				<label class="label" for="change__password__repeat__input">
 					Repeat new password <span class="star">*</span>
 				</label>
-				<input class="input_text input__password input" type="password" id="change__password__repeat__input" name="repeatPassword">
+				<input required class="input_text input__password input" type="password" id="change__password__repeat__input" name="repeatPassword">
 			</div>
 			<button class="btn_white btn_change_password btn_change_password_js" type="submit">Change password</button>
 		</form>

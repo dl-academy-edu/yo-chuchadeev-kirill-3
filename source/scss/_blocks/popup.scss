@@ -79,12 +79,19 @@
 	top: -2.5px;
 	right: -40px;
 	height: 26px;
+	transition: .3s;
 	& svg {
 		fill:#828282;
 		&:hover, :focus {
 			fill: #070707;
 		}
 	}
+	@media screen and (max-width: 800px) {
+		top: 20px;
+		left: 20px;
+		right: auto;
+	}
+
 }
 
 .popup__register,
@@ -96,12 +103,21 @@
 	background: #FFFFFF;
 	border: 2.5px solid #070707;
 	position: fixed;
-	top: 0;
-	left: 0;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 5;
+	@media screen and (max-width: 740px) {
+		border: none;
+		// margin-top: 65px;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transform: none;
+		top: auto;
+		left: auto;
+		overflow-y: auto;
+	}
 }
 
 .popup__register__form,
@@ -114,6 +130,53 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	gap: 20px;
+	@media screen and (max-width: 740px) {
+		padding: 65px 20px;
+		height: auto;
+	}
+}
+
+.change__data__avatar {
+	display: block;
+	// max-width: 290px;
+	max-width: 48.4%;
+	@media screen and (max-width: 600px) {
+		max-width: 100%;
+	}
+}
+
+.inpit_file {
+	margin-top: 6px;
+	width: 100%;
+    border: 2.5px solid #e5e5e5;
+    box-sizing: border-box;
+    color: #070707;
+    display: flex;
+    font-family: Gilroy;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    height: 50px;
+    line-height: 21px;
+    padding: 14px;
+	overflow: hidden;
+	
+}
+
+.input__hidden {
+	width: 0.1px;
+	height: 0.1px;
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.label__file {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
 }
 
 .popup__register__form__input__wrap, 
@@ -128,6 +191,9 @@
 .popup__message__form__input__flex {
 	display: flex;
 	gap: 20px;
+	@media screen and (max-width: 600px) {
+		flex-direction: column;
+	}
 }
 
 .popup__register__form__check {
@@ -151,6 +217,7 @@
 .popup__register__form__check_text {
 	cursor: pointer;
 	position: relative;
+	margin-left: 34px;
 	display: flex;
 	align-items: center;
 	font-size: 14px;
@@ -160,6 +227,7 @@
 	box-sizing: border-box;
 	color: #E5E5E5;
 	transition: .3s;
+	min-height: 19px;
 	&:hover {
 		color: #828282;
 		transition: .3s;
@@ -175,15 +243,18 @@
 		border: 2px solid #E5E5E5;
 		border-radius: 3px;
 		background-color: #FFFFFF;
-		margin-right: 15px;
+		// margin-right: 15px;
 		transition: .3s;
+		position: absolute;
+		left: -34px;
+		top: 0;
 	}
 	&::after {
 		content: " ";
 		display: block;
 		position: absolute;
-		top: 1px;
-		left: 3px;
+		top: 0;
+		left: -31px;
 		width: 14px;
 		height: 14px;
 		background: url(/img/ico/checkBlack.svg) no-repeat;
@@ -316,6 +387,7 @@
 
 .popup__status__success, 
 .popup__status__error {
+	display: flex;
     position: fixed;
     top: 0;
     left: 0;
