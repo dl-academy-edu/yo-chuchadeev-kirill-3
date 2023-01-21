@@ -83,6 +83,11 @@ h3 {
 		color: #070707;
 		transition: .3s;
     }
+	&:focus-visible {
+		box-shadow: 0 0px 20px rgb(0 0 0 / 100%);
+		outline: none;
+		border: 2.5px solid #6a008a;
+	}
 }
 
 .btn_white {
@@ -110,6 +115,11 @@ h3 {
         cursor: default;
 		background: #FFFFFF;
     }
+	&:focus-visible {
+		box-shadow: 0 0px 20px rgb(0 0 0 / 100%);
+		outline: none;
+		border: 2.5px solid #6a008a;
+	}
 }
 
 .text__main {
@@ -221,6 +231,11 @@ label[type="text"] {
 	&:hover {
 		box-shadow: 0 0px 20px rgb(0 0 0 / 100%);
 		background-color: rgba(229 229 229 / 50%);
+	}
+	&:focus-visible {
+		box-shadow: 0 0px 20px rgb(0 0 0 / 100%);
+		background-color: rgba(229 229 229 / 50%);
+		outline: none;
 	}
 	@media screen and (max-width: 950px) {
 		display: none;		

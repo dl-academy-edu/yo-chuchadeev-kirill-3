@@ -47,7 +47,7 @@ function setActiveSlide (index, withAnimation = true) {
 	dots[activeSlideIndex].classList.remove('slider__dot__active');
 	dots[index].classList.add('slider__dot__active');
 	activeSlideIndex = index;
-}
+};
 
 initWidth();
 setActiveSlide(0);
@@ -61,17 +61,17 @@ function initWidth () {
 	slides.forEach(slide => {
 		slide.style.width = `${sliderWidth}px`;
 	});
-}
+};
 
 
 // Кнопки переключения
 buttonNext.addEventListener ('click', () => {
 	setActiveSlide(activeSlideIndex + 1);
-})
+});
 
 buttonBack.addEventListener ('click', () => {
 	setActiveSlide(activeSlideIndex - 1);
-})
+});
 
 
 // Создаем точки
@@ -81,7 +81,7 @@ function createDots() {
 		dots.push(dot);
 		pagination.insertAdjacentElement('beforeend', dot);
 	}
-}
+};
 
 function createDot(index) {
 	const dot = document.createElement('button');
@@ -96,4 +96,4 @@ function createDot(index) {
 	})
 
 	return dot;
-}
+};

@@ -69,19 +69,19 @@ function closeESC(modal) {
 			body.classList.remove('scroll_block');
 		}
 	});
-}
+};
 
 
 // ВАЛИДАЦИЯ ЕМЕИЛА
 function isEmailValid(email) {
 	return email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
-}
+};
 
 
 // ВАЛИДАЦИЯ НОМЕРА ТЕЛЕФОНА
 function isNumberValid(phone) {
 	return phone.match(/^\d[\d\(\)\ -]{4,14}\d$/);
-}
+};
 
 
 // ?????????????????????????????????????????

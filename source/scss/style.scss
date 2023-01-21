@@ -34,6 +34,13 @@
 }
 // Style for index.html
 
+.tab {
+	&:focus-visible {
+		color: #6a008a;
+		outline: none;
+	}
+}
+
 .main__content, .blog__content, .profile__content {
 	margin: 0 60px;
 	@media screen and (max-width: 602px) {
@@ -105,6 +112,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	object-fit: cover;
+	background-color: #E5E5E5;
 }
 
 .slider__controls{
@@ -117,6 +125,8 @@
 .slider__next, .slider__back, .blog__page__next, .blog__page__back {
 	width: 42px;
 	height: 42px;
+	border-radius: 50%;
+	overflow: hidden;
 	&:hover {
 		opacity: 0.6;
 	}
@@ -124,6 +134,13 @@
 		opacity: 0.2;
 		cursor: no-drop;
 	}
+	&:focus-visible {
+		border: none;
+		outline: none;
+		box-shadow: 0 0px 20px rgb(0 0 0 / 100%);
+		background-color: rgba(229 229 229 / 50%);
+	}
+
 }
 
 .slider__pagination {
@@ -142,6 +159,10 @@
 	}
 	&__active {
 		background: #070707;
+	}
+	&:focus-visible {
+		background: #828282;
+		outline: none;
 	}
 }
 
@@ -346,6 +367,7 @@
 .swiper__img {
 	width: 100%;
 	height: auto;
+	background-color: #E5E5E5;
 }
 
 .portfolio__slider__button_left {
@@ -435,7 +457,7 @@
 .filter__tags {
 	display: flex;
 	flex-direction: column;
-	@media screen and (max-width: 955px) {
+	@media screen and (max-width: 972px) {
 		order: 2;
 		// margin-right: 50px;
 	}
@@ -512,6 +534,7 @@
 		box-sizing: border-box;
 		transition: .1s linear;	
 	}
+
 }
 
 .checkbox__custom__black {
@@ -560,6 +583,18 @@
 .checkbox__stock__6A7FDB:checked + .checkbox__custom__6A7FDB::after,
 .checkbox__stock__45CB85:checked + .checkbox__custom__45CB85::after {
     opacity: 1;
+}
+
+.checkbox__stock__2176FF:focus-visible + .checkbox__custom__2176FF::before,
+.checkbox__stock__33A1FD:focus-visible + .checkbox__custom__33A1FD::before,
+.checkbox__stock__FDCA40:focus-visible + .checkbox__custom__FDCA40::before,
+.checkbox__stock__57E2E5:focus-visible + .checkbox__custom__57E2E5::before,
+.checkbox__stock__F79824:focus-visible + .checkbox__custom__F79824::before,
+.checkbox__stock__E08DAC:focus-visible + .checkbox__custom__E08DAC::before,
+.checkbox__stock__6A7FDB:focus-visible + .checkbox__custom__6A7FDB::before,
+.checkbox__stock__45CB85:focus-visible + .checkbox__custom__45CB85::before {
+	outline: none;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 1);
 }
 
 .checkbox__custom__2176FF {
@@ -723,6 +758,47 @@
 	transition: .3s;
 }
 
+#filter__views__100500:focus-visible + .filter__views__radio::after,
+#filter__views__5001000:focus-visible + .filter__views__radio::after,
+#filter__views__10002000:focus-visible + .filter__views__radio::after,
+#filter__show_5:focus-visible + .filter__show_5::after,
+#filter__show_10:focus-visible + .filter__show_10::after,
+#filter__sort_data:focus-visible + .filter__sort_data::after,
+#filter__sort_title:focus-visible + .filter__sort_title::after,
+#filter__sort_views:focus-visible + .filter__sort_views::after {
+	background: #828282;
+	transition: .3s;
+}
+
+#filter__views__100500:focus-visible + .filter__views__radio::before,
+#filter__views__5001000:focus-visible + .filter__views__radio::before,
+#filter__views__10002000:focus-visible + .filter__views__radio::before,
+#filter__show_5:focus-visible + .filter__show_5::before,
+#filter__show_10:focus-visible + .filter__show_10::before,
+#filter__sort_data:focus-visible + .filter__sort_data::before,
+#filter__sort_title:focus-visible + .filter__sort_title::before,
+#filter__shfilter__sort_viewsow_10:focus-visible + .filter__sort_views::before {
+	border: 2.5px solid #828282;
+	transition: .3s;
+	outline: none;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 1);
+}
+
+#filter__input__comment_0:focus-visible + .filter__input__comment_0::before,
+#filter__input__comment_01:focus-visible + .filter__input__comment_01::before,
+#filter__input__comment_150:focus-visible + .filter__input__comment_150::before {
+	outline: none;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 1);
+	border: 2.5px solid #070707;
+}
+
+
+
+
+
+
+
+
 .filter__comments {
 	display: flex;
 	flex-direction: column;
@@ -749,7 +825,7 @@
 		// order: 2;
 		// margin-top: 10px;
 	}
-	@media screen and (max-width: 790px) {
+	@media screen and (max-width: 808px) {
 		// margin-left: 0px;
 		order: 2;
 		margin-top: 10px;
@@ -913,6 +989,10 @@
 
 .card__picture {
 	display: flex;
+}
+
+.card__img {
+	background-color: #E5E5E5;
 }
 
 .card__info {

@@ -308,12 +308,13 @@ function popupStatusOpen(popupStatus) {
 	// popup.classList.remove('close');
 	popupStatus.classList.remove('close');
 
+	setTimeout(popupStatusCloseAll, 2000);
 
 	buttonClose = popupStatus.querySelector('button');
 	buttonClose.addEventListener('click', () => {
 		popupStatusClose(popupStatus);
 	})
-	setTimeout(popupStatusClose(popupStatus), 2000); // не работает
+	// setTimeout(popupStatusClose(popupStatus), 2000); // не работает если указывать аргумент()
 };
 
 function popupStatusClose(popupStatus) {
@@ -323,7 +324,12 @@ function popupStatusClose(popupStatus) {
 	// popupStatus.classList.remove('open');
 	// popup.classList.add('close');
 };
-
+function popupStatusCloseAll() {
+	popupSuccess.classList.add('close');
+	popupError.classList.add('close');
+	popup.classList.add('close');
+	body.classList.remove('scroll_block');
+}
 
 // ФОРМА ОТПРАВКИ СООБЩЕНИЯ
 (function sendMessage() {

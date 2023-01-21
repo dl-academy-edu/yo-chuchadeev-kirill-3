@@ -62,7 +62,7 @@ if(location.search) {
 
 		history.replaceState(null, '', url);
 	})
-}
+};
 
 
 // ПОЛУЧЕНИЕ ПОСТОВ
@@ -129,7 +129,7 @@ function getParamsFromLocation() {
 		search: searchParams.get('search') || null,
 		page: +searchParams.get('page') || 0,
 	};
-}
+};
 
 
 // ??????????????????????????????
@@ -167,7 +167,7 @@ function setSearchParams(data) {
 	}
 
 	history.replaceState(null, document.title, '?' + searchParams.toString());
-}
+};
 
 
 // ПОЛУЧЕНИЕ ПОСТОВ
@@ -255,7 +255,7 @@ function getData(params) {
 		}
 		hideLoader();
 	}
-}
+};
 
 
 // ПАГИНАЦИЯ
@@ -283,7 +283,7 @@ function linkElementCreate(page) {
 		getData(getParamsFromLocation());
 	});
 	return link;
-}
+};
 
 
 // СОЗДАЕМ КАРТОЧКУ ДЛЯ ПОЛУЧЕНЫХ ДАННЫХ
@@ -295,7 +295,7 @@ function cardCreate({title, text, tags, date, comments, views, srcDesktop, srcsr
 			<source srcset="${BASE_SERVER_PATH}${srcMobile}, ${BASE_SERVER_PATH}${srcMobile2x} 2x" media="(max-width: 602px)" width="280" height="280">
 			<source srcset="${BASE_SERVER_PATH}${srcTablet}, ${BASE_SERVER_PATH}${srcTablet2x} 2x" media="(max-width: 800px)" width="314" height="299">
 			<source srcset="${BASE_SERVER_PATH}${srcDesktop}, ${BASE_SERVER_PATH}${srcsrcDesktop2x} 2x" width="320" height="236">
-			<img src="${BASE_SERVER_PATH}${srcDesktop}" alt="${title}" width="320" height="236">
+			<img class="card__img" src="${BASE_SERVER_PATH}${srcDesktop}" alt="${title}" width="320" height="236">
 		</picture>
 		<section class="card__info">
 			<div class="card__tags">${tags.map(tag => `
@@ -306,13 +306,13 @@ function cardCreate({title, text, tags, date, comments, views, srcDesktop, srcsr
 				<p class="card__data__views">${views} views</p>
 				<p class="card__data__comments">${comments} comments</p>
 			</div>
-			<h4 class="card__title">${title}</h4>
+			<h4 class="card__title tab" tabindex="0">${title}</h4>
 			<p class="card__text">${text}</p>
 			<a href="#" class="card__link">Go to this post</a>
 		</section>
 	</div>
 	`
-}
+};
 
 
 // ВЫДЕЛЕНИЕ ВЫБРАНЫХ ИНПУТОВ
@@ -335,7 +335,7 @@ function setDataToFilter (data) {
 		radio.checked = data.sort === radio.value;
 	});
 	filterForm.elements.search = data.search;
-}
+};
 
 
 // РЕДАКТИРОВАНИЕ ДАТЫ
@@ -356,4 +356,4 @@ function dateCorrecting (serverDate) {
 
 	const finalDate = `${dayDate}.${monthDate}.${yearDate}`;
 	return finalDate;
-}
+};
