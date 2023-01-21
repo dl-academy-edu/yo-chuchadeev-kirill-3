@@ -75,6 +75,7 @@
 .slider__wrapper {
 	display: flex;
 	overflow: hidden;
+	height: 465px;
 	// overflow-x: scroll;
     // scroll-snap-type: x mandatory;
 }
@@ -96,8 +97,14 @@
 .slide_2__image,
 .slide_3__image,
 .slide_4__image {
+	// width: 100%;
+	// height: auto;
+	height: 100%;
 	width: 100%;
-	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	object-fit: cover;
 }
 
 .slider__controls{
@@ -413,6 +420,12 @@
 
 .blog__filter__list {
 	display: flex;
+	@media screen and (max-width: 1115px) {
+		flex-wrap: wrap;
+		row-gap: 30px;
+		gap: 50px;
+		// max-width: 540px;
+	}
 }
 
 .blog__filter__list_items {
@@ -422,6 +435,10 @@
 .filter__tags {
 	display: flex;
 	flex-direction: column;
+	@media screen and (max-width: 955px) {
+		order: 2;
+		// margin-right: 50px;
+	}
 }
 
 .filter__tags__sort {
@@ -444,12 +461,25 @@
 	display: flex;
 	flex-direction: column;
 	margin-left: 77px;
+	@media screen and (max-width: 1115px) {
+		margin-left: 0px;
+	}
+}
+
+.filter__sort {
+	@media screen and (max-width: 445px) {
+		margin-right: 0px;
+	}
 }
 
 .filter__show {
 	display: flex;
 	flex-direction: column;
-	margin-left: 82px;
+	// margin-left: 81px;
+	margin-left: 137px;	
+	@media screen and (max-width: 1115px) {
+		margin-left: 0px;
+	}
 }
 
 .checkbox__custom {
@@ -697,6 +727,10 @@
 	display: flex;
 	flex-direction: column;
 	margin-left: 70px;
+	@media screen and (max-width: 1115px) {
+		margin-left: 0px;
+		// order: -1;
+	}
 }
 
 .filter__reset {
@@ -710,6 +744,16 @@
 		font-weight: 400;
 		color: #E5E5E5;
 	}
+	@media screen and (max-width: 1115px) {
+		margin-left: 0px;
+		// order: 2;
+		// margin-top: 10px;
+	}
+	@media screen and (max-width: 790px) {
+		// margin-left: 0px;
+		order: 2;
+		margin-top: 10px;
+	}
 }
 
 .blog__filter__search {
@@ -718,6 +762,11 @@
 	align-items: center;
 	position: relative;
 	margin-bottom: 20px;
+	@media screen and (max-width: 445px) {
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: flex-end;
+	}
 }
 
 .search__input {
@@ -765,6 +814,9 @@
 	transition: .3s;
 	@media screen and (max-width: 800px) {
 		width: 314px;
+	}
+	@media screen and (max-width: 400px) {
+		width: 280px;
 	}
 }
 
@@ -853,6 +905,10 @@
 	display: flex;
 	margin: 20px 0;
 	height: auto;
+	@media screen and (max-width: 750px) {
+		flex-wrap: wrap;
+		gap: 20px;
+	}
 }
 
 .card__picture {
@@ -861,6 +917,9 @@
 
 .card__info {
 	margin: 20px;
+	@media screen and (max-width: 750px) {
+		margin: 0px;
+	}
 }
 
 .card__tags {

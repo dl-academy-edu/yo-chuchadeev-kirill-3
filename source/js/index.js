@@ -100,8 +100,10 @@ const closeMessage = document.querySelector('.close__message_js');
 	}
 
 	btnSignIn.addEventListener('click', function() {
+		closeMenu();
 		interactionModal(popupLogin);
 		closeESC(popupLogin);
+		
 	})
 
 	btnLoginClose.addEventListener('click', function() {
@@ -246,6 +248,7 @@ btnLogOut.addEventListener('click', function() {
 	}
 
 	btnRegister.addEventListener('click', function() {
+		closeMenu();
 		interactionModal(popupRegister);
 		closeESC(popupRegister);
 
@@ -301,8 +304,8 @@ function rerenderLinks() {
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ О СТАТУСАХ ИЗМЕНЕНИЙ ДАННЫХ ПРОФИЛЯ
 function popupStatusOpen(popupStatus) {
 	// popupStatus.classList.add('open');
-	body.classList.add('scroll_block');
-	popup.classList.remove('close');
+	// body.classList.add('scroll_block');
+	// popup.classList.remove('close');
 	popupStatus.classList.remove('close');
 
 
@@ -310,7 +313,7 @@ function popupStatusOpen(popupStatus) {
 	buttonClose.addEventListener('click', () => {
 		popupStatusClose(popupStatus);
 	})
-	// setTimeout(popupStatusClose(popupStatus), 2000); // не работает
+	setTimeout(popupStatusClose(popupStatus), 2000); // не работает
 };
 
 function popupStatusClose(popupStatus) {
@@ -433,7 +436,7 @@ function popupStatusClose(popupStatus) {
 		})
 		hideLoader();
 	}
-
+	
 	openMessage.addEventListener('click', function() {
 		interactionModal(popupMessage);
 		closeESC(popupMessage);
@@ -486,11 +489,17 @@ openMenuBtn.addEventListener('click', () => {
 	closeMenuBtn.classList.remove('close');
 	body.classList.add('scroll_block');
 
+	window.addEventListener('resize', () => {
+		if(window.innerWidth > 602) {
+			closeMenu();
+		}
+	});
 	
 	closeMenuBtn.addEventListener('click', () => {
 		setTimeout(closeMenu, 500);
 	});
 });
+
 
 function closeMenu() {
 	// burgerMenu.style.display='none';

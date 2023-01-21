@@ -207,9 +207,9 @@ function getData(params) {
 	}
 
 	if(params.search) {
-		// filter.title = params.search;
+		filter.title = params.search;
 		// filter.search.length != 0 ? filter.title = params.search : "";
-		filterForm.elements.search = params.search;
+		// filterForm.elements.search = params.search;
 	}
 
 	if(+params.page) {
@@ -233,7 +233,13 @@ function getData(params) {
 			dataPosts += cardCreate({
 				title: post.title,
 				text: post.text,
-				src: post.photo.desktopPhotoUrl,
+				srcDesktop: post.photo.desktopPhotoUrl,
+				srcsrcDesktop2x: post.photo.desktop2xPhotoUrl,
+				srcTablet: post.photo.tabletPhotoUrl,
+				srcTablet2x: post.photo.tablet2xPhotoUrl,
+				srcMobile: post.photo.mobilePhotoUrl,
+				srcMobile2x: post.photo.mobile2xPhotoUrl,
+
 				tags: post.tags,
 				date: dateCorrecting(post.date),
 				comments: post.commentsCount,
@@ -281,12 +287,15 @@ function linkElementCreate(page) {
 
 
 // СОЗДАЕМ КАРТОЧКУ ДЛЯ ПОЛУЧЕНЫХ ДАННЫХ
-function cardCreate({title, text, src, tags, date, comments, views}) {
+function cardCreate({title, text, tags, date, comments, views, srcDesktop, srcsrcDesktop2x, srcTablet, srcTablet2x, srcMobile, srcMobile2x}) {
 	return `
 	<hr class="blog__line">
 	<div class="blog__posts__card">
 		<picture class="card__picture">
-			<img src="${BASE_SERVER_PATH}${src}" alt="${title}">
+			<source srcset="${BASE_SERVER_PATH}${srcMobile}, ${BASE_SERVER_PATH}${srcMobile2x} 2x" media="(max-width: 602px)" width="280" height="280">
+			<source srcset="${BASE_SERVER_PATH}${srcTablet}, ${BASE_SERVER_PATH}${srcTablet2x} 2x" media="(max-width: 800px)" width="314" height="299">
+			<source srcset="${BASE_SERVER_PATH}${srcDesktop}, ${BASE_SERVER_PATH}${srcsrcDesktop2x} 2x" width="320" height="236">
+			<img src="${BASE_SERVER_PATH}${srcDesktop}" alt="${title}" width="320" height="236">
 		</picture>
 		<section class="card__info">
 			<div class="card__tags">${tags.map(tag => `

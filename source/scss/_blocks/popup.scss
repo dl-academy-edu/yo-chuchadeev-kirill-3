@@ -27,13 +27,26 @@
 	background: #FFFFFF;
 	border: 2.5px solid #070707;
 	position: fixed;
-	top: 0;
-	left: 0;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 5;
 	transition: .3s;
+	@media screen and (max-width: 510px) {
+		border: none;
+		// margin-top: 65px;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		// transform: none;
+		// top: auto;
+		// left: auto;
+		overflow-y: auto;
+		display: flex;
+		// margin: auto 0;
+
+	}
+	
 }
 
 .popup__login__form,
@@ -45,6 +58,14 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	@media screen and (max-width: 510px) {
+		padding: 0 20px;
+		// margin: auto;
+		height: auto;
+		margin-top: 120px;
+		// display: flex;
+		// justify-content: center;
+	}
 }
 
 .popup__login__email, .popup__login__password {
@@ -73,8 +94,7 @@
 	margin-top: 30px;
 }
 
-.popup__close,
-.popup__profile__close {
+.popup__close {
 	position: absolute;
 	top: -2.5px;
 	right: -40px;
@@ -86,12 +106,33 @@
 			fill: #070707;
 		}
 	}
+	// @media screen and (max-width: 800px) {
+	// 	top: 20px;
+	// 	left: 20px;
+	// 	right: auto;
+	// }
+}
+
+.close_1 {
+	@media screen and (max-width: 510px) {
+		position: absolute;
+		top: 75px;
+		left: 20px;
+		right: auto;
+	}
+}
+
+.close_2 {
 	@media screen and (max-width: 800px) {
+		top: -37px;
+		left: auto;
+		right: 0;
+	}
+	@media screen and (max-width: 740px) {
 		top: 20px;
 		left: 20px;
 		right: auto;
 	}
-
 }
 
 .popup__register,
