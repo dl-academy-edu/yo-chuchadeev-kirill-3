@@ -2,17 +2,17 @@
 // Создать программу, которая запрашивает у пользователя число, в консоль выводит числа от 1 до до этого числа, 
 // но пропускает числа, которые кратны (делятся без остатка) 4-м.
 
-let userNumber = +prompt("Your number:");
-let number = 0;
+// let userNumber = +prompt("Your number:");
+// let number = 0;
 
-if(!userNumber) {
-	alert("Вы не ввели число!");
-} else {
-	while (number < userNumber) {
-		number++;
-		number % 4 ? console.log(number) : "";
-	}
-}
+// if(!userNumber) {
+// 	alert("Вы не ввели число!");
+// } else {
+// 	while (number < userNumber) {
+// 		number++;
+// 		number % 4 ? console.log(number) : "";
+// 	}
+// }
 
 
 
@@ -61,3 +61,20 @@ if(!userNumber) {
 // Задание 4
 // Написать проверку, для программ 1-3, чтобы если пользователь вводил неверные данные, 
 // например слово вместо числа, то должно вывестись сообщение об ошибке.
+
+
+
+
+// Задание 5
+// Написать игру “Угадай число”, для генерации случайного числа использовать следующий код:
+// let rand = Math.floor(1 + Math.random() * 10);
+// Игра должна продолжаться до тех пор, пока пользователь не укажет правильное число. 
+// Можете использовать пустой for или while(true).
+
+let rand = Math.floor(1 + Math.random() * 10);
+let userNum;
+
+console.log(rand);
+do {
+	userNum = +prompt('Угадайте число, от 1 до 10. Введите свое:');
+} while(userNum !== rand) console.log('Вы угадали!');

@@ -10,66 +10,59 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
 
-        <script>
-            var docElement = document.documentElement;
-            docElement.className = docElement.className.replace(/\bno-js\b/, '') + ' js';
-        </script>
-
         <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css">
-
         <link href="css/style.min.css" rel="stylesheet">
     </head>
-<body class="body" id="body">
-	@@include('blocks/header.html')
-	<main class="main__full">
-		<div class="main center">
-			<div class="profile__content">
-				<h2 class="profile__title">My profile</h2>
-				<section class="profile__data">
-					<picture class="profile__avatar">
-						<img class="profile__avatar_img" src="/img/ico/no-photo.svg" alt="Avatar">
-					</picture>
-					<div class="profile__info">
-						<div class="profile__info__name">
-							<p class="profile__subtitle">Name:</p>
-							<p class="profile__name profile__info__text"></p>
+	<body class="body" id="body">
+		@@include('blocks/header.html')
+		<main class="main__full">
+			<div class="main center">
+				<div class="profile__content">
+					<h2 class="profile__title">My profile</h2>
+					<section class="profile__data">
+						<h6>My profile</h6>
+						<picture class="profile__avatar">
+							<img class="profile__avatar_img" src="/img/ico/no-photo.svg" alt="Avatar">
+						</picture>
+						<div class="profile__info">
+							<div class="profile__info__name">
+								<p class="profile__subtitle">Name:</p>
+								<p class="profile__name profile__info__text"></p>
+							</div>
+							<div class="profile__info__surname">
+								<p class="profile__subtitle">Surname:</p>
+								<p class="profile__surname profile__info__text"></p>
+							</div>
+							<div class="profile__info__email">
+								<p class="profile__subtitle">Email:</p>
+								<p class="profile__email profile__info__text"></p>
+							</div>
+							<div class="profile__info__password">
+								<p class="profile__subtitle">Password:</p>
+								<p class="profile__password profile__info__text"> ****************</p>
+							</div>
+							<div class="profile__info__location">
+								<p class="profile__subtitle">Location:</p>
+								<p class="profile__location profile__info__text"></p>
+							</div>
+							<div class="profile__info__age">
+								<p class="profile__subtitle">Age:</p>
+								<p class="profile__age profile__info__text"></p>
+							</div>
+							<div class="profile__edit">
+								<button class="btn_white open_change_password_js">Change password</button>
+								<button class="btn_white open_change_data_js">Change other data</button>
+								<button class="btn_white delete_account delete_account_js">Delete account</button>
+							</div>
 						</div>
-						<div class="profile__info__surname">
-							<p class="profile__subtitle">Surname:</p>
-							<p class="profile__surname profile__info__text"></p>
-						</div>
-						<div class="profile__info__email">
-							<p class="profile__subtitle">Email:</p>
-							<p class="profile__email profile__info__text"></p>
-						</div>
-						<div class="profile__info__password">
-							<p class="profile__subtitle">Password:</p>
-							<p class="profile__password profile__info__text"> ****************</p>
-						</div>
-						<div class="profile__info__location">
-							<p class="profile__subtitle">Location:</p>
-							<p class="profile__location profile__info__text"></p>
-						</div>
-						<div class="profile__info__age">
-							<p class="profile__subtitle">Age:</p>
-							<p class="profile__age profile__info__text"></p>
-						</div>
-						<div class="profile__edit">
-							<button class="btn_white open_change_password_js">Change password</button>
-							<button class="btn_white open_change_data_js">Change other data</button>
-							<button class="btn_white delete_account delete_account_js">Delete account</button>
-						</div>
-					</div>
-				</section>
+					</section>
+				</div>
 			</div>
-		</div>
-	</main>
-	@@include('blocks/footer.html')
-	@@include('blocks/popup.html')
-
-	<!-- <script src="js/app.js" defer></script> -->        
-	<script src="js/index.js"></script>
-	<script src="js/common.js"></script>
-	<script src="js/profile.js"></script>
-</body>
+		</main>
+		@@include('blocks/footer.html')
+		@@include('blocks/popup.html')
+		<script src="js/index.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/profile.js"></script>
+	</body>
 </html>
