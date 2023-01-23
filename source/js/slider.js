@@ -11,19 +11,16 @@ const animationTime = 500;
 let timer = null;
 let dots = [];
 let sliderWidth = wrapper.offsetWidth;
-// let activeSlideIndex = 0;
 let activeSlideIndex;
 
 
-
-// 
+// Добавляем активный слайд в localStorage
 const updateActiveSlide = () => {
 	+localStorage.getItem('activeSlideIndex')
 	? (activeSlideIndex = +localStorage.getItem('activeSlideIndex'))
 	: (activeSlideIndex = 0);
 }
 updateActiveSlide();
-
 
 
 window.addEventListener('resize', () => {
@@ -63,7 +60,7 @@ function setActiveSlide (index, withAnimation = true) {
 };
 
 initWidth();
-// setActiveSlide(0);
+setActiveSlide(activeSlideIndex);
 
 
 // Инициилизируем ширину/адаптация слайдера
@@ -80,12 +77,12 @@ function initWidth () {
 // Кнопки переключения
 buttonNext.addEventListener ('click', () => {
 	setActiveSlide(activeSlideIndex + 1);
-	localStorage.setItem('activeSlideIndex', activeSlideIndex + 1);
+	// localStorage.setItem('activeSlideIndex', activeSlideIndex);
 });
 
 buttonBack.addEventListener ('click', () => {
 	setActiveSlide(activeSlideIndex - 1);
-	localStorage.setItem('activeSlideIndex', activeSlideIndex - 1);
+	// localStorage.setItem('activeSlideIndex', activeSlideIndex);
 });
 
 
