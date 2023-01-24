@@ -23,7 +23,6 @@
 	// display: none;													// on/off popup login
 	box-sizing: border-box;
 	width: 370px;
-	// max-height: 318px;
 	background: #FFFFFF;
 	border: 2.5px solid #070707;
 	position: fixed;
@@ -34,17 +33,11 @@
 	transition: .3s;
 	@media screen and (max-width: 510px) {
 		border: none;
-		// margin-top: 65px;
 		position: relative;
 		width: 100%;
 		height: 100%;
-		// transform: none;
-		// top: auto;
-		// left: auto;
 		overflow-y: auto;
 		display: flex;
-		// margin: auto 0;
-
 	}
 	
 }
@@ -60,11 +53,8 @@
 	align-items: flex-start;
 	@media screen and (max-width: 510px) {
 		padding: 0 20px;
-		// margin: auto;
 		height: auto;
 		margin-top: 120px;
-		// display: flex;
-		// justify-content: center;
 	}
 }
 
@@ -106,11 +96,6 @@
 			fill: #070707;
 		}
 	}
-	// @media screen and (max-width: 800px) {
-	// 	top: 20px;
-	// 	left: 20px;
-	// 	right: auto;
-	// }
 }
 
 .close_1 {
@@ -136,7 +121,8 @@
 }
 
 .popup__register,
-.popup__change__data {
+.popup__change__data,
+.popup__message {
 	// display: none;													// on/off popup register
 	box-sizing: border-box;
 	width: 680px;
@@ -162,7 +148,8 @@
 }
 
 .popup__register__form,
-.change__data__form {
+.change__data__form,
+.popup__message__form {
 	padding: 37.5px;
 	box-sizing: border-box;
 	width: 100%;
@@ -245,15 +232,6 @@
 	overflow: hidden;
 }
 
-// .popup__register__form__checkbox {
-// 	margin: 0;
-// 	cursor: pointer;
-// 	width: 19px;
-// 	height: 19px;
-// 	border: 2px solid #070707;
-// 	border-radius: 3px;
-// 	background-color: #FFFFFF;
-// }
 .popup__message__form__check_text,
 .popup__register__form__check_text {
 	cursor: pointer;
@@ -332,32 +310,6 @@
 .btn_signup,
 .btn_message {
 	max-width: 101px;
-}
-
-.popup__message {
-	box-sizing: border-box;
-	width: 680px;
-	// height: 540px;
-	background: #FFFFFF;
-	border: 2.5px solid #070707;
-	position: fixed;
-	top: 0;
-	left: 0;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 5;
-}
-
-.popup__message__form {
-	padding: 37.5px;
-	box-sizing: border-box;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	gap: 20px;
 }
 
 .popup__message__text__letter {
