@@ -66,7 +66,6 @@ if(location.search) {
 
 
 // ПОЛУЧЕНИЕ ПОСТОВ
-// доп материал 9 лекции
 const LIMIT = 5;
 (function() {
 	const filterForm = document.forms.blog__filter__form;
@@ -97,23 +96,9 @@ const LIMIT = 5;
 		setSearchParams(data);
 	})
 	
-	// ПОЛУЧАЕМ ТЕГИ
-	// let xhr = new XMLHttpRequest();
-	// xhr.open('GET', BASE_SERVER_PATH + '/api/tags');
-	// xhr.send();
-	// // showLoader();
-	// xhr.onload = () => {
-	// 	const tags = JSON.parse(xhr.response).data;
-	// 	const tagsBox = document.querySelector('.#');
-	// 	tags.forEach(tag => {
-	// 		const tagHTML = createTag(tag);
-	// 		tagsBox.insertAdjacentHTML('beforeend', tagHTML);
-	// 	})
 	const params = getParamsFromLocation();
 	setDataToFilter(params);
 	getData(params);
-	// 	// hideLoader();
-	// }
 })();
 
 

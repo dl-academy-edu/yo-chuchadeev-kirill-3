@@ -43,33 +43,6 @@ const closeMessage = document.querySelector('.close__message_js');
 		clearErrors(loginForm);
 		clearTruths(loginForm);
 
-		sendRequest({
-			method: 'POST',
-			url: '/api/users/login',
-			body: JSON.stringify(data),
-			headers: {
-				'Content-Type': 'application/json'
-			},
-		})
-		.then(res => res.json())
-		.then(res => {
-			// if(res._message) {
-			// 	let userError = res._message;
-			// }
-			localStorage.setItem('token', res.data.token);
-			localStorage.setItem('userId', res.data.userId);
-			rerenderLinks();
-			interactionModal(popupLogin);
-			// return res.json();
-		})
-		.catch(err => {
-			if(err._message) {
-				alert(err._message);
-			}
-			clearErrors(loginForm);
-			// errorFormHandler(err.errors, loginForm);
-		})
-
 		if(!isEmailValid(data.email)) {
 			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
 		} else {
@@ -97,6 +70,35 @@ const closeMessage = document.querySelector('.close__message_js');
 			})
 			return;
 		}
+
+
+		sendRequest({
+			method: 'POST',
+			url: '/api/users/login',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => res.json())
+		.then(res => {
+			if(res.success) {
+				popupStatusOpen(popupSuccess);
+			} else {
+				throw res;
+			}
+			localStorage.setItem('token', res.data.token);
+			localStorage.setItem('userId', res.data.userId);
+			rerenderLinks();
+		})
+		.catch(err => {
+			popupStatusOpen(popupError);
+			clearTruths(loginForm);
+			clearErrors(loginForm);
+		})
+		.finally(() => {
+			interactionModal(popupLogin);
+		})
 	}
 
 	btnSignIn.addEventListener('click', function() {
@@ -148,33 +150,6 @@ btnLogOut.addEventListener('click', function() {
 
 		clearErrors(registerForm);
 		clearTruths(registerForm);
-
-		sendRequest({
-			method: 'POST',
-			url: '/api/users',
-			body: JSON.stringify(data),
-			headers: {
-				'Content-Type': 'application/json'
-			},
-		})
-		.then(res => res.json())
-		.then(res => {
-			// if(res._message) {
-			// 	let userError = res._message;
-			// }
-			localStorage.setItem('token', res.data.token);
-			localStorage.setItem('userId', res.data.userId);
-			rerenderLinks();
-			interactionModal(registerForm);
-			// return res.json();
-		})
-		.catch(err => {
-			if(err._message) {
-				alert(err._message);
-			}
-			// clearErrors(registerForm);
-			// errorFormHandler(err.errors, loginForm);
-		})
 
 		if(!isEmailValid(data.email)) {
 			errors.email = 'Please enter a valid email address (your entry is not in the format "somebody@example.com")';
@@ -245,6 +220,36 @@ btnLogOut.addEventListener('click', function() {
 			})
 			return;
 		}
+
+
+		sendRequest({
+			method: 'POST',
+			url: '/api/users',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(res => res.json())
+		.then(res => {
+			if(res.success) {
+				popupStatusOpen(popupSuccess);
+			} else {
+				throw res;
+			}
+			localStorage.setItem('token', res.data.token);
+			localStorage.setItem('userId', res.data.userId);
+			rerenderLinks();
+		})
+		.catch(err => {
+			popupStatusOpen(popupError);
+			clearTruths(registerForm);
+			clearErrors(registerForm);
+		})
+		.finally(() => {
+			interactionModal(popupRegister);
+			registerForm.reset();
+		})
 	}
 
 	btnRegister.addEventListener('click', function() {
@@ -302,6 +307,9 @@ function rerenderLinks() {
 
 
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ О СТАТУСАХ ИЗМЕНЕНИЙ ДАННЫХ ПРОФИЛЯ
+const popupSuccess = document.querySelector('.popup__status__success');
+const popupError = document.querySelector('.popup__status__error');
+
 function popupStatusOpen(popupStatus) {
 	// popupStatus.classList.add('open');
 	// body.classList.add('scroll_block');
@@ -333,8 +341,6 @@ function popupStatusCloseAll() {
 
 // ФОРМА ОТПРАВКИ СООБЩЕНИЯ
 (function sendMessage() {
-	const popupSuccess = document.querySelector('.popup__status__success');
-	const popupError = document.querySelector('.popup__status__error');
 
 	const message = (e) => {
 		e.preventDefault();

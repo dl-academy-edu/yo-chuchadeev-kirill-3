@@ -96,11 +96,13 @@ const btn_delete = document.querySelector('.delete_account_js');
 			if(res.success) {
 				profile = res.data;
 				renderProfile();
+				popupStatusOpen(popupSuccess);
 			} else {
 				throw res;
 			}
 		})
 		.catch(err => {
+			popupStatusOpen(popupError);
 			if(err._message) {
 				alert(err._message);
 			}
@@ -109,6 +111,7 @@ const btn_delete = document.querySelector('.delete_account_js');
 		})
 		.finally(() => {
 			interactionModal(popupChangeData);
+			setTimeout(reloadPage, 2000);
 		})
 		hideLoader();
 	}
@@ -138,7 +141,7 @@ const btn_delete = document.querySelector('.delete_account_js');
 		e.preventDefault();
 		// let data = {};
 
-// ВАЛИДАЦИЯ ПАРОЛЕЙ
+	// ВАЛИДАЦИЯ ПАРОЛЕЙ
 		let errors = {};
 		let truths = {};
 
@@ -186,7 +189,7 @@ const btn_delete = document.querySelector('.delete_account_js');
 		}
 
 
-// ОТПРАВКА ПАРОЛЕЙ
+	// ОТПРАВКА ПАРОЛЕЙ
 		showLoader();
 		sendRequest({
 			url: '/api/users',
@@ -227,6 +230,7 @@ const btn_delete = document.querySelector('.delete_account_js');
 			passwordForm.reset();
 			clearErrors(passwordForm);
 			clearTruths(passwordForm);
+			setTimeout(reloadPage, 2000);
 		})
 		hideLoader();
 	}

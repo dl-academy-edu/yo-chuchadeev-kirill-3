@@ -129,3 +129,8 @@ const scrollUp = document.querySelector('.btn__up_js');
     	});
   	});
 })();
+
+// ПЕРЕЗАГРУЗКА СТРАНИЦЫ
+function reloadPage() {
+	location.reload();
+};
