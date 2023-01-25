@@ -1,7 +1,7 @@
 const BASE_SERVER_PATH = 'https://academy.directlinedev.com';
 
 
-// CREATE ERRORS
+// СОЗДАНИЕ ОШИБОК
 const errorCreator = (message) => {
 	let messageErrorDiv = document.createElement('div');
 	messageErrorDiv.classList.add('popup__error__text'); // .invalid-feedback
@@ -19,7 +19,7 @@ const setErrorText = (input, errorMessage) => {
 };
 
 
-// CREATE TRUTHS
+// СОЗДАНИЕ КОРРЕКТОВ
 const truthCreator = (message) => {
 	let messageTruthDiv = document.createElement('div');
 	messageTruthDiv.classList.add('popup__truth__text'); 
@@ -37,7 +37,7 @@ const setTruthText = (input, truthMessage) => {
 };
 
 
-// CLEAR ERRORS AND TRUTHS
+// ОЧИСТКА ОШИБОК И КОРРЕКТОВ
 function clearErrors(element) {
 	const messageError = element.querySelectorAll('.popup__error__text'); // .invalid-feedback-js
 	const inputError = element.querySelectorAll('.popup__error__input'); // .is-invalid
@@ -84,7 +84,7 @@ function isNumberValid(phone) {
 };
 
 
-// ?????????????????????????????????????????
+// ?????????????????????
 function errorFormHandler(errors, form) {
 	if(Object.keys(errors).length) {
 		Object.keys(errors).forEach((key) => {
@@ -109,7 +109,6 @@ function sendRequest ({url, method = 'GET', headers, body = null}) {
 
 // СКРОЛ СТРАНИЦЫ ВВЕРХ
 const scrollUp = document.querySelector('.btn__up_js');
-
 (function () {
 	if(!scrollUp) return;
 
@@ -133,4 +132,9 @@ const scrollUp = document.querySelector('.btn__up_js');
 // ПЕРЕЗАГРУЗКА СТРАНИЦЫ
 function reloadPage() {
 	location.reload();
+};
+
+// ПЕРЕХОД НА ГЛАВНУЮ
+function goToMain() {
+	location.pathname = '/';
 };

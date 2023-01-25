@@ -3,8 +3,6 @@ const popup = document.querySelector('.popup');
 const isLogin = localStorage.getItem('token');
 const loader = document.querySelector('.loader');
 
-// const email = loginForm.elements.email;
-// const password = loginForm.elements.password;
 const loginForm = document.forms.login__form;
 const btnSignIn = document.querySelector('.btn__signin_js');
 const popupLogin = document.querySelector('.popup__login');
@@ -21,6 +19,13 @@ const messageForm = document.forms.message__form;
 const openMessage = document.querySelector('.open__message_js');
 const popupMessage = document.querySelector('.popup__message');
 const closeMessage = document.querySelector('.close__message_js');
+
+const popupSuccess = document.querySelector('.popup__status__success');
+const popupError = document.querySelector('.popup__status__error');
+
+const openMenuBtn = document.querySelector('.open__menu_js');
+const closeMenuBtn = document.querySelector('.close__menu_js');
+const burgerMenu = document.querySelector('.header__content');
 
 
 
@@ -281,7 +286,7 @@ btnLogOut.addEventListener('click', function() {
 })();
 
 
-// RERENDERS HEADER LINKS
+// ПЕРЕРИСОВКА ЛИНКОВ ХЕДЕРА
 function rerenderLinks() {
 	const isLogin = localStorage.getItem('token');
 	const btnSignIn = document.querySelector('.btn__signin_js');
@@ -307,9 +312,6 @@ function rerenderLinks() {
 
 
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ О СТАТУСАХ ИЗМЕНЕНИЙ ДАННЫХ ПРОФИЛЯ
-const popupSuccess = document.querySelector('.popup__status__success');
-const popupError = document.querySelector('.popup__status__error');
-
 function popupStatusOpen(popupStatus) {
 	// popupStatus.classList.add('open');
 	// body.classList.add('scroll_block');
@@ -332,6 +334,7 @@ function popupStatusClose(popupStatus) {
 	// popupStatus.classList.remove('open');
 	// popup.classList.add('close');
 };
+
 function popupStatusCloseAll() {
 	popupSuccess.classList.add('close');
 	popupError.classList.add('close');
@@ -491,10 +494,6 @@ function hideLoader() {
 
 
 // МЕНЮ БУРГЕР
-const openMenuBtn = document.querySelector('.open__menu_js');
-const closeMenuBtn = document.querySelector('.close__menu_js');
-const burgerMenu = document.querySelector('.header__content');
-
 openMenuBtn.addEventListener('click', () => {
 	// burgerMenu.style.display='flex';
 	burgerMenu.classList.add('open');
@@ -512,9 +511,7 @@ openMenuBtn.addEventListener('click', () => {
 	});
 });
 
-
 function closeMenu() {
-	// burgerMenu.style.display='none';
 	burgerMenu.classList.remove('open');
 	closeMenuBtn.classList.add('close');
 	body.classList.remove('scroll_block');

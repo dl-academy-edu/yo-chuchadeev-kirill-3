@@ -1,5 +1,5 @@
 // PROFILE
-// const popupProfile = document.querySelector('.popup__profile');
+
 const popupChangePassword = document.querySelector('.popup__change__password');
 const openChangePassword = document.querySelector('.open_change_password_js');
 const closeChangePassword = document.querySelector('.close_change_password_js');
@@ -9,9 +9,6 @@ const closeChangeData = document.querySelector('.close_change_data_js');
 console.log(`userId: `+localStorage.getItem('userId'));
 
 const passwordForm = document.forms.change__password__form;
-const popupSuccess = document.querySelector('.popup__status__success');
-const popupError = document.querySelector('.popup__status__error');
-
 const btn_delete = document.querySelector('.delete_account_js');
 
 
@@ -61,10 +58,7 @@ const btn_delete = document.querySelector('.delete_account_js');
 			};
 		})
 		.catch((err) => {
-			// err = err.split(' ');
-			// if(+err[0] === 204) {
-			// 	alert(err[message]);
-			// }
+
 		})
 		hideLoader();
 	}
@@ -95,7 +89,7 @@ const btn_delete = document.querySelector('.delete_account_js');
 		.then(res => {
 			if(res.success) {
 				profile = res.data;
-				renderProfile();
+				// renderProfile();
 				popupStatusOpen(popupSuccess);
 			} else {
 				throw res;
@@ -103,11 +97,6 @@ const btn_delete = document.querySelector('.delete_account_js');
 		})
 		.catch(err => {
 			popupStatusOpen(popupError);
-			if(err._message) {
-				alert(err._message);
-			}
-			clearErrors(changeDataForm);
-			errorFormHandler(err.errors, changeDataForm);
 		})
 		.finally(() => {
 			interactionModal(popupChangeData);
@@ -290,28 +279,19 @@ btn_delete.addEventListener('click', function() {
 
 	sendRequest({
 		method: 'DELETE',
-		url: `/api/users/${localStorage.getItem('id')}`,
+		url: `/api/users/${localStorage.getItem('userId')}`,
 		headers: {
 			'x-access-token': localStorage.getItem('token'),
-			'Content-Type': 'application/json',
-			// 'userId': localStorage.getItem('userId'),
 		},
 	})
 	.then(res => res.json())
 	.then(res => {
-		// if(res._message) {
-		// 	let userError = res._message;
-		// }
 		localStorage.removeItem('token', res.data.token);
 		localStorage.removeItem('userId', res.data.userId);
-		location.pathname = '/';
-		rerenderLinks();
+		popupStatusOpen(popupSuccess);
+		setTimeout(goToMain, 2000);
 	})
 	.catch(err => {
 		popupStatusOpen(popupError);
-	})
-	.finally(() => {
-		// location.pathname = '/';
-		rerenderLinks();
 	})
 });
