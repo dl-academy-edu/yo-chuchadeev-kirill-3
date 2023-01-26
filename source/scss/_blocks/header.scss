@@ -1,9 +1,9 @@
 
-.header__full {
+.header {
     width: 100%;
 }
 
-.header {
+.header__wrapper {
     width: 100%;
 }
 
@@ -28,7 +28,7 @@
 		margin: 0 ;
 		padding: 0;
 		// padding-top: 90px;
-		margin-right: 20px;
+		padding-right: 20px;
 		background: rgba(246, 246, 246, 0.99);
 		z-index: 15;
 		gap: 40px;
