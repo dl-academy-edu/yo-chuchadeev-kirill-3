@@ -12,7 +12,7 @@ const passwordForm = document.forms.change__password__form;
 const btn_delete = document.querySelector('.delete_account_js');
 
 
-// ФОРМА СМЕНА ДАННЫХ ПРОФИЛЯ И ОТОБРАЖЕНИЕ
+// ОТОБРАЖЕНИЕ ДАННЫХ ПРОФИЛЯ И ИХ СМЕНА
 (function() {
 	const profileImg = document.querySelector('.profile__avatar');
 	const profileDefaultImg = document.querySelector('.profile__avatar_img');	
