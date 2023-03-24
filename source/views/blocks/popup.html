@@ -1,0 +1,220 @@
+<div class="popup close">
+	<div class="popup__login close">
+		<form novalidate class="popup__login__form" name="login__form" action="#">
+			<div class="popup__login__email">
+				<label class="label label__email" for="login__email__input">
+					Email <span class="star">*</span>
+					<input required class="popup__login__form__input__email input_text" type="text" id="login__email__input" name="email">
+				</label>
+			</div>
+			<div class="popup__login__password">
+				<label class="label label__password" for="login__password__input">
+					Password <span class="star">*</span>
+					<input required class="popup__login__form__input__password input_text" type="password" id="login__password__input" name="password">
+				</label>
+			</div>
+			<button class="popup__login__form__button btn_white" type="submit">Log in</button>
+		</form>
+		<button class="popup__close close_1 login__close_js" type="submit" aria-label="Close popup.">
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+			</svg>							
+		</button>
+	</div>
+	<div class="popup__register close">
+		<form novalidate class="popup__register__form" name="register__form" action="#">
+			<div class="popup__register__form__input__wrap">
+				<label class="label" for="register__email__input">Email <span class="star">*</span>
+					<input required class="input input_text" type="text" name="email" id="register__email__input">
+				</label>
+			</div>
+			<div class="popup__register__form__input__flex">
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="input__name">Name <span class="star">*</span>
+						<input required class="input input_text" type="text" name="name" id="input__name">
+					</label>
+				</div>
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="input__surname">Surname <span class="star">*</span>
+						<input required class="input input_text" type="text" name="surname" id="input__surname">
+					</label>
+				</div>
+			</div>
+			<div class="popup__register__form__input__flex">
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="password__email__input">Password <span class="star">*</span>
+						<input required class="input input_text" type="password" name="password" id="password__email__input">
+					</label>
+				</div>
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="input__repeat_password">Repeat password <span class="star">*</span>
+						<input required class="input input_text" type="password" name="repeatPassword" id="input__repeat_password">
+					</label>
+				</div>
+			</div>
+			<div class="popup__register__form__input__flex">
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="input__location">Location <span class="star">*</span>
+						<input required class="input input_text" type="text" name="location" id="input__location">
+					</label>
+				</div>
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="input__age">Age <span class="star">*</span>
+						<input required class="input input_text" type="text" name="age" id="input__age">
+					</label>
+				</div>
+			</div>
+			<div class="popup__register__form__check">
+				<input class="popup__register__form__checkbox input_text" type="checkbox" id="checkbox__register" name="accept">
+				<label class="popup__register__form__check_text" for="checkbox__register">Clicking on the button, you consent to the processing of your personal data.</label>
+			</div>
+			<button class="btn_white btn_signup btn_signup_js" type="submit" disabled>Sign up</button>
+		</form>				
+		<button class="popup__close close_2 register__close_js" type="submit" aria-label="Close popup.">
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+			</svg>							
+		</button>
+	</div>
+	<div class="popup__message close">
+		<form novalidate class="popup__message__form" name="message__form" action="#">
+			<div class="popup__message__form__input__flex">
+				<div class="popup__message__form__input__wrap">
+					<label class="label" for="input__your_name">What is your name? <span class="star">*</span>
+						<input required class="input input_text" type="text" name="name" id="input__your_name">
+					</label>
+				</div>
+				<div class="popup__message__form__input__wrap">
+					<label class="label" for="input__repeat_subject">Message subject <span class="star">*</span>
+						<input required class="input input_text" type="text" name="theme" id="input__repeat_subject">
+					</label>
+				</div>
+			</div>
+			<div class="popup__message__form__input__flex">
+				<div class="popup__message__form__input__wrap">
+					<label class="label" for="input__youremail">Your Email <span class="star">*</span>
+						<input required class="input input_text" type="text" name="email" id="input__youremail">
+					</label>
+				</div>
+				<div class="popup__message__form__input__wrap">
+					<label class="label" for="input__mobile_phone">Your mobile phone <span class="star">*</span>
+						<input required class="input input_text" type="text" name="phone" id="input__mobile_phone">
+					</label>
+				</div>
+			</div>
+			<div class="popup__message__form__input__wrap" >
+				<label class="label" for="popup__message__letter">What do you want to discuss with me?</label>
+				<textarea name="message" class="popup__message__text__letter input" id="popup__message__letter" cols="30" rows="10" maxlength="300"></textarea>
+			</div>
+			<div class="popup__message__form__check">
+				<input class="popup__message__form__checkbox input_text" type="checkbox" id="checkbox__message" name="accept">
+				<label class="popup__message__form__check_text" for="checkbox__message">Clicking on the button, you consent to the processing of your personal data.</label>
+			</div>
+			<button class="btn_white btn_message btn_message_js" type="submit">Sign up</button>
+		</form>
+		<button class="popup__close close_2 close__message_js" type="submit" aria-label="Close popup.">
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+			</svg>							
+		</button>
+	</div>
+	<div class="popup__change__password close">
+		<form novalidate class="change__password__form" name="change__password__form" action="#">
+			<div class="change__password__old">
+				<label class="label" for="change__password__old__input">
+					Old password <span class="star">*</span>
+					<input required class="input_text input__email input" type="password" id="change__password__old__input" name="oldPassword">
+				</label>
+			</div>
+			<div class="change__password__new">
+				<label class="label" for="change__password__new__input">
+					New password <span class="star">*</span>
+					<input required class="input_text input__email input" type="password" id="change__password__new__input" name="newPassword">
+				</label>
+			</div>
+			<div class="change__password__repeat">
+				<label class="label" for="change__password__repeat__input">
+					Repeat new password <span class="star">*</span>
+					<input required class="input_text input__password input" type="password" id="change__password__repeat__input" name="repeatPassword">
+				</label>
+			</div>
+			<button class="btn_white btn_change_password btn_change_password_js" type="submit">Change password</button>
+		</form>
+		<button class="popup__close close_1 close_change_password_js" type="submit" aria-label="Close popup.">
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+			</svg>							
+		</button>
+	</div>
+	<div class="popup__change__data close">
+		<form class="change__data__form" name="change__data__form" action="#">
+			<div class="popup__register__form__input__wrap">
+				<label class="label" for="change__data__email">Email
+					<input class="input input_text" type="text" name="email" id="change__data__email">
+				</label>
+			</div>
+			<div class="popup__register__form__input__flex">
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="change__data__name">Name
+						<input class="input input_text" type="text" name="name" id="change__data__name">
+					</label>
+				</div>
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="change__data__surname">Surname
+						<input class="input input_text" type="text" name="surname" id="change__data__surname">
+					</label>
+				</div>
+			</div>
+			<div class="popup__register__form__input__flex">
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="change__data__location">Location
+						<input class="input input_text" type="text" name="location" id="change__data__location">
+					</label>
+				</div>
+				<div class="popup__register__form__input__wrap">
+					<label class="label" for="change__data__age">Age
+						<input class="input input_text" type="text" name="age" id="change__data__age">
+					</label>
+				</div>
+			</div>
+			<div class="change__data__avatar">
+				<label class="label" for="input__file">Profile picture</label>
+				<label class="label__file inpit_file input_text" for="input__file">
+					<img src="/img/ico/file-upload.svg" alt="Icon file" width="16" height="15">
+					<span class="input__file__name">Choose file</span>
+					<input class="input__hidden" type="file" name="avatar" id="input__file">
+				</label>
+			</div>
+			<button class="btn_white btn_change_data btn_change_data_js" type="submit">Submit changes</button>
+		</form>
+		<button class="popup__close close_2 close_change_data_js" type="submit" aria-label="Close popup.">
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+				<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+			</svg>							
+		</button>
+	</div>
+	<div class="loader close"></div>
+</div>
+<div class="popup__status__success close">
+	<p class="form__success">Form has been sent successfully</p>
+	<button class="popup__status__success__close  popup__status__success__close_js" type="button" aria-label="Close status message.">
+		<svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+			<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+			<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+		</svg>							
+	</button>
+</div>
+<div class="popup__status__error close">
+	<p class="form__error">The form was sent but the server transmits an error: “The form was sent but the server transmits an error”</p>
+	<button class="popup__status__error__close  popup__status__error__close_js" type="button" aria-label="Close status message.">
+		<svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+			<rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
+			<rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
+		</svg>							
+	</button>
+</div>
